@@ -1,6 +1,8 @@
 package logic;
 
 import javafx.scene.image.Image;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.canvas.GraphicsContext;
 
 public class Sprite {
 	protected Image image;
@@ -9,13 +11,26 @@ public class Sprite {
 	protected double width;
 	protected double height;
 	
+	//Constructor
 	public Sprite(double positionX, double positionY, double width, double height){
 		setPositionX(positionX);
 		setPositionY(positionY);
 		setWidth(width);
 		setHeight(height);
 	}
-
+	
+	//Addition Method
+	public void render(GraphicsContext gc){
+        gc.drawImage(image, positionX, positionY);
+    }
+    public Rectangle2D getBoundary(){
+        return new Rectangle2D(positionX, positionY, width, height);
+    }
+    public boolean intersects(Sprite s){
+        return s.getBoundary().intersects(this.getBoundary());
+    }
+	
+	//Getter &Setter
 	public Image getImage() {
 		return image;
 	}
