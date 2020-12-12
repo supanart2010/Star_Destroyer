@@ -5,6 +5,7 @@ import rocket.Rocket;
 
 public class BombBullet extends Bullet{
 	//field of bomb bullet
+	private int radius;
 
 	public BombBullet(Rocket rocket) {
 		super(rocket);
@@ -17,4 +18,8 @@ public class BombBullet extends Bullet{
 	}
 	
 	//method for calculate bomb damage
+//	@Override
+//	public hit() {
+//		//calculate Aoe damage
+//	}
 }
