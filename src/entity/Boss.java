@@ -1,5 +1,6 @@
 package entity;
 
-public class Boss {
-
+public class Boss{
+	
+	
 }

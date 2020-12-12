@@ -22,7 +22,7 @@ public class Bullet extends Sprite implements Moveable, Hitable{
 	}
 	
 	public Bullet(Entity entity) {
-		super(0,0,0,0) //edit it later
+		super(0,0,0,0); //edit it later
 		setPlayerBullet(false);
 		setBulletDamage(5); //edit it later (5 -> some Constant such as ENTITYBULLETDAMAGE)
 		setSpeedX(0);
