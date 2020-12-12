@@ -1,29 +1,32 @@
 package entity;
 
+import java.util.Random;
+
 import logic.Hitable;
 import logic.Moveable;
 import logic.Sprite;
 import logic.Updatable;
 import rocket.Storage;
 
-public class Entity extends Sprite implements Updatable, Moveable, Hitable{
+public class Entity extends Sprite implements Updatable, Moveable, Hitable {
 	private String name;
 	private int maxHp;
 	private int hp;
 	private int speedX;
 	private int speedY;
-	
-	//Constructor
+	private boolean isMovingLeftDirection = new Random().nextBoolean();
+
+	// Constructor
 	public Entity(String name, int maxHp, int speedX, int speedY) {
-		super(0,0,0,0); //edit it later
+		super(0, 0, 0, 0); // edit it later
 		setName(name);
 		setMaxHp(maxHp);
 		setHp(maxHp); // when instance, it has full HP
 		setSpeedX(0);
 		setSpeedY(0);
 	}
-	
-	//Addition Method
+
+	// Addition Method
 	public void decreaseHp(int damage) {
 		if (damage > hp) {
 			hp = 0;
@@ -35,26 +38,43 @@ public class Entity extends Sprite implements Updatable, Moveable, Hitable{
 	public boolean isDead() {
 		return hp == 0;
 	}
+
+	public void checkDirectionX() {
+		if(isBoarderCollision()) {
+			isMovingLeftDirection = !isMovingLeftDirection;
+		}
+	}
+	public boolean isBoarderCollision() {
+		int CanvasWidth = 500;
+		return (getPositionX() < 0) || (getPositionX() > CanvasWidth);
+		// edit CanvasWidht later
+	}
 	
-	//Interface Method
+	// Interface Method
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+		moveDown();
+		if (isMovingLeftDirection) {
+			moveLeft();
+		} else {
+			moveRight();
+		}
+		checkDirectionX();
 	}
-	
+
 	@Override
 	public void hit() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void moveUp() {
 		// TODO Auto-generated method stub
-		positionY -= speedY;
+		//Do nothing.
 	}
-
+	
 	@Override
 	public void moveDown() {
 		// TODO Auto-generated method stub
@@ -73,7 +93,7 @@ public class Entity extends Sprite implements Updatable, Moveable, Hitable{
 		positionX += speedX;
 	}
 
-	//Getter & Setter
+	// Getter & Setter
 	public String getName() {
 		return name;
 	}
@@ -113,5 +133,5 @@ public class Entity extends Sprite implements Updatable, Moveable, Hitable{
 	public void setSpeedY(int speedY) {
 		this.speedY = speedY;
 	}
-	
+
 }

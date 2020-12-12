@@ -8,19 +8,19 @@ public class Minion extends Entity{
 	private static final int MINION_SPEEDX_RANGE = 10;
 	private static final int MINION_SPEEDY_RANGE = 5;
 	private int type; //use when load res (InvaderColor)
-	private int minionSpeedX;
-	private int minionSpeedY;
 //	MINION_TYPE = new Random().nextInt(3) + 1;
 //	
 	
 	//Constructor
 	public Minion() {
 		super(MINION_NAME,MINION_MAXHP,0,0);
-		
+		randomType();
+		setSpeedX(randomMinionSpeedX());
+		setSpeedY(randomMinionSpeedY());
 	}
 
-	private int randomType() {
-		return new Random().nextInt(3)+1;
+	private void randomType() {
+		type = new Random().nextInt(3)+1;
 	}
 	
 	private int randomMinionSpeedX() {
@@ -31,4 +31,7 @@ public class Minion extends Entity{
 		return new Random().nextInt(MINION_SPEEDY_RANGE)+0;
 	}
 	
+	public int getType() {
+		return type;
+	}
 }
