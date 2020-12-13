@@ -6,7 +6,7 @@ import logic.Moveable;
 import logic.Sprite;
 import logic.Updatable;
 
-public class Rocket extends Sprite implements Hitable, Moveable, Updatable{
+public class Rocket extends Sprite implements Hitable, Moveable, Updatable {
 	private String name;
 	private int type;
 	private Storage storage;
@@ -41,27 +41,26 @@ public class Rocket extends Sprite implements Hitable, Moveable, Updatable{
 	}
 
 	// Interface Method
-	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		if(Controller.isMoveUp()) {
+		if (Controller.isMoveUp() && positionY > 0) {
 			moveUp();
 		}
-		if(Controller.isMoveDown()) {
+		if (Controller.isMoveDown() && positionY < 500) {
 			moveDown();
 		}
-		if(Controller.isMoveLeft()) {
+		if (Controller.isMoveLeft() && positionX > 0) {
 			moveLeft();
 		}
-		if(Controller.isMoveRight()) {
+		if (Controller.isMoveRight() && positionX < 400) {
 			moveRight();
 		}
 	}
-	
+
 	@Override
 	public void hit() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

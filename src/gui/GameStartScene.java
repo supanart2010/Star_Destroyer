@@ -29,12 +29,15 @@ import rocket.RocketTypeA;
 
 public class GameStartScene {
 	private static Rocket rocket;
+	//border of window
+	//public static final int WIDTH = 800;
+	//public static final int HEIGHT = 600;
 
 	public static Scene getGameStartScene() {
 		//VAR for Rocket type
 
 		// set background image
-		Image bg_path = ResourceManager.readImg("title_bg.png");
+		Image bg_path = ResourceManager.readImg("default_bg.png");
 		Background bg = new Background(
 				new BackgroundImage(bg_path, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
 						BackgroundPosition.DEFAULT, new BackgroundSize(800, 600, false, false, false, false)));
