@@ -1,5 +1,6 @@
 package rocket;
 
+import application.Controller;
 import logic.Hitable;
 import logic.Moveable;
 import logic.Sprite;
@@ -43,7 +44,18 @@ public class Rocket extends Sprite implements Hitable, Moveable, Updatable{
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+		if(Controller.isMoveUp()) {
+			moveUp();
+		}
+		if(Controller.isMoveDown()) {
+			moveDown();
+		}
+		if(Controller.isMoveLeft()) {
+			moveLeft();
+		}
+		if(Controller.isMoveRight()) {
+			moveRight();
+		}
 	}
 	
 	@Override

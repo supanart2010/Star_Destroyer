@@ -8,6 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -44,24 +45,28 @@ public class SelectRocketScene {
 
 		// draw background image
 		// Create new class for load image
-		Canvas canvas = new Canvas(800, 600);
-		GraphicsContext gc = canvas.getGraphicsContext2D();
+		Canvas canvasBG = new Canvas(800, 600);
+		GraphicsContext gcBG = canvasBG.getGraphicsContext2D();
 
 		Image imgpath = new Image(ClassLoader.getSystemResource("spacebg.jpg").toString());
-		gc.drawImage(imgpath, 0, 0, 800, 600);
+		gcBG.drawImage(imgpath, 0, 0, 800, 600);
 		
+		Canvas rocketA = new Canvas(100,100);
+		GraphicsContext gcRA = rocketA.getGraphicsContext2D();
 		//draw image rocketA
-		gc.drawImage(new Image(ClassLoader.getSystemResource("rocketA.png").toString()),0,0,200,200);
+		gcRA.drawImage(new Image(ClassLoader.getSystemResource("rocketA.png").toString()),0,0,100,100);
 		
 		
 
 		StackPane root = new StackPane();
-
+		GridPane grid = new GridPane();
 		VBox vb = new VBox();
 		vb.getChildren().addAll(Start,TitleButton);
 
+		grid.add(vb, 0, 0);
+		grid.add(rocketA,2,10);
 		// add canvas and VBox to root
-		root.getChildren().addAll(canvas,vb);
+		root.getChildren().addAll(canvasBG,grid);
 
 		Scene selectRocketScene = new Scene(root, 800, 600);
 		return selectRocketScene;

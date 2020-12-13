@@ -2,7 +2,6 @@ package gui;
 
 import application.Main;
 import application.ResourceManager;
-import application.SceneManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
