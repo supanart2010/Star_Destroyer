@@ -3,8 +3,12 @@ package gui;
 import application.Main;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
@@ -27,8 +31,20 @@ public class HowToScene {
 			Main.titleHandle(Main.window);
 		});
 		
-		VBox root = new VBox();
-		root.getChildren().addAll(HowToTitle,Desc1,Desc2,TitleButton);
+		//draw background image
+		//Create new class for load image
+		Canvas canvas = new Canvas(800,600);
+		GraphicsContext gc = canvas.getGraphicsContext2D();
+
+		Image imgpath = new Image(ClassLoader.getSystemResource("spacebg.jpg").toString());
+		gc.drawImage(imgpath, 0, 0,800,600);
+		
+		StackPane root = new StackPane();		
+		
+		VBox vb = new VBox();
+		vb.getChildren().addAll(HowToTitle,Desc1,Desc2,TitleButton);
+		//add canvas to root and VBox
+		root.getChildren().addAll(canvas,vb);		
 		Scene titleScene = new Scene(root,800,600);
 		return titleScene;
 	}

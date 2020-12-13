@@ -3,6 +3,7 @@ package application;
 import gui.CreditsScene;
 import gui.GameStartScene;
 import gui.HowToScene;
+import gui.SelectRocketScene;
 import gui.TitleScene;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
@@ -16,6 +17,7 @@ public class Main extends Application{
 	private static Scene howToScene;
 	private static Scene creditsScene;
 	public static Stage window = new Stage();
+	private static Scene selectRocketScene;
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
@@ -26,14 +28,7 @@ public class Main extends Application{
 		window.setResizable(false);
 		window.show();
 
-		AnimationTimer timer = new AnimationTimer() {
-			
-			@Override
-			public void handle(long arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-		};
+		
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -41,7 +36,8 @@ public class Main extends Application{
 	}
 	public static void setUpScene() {
 		titleScene = TitleScene.getTitleScene();
-//		gameStartScene = GameStartScene.getGameStartScene;
+		gameStartScene = GameStartScene.getGameStartScene();
+		selectRocketScene = SelectRocketScene.getSelectRocketScene();
 		howToScene = HowToScene.getHowToScene();
 		creditsScene = CreditsScene.getCreditsScene();
 	}
@@ -57,4 +53,8 @@ public class Main extends Application{
 	public static void gameStartHandle(Stage window) {
 		window.setScene(gameStartScene);
 	}
+	public static void selectRocketHandle(Stage window) {
+		window.setScene(selectRocketScene);
+	}
+	
 }
