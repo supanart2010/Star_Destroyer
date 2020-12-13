@@ -18,8 +18,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class SelectRocketScene {
-	private static Image rocketA;
-	private static Image rocketB;
+	private static Canvas rocketA;
+	private static Canvas rocketB;
 	private static Button TitleButton;
 	private static Button Start;
 
@@ -53,12 +53,17 @@ public class SelectRocketScene {
 		Image imgpath = new Image(ClassLoader.getSystemResource("spacebg.jpg").toString());
 		gcBG.drawImage(imgpath, 0, 0, 800, 600);
 		
-		Canvas rocketA = new Canvas(100,100);
+		//draw rocketA
+		rocketA = new Canvas(100,100);
 		GraphicsContext gcRA = rocketA.getGraphicsContext2D();
 		//draw image rocketA
 		gcRA.drawImage(new Image(ClassLoader.getSystemResource("rocketA.png").toString()),0,0,100,100);
 		
-		
+		//draw rocketB
+		rocketB = new Canvas(100,100);
+		GraphicsContext gcRB = rocketB.getGraphicsContext2D();
+		//draw image rocketA
+		gcRB.drawImage(new Image(ClassLoader.getSystemResource("rocketB.png").toString()),0,0,100,100);
 
 		StackPane root = new StackPane();
 		GridPane grid = new GridPane();
@@ -67,6 +72,7 @@ public class SelectRocketScene {
 
 		grid.add(vb, 0, 0);
 		grid.add(rocketA,2,10);
+		grid.add(rocketB,5,10);
 		// add canvas and VBox to root
 		root.getChildren().addAll(canvasBG,grid);
 		
