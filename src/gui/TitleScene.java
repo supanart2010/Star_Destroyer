@@ -16,11 +16,15 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class TitleScene {
 	private static Label nameText;
@@ -34,9 +38,12 @@ public class TitleScene {
 		nameText.setTextFill(Color.WHITE);
 		nameText.setFont(new Font("Times New Roman",60));
 		
+		Circle btnShape = new Circle(50,Color.valueOf("#cc0a0a"));
+		btnShape.setStrokeWidth(3);
+		btnShape.setStroke(Color.WHITE);
 		
 
-		startGameButton = new Button("Game Start");
+		startGameButton = new Button("Start");
 		startGameButton.setFont(new Font("Times New Roman", 50));
 		startGameButton.setBackground(null);
 		startGameButton.setTextFill(Color.WHITE);
@@ -54,22 +61,39 @@ public class TitleScene {
 		});
 
 		HowtoButton = new Button("Tutorial");
-		HowtoButton.setPrefSize(80, 50);
+		HowtoButton.setFont(new Font("Times New Roman", 50));
+		HowtoButton.setBackground(null);
+		HowtoButton.setTextFill(Color.WHITE);
 		HowtoButton.setPadding(new Insets(5));
 		
 		//handler
 		HowtoButton.setOnMouseClicked(e -> {
 			Main.howToHandle(Main.window);
 		});
-
+		HowtoButton.setOnMouseEntered(e -> {
+			HowtoButton.setTextFill(Color.YELLOW);
+		});
+		HowtoButton.setOnMouseExited(e -> {
+			HowtoButton.setTextFill(Color.WHITE);
+		});
+		
 		CreditButton = new Button("Credits");
-		CreditButton.setPrefSize(80, 50);
+		CreditButton.setFont(new Font("Times New Roman", 50));
+		CreditButton.setBackground(null);
+		CreditButton.setTextFill(Color.WHITE);
 		CreditButton.setPadding(new Insets(5));
 		
 		//handler
 		CreditButton.setOnMouseClicked(e -> {
 			Main.creditsHandle(Main.window);
 		});
+		CreditButton.setOnMouseEntered(e -> {
+			CreditButton.setTextFill(Color.YELLOW);
+		});
+		CreditButton.setOnMouseExited(e -> {
+			CreditButton.setTextFill(Color.WHITE);
+		});
+		
 		// set background image
 		Image bg_path = ResourceManager.readImg("title_bg.png");
 		Background bg = new Background(

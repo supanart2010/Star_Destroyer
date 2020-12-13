@@ -1,5 +1,7 @@
 package exception;
 
-public class ResourceNotFoundException {
-
+public class ResourceNotFoundException extends Exception{
+	public ResourceNotFoundException() {
+		super("Resources not found.");
+	}
 }

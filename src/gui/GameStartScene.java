@@ -1,29 +1,18 @@
 package gui;
 
-import application.AudioManager;
-import application.Main;
-
 import application.Controller;
-
 import application.ResourceManager;
-
 import javafx.animation.AnimationTimer;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import rocket.Rocket;
 import rocket.RocketTypeA;
 
@@ -101,6 +90,15 @@ public class GameStartScene {
 			case SPACE:
 				Controller.setShooting(true);
 				System.out.println("isPressedSpace");
+				break;
+			case Z:
+				Controller.setShootingLaser(true);
+				System.out.println("isPressed 'Z' ");
+				break;
+			case X:
+				Controller.setShootingBomb(true);
+				System.out.println("isPressed 'X' ");
+				break;
 			default:
 				break;
 
@@ -127,6 +125,15 @@ public class GameStartScene {
 			case SPACE:
 				Controller.setShooting(false);
 				System.out.println("isReleasedSpace");
+				break;
+			case Z:
+				Controller.setShootingLaser(false);
+				System.out.println("isReleased 'Z' ");
+				break;
+			case X:
+				Controller.setShootingBomb(false);
+				System.out.println("isReleased 'X' ");
+				break;
 			default:
 				break;
 			}
