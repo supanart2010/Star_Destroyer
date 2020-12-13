@@ -5,8 +5,6 @@ import gui.GameStartScene;
 import gui.HowToScene;
 import gui.SelectRocketScene;
 import gui.TitleScene;
-import javafx.animation.Animation;
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -21,7 +19,8 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
-
+		AudioManager.playBGM(ResourceManager.readMedia("startmenuBGM.mp3"),0.5,true);
+		
 		setUpScene();
 		window.setScene(titleScene);
 		window.setTitle("Star Destroyer");
@@ -43,18 +42,29 @@ public class Main extends Application{
 	}
 	public static void titleHandle(Stage window) {
 		window.setScene(titleScene);
+		AudioManager.stopBGM();
+		AudioManager.playBGM(ResourceManager.readMedia("startMenuBGM.mp3"),0.5,true);
+		
 	}
 	public static void creditsHandle(Stage window) {
 		window.setScene(creditsScene);
+		AudioManager.stopBGM();
+		
 	}
 	public static void howToHandle(Stage window) {
 		window.setScene(howToScene);
+		AudioManager.stopBGM();
 	}
 	public static void gameStartHandle(Stage window) {
 		window.setScene(gameStartScene);
+		AudioManager.stopBGM();
+		AudioManager.playBGM(ResourceManager.readMedia("gameStartBGM.mp3"),0.5,true);
 	}
 	public static void selectRocketHandle(Stage window) {
 		window.setScene(selectRocketScene);
+		AudioManager.stopBGM();
+		AudioManager.playBGM(ResourceManager.readMedia("selectRocketBGM.mp3"),0.5,true);
+		
 	}
 	
 }

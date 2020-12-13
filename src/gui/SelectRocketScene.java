@@ -1,6 +1,8 @@
 package gui;
 
+import application.AudioManager;
 import application.Main;
+import application.ResourceManager;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -67,8 +69,11 @@ public class SelectRocketScene {
 		grid.add(rocketA,2,10);
 		// add canvas and VBox to root
 		root.getChildren().addAll(canvasBG,grid);
+		
 
 		Scene selectRocketScene = new Scene(root, 800, 600);
+		
+		
 		return selectRocketScene;
 
 	}

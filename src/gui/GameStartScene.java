@@ -1,7 +1,13 @@
 package gui;
 
+import application.AudioManager;
 import application.Main;
+<<<<<<< Updated upstream
 import application.Controller;
+||||||| constructed merge base
+=======
+import application.ResourceManager;
+>>>>>>> Stashed changes
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -43,6 +49,8 @@ public class GameStartScene {
 			}
 		};
 		timer.start();
+		
+	
 
 		Scene gameStartedScene = new Scene(root, 800, 600);
 		gameStartedScene.setOnKeyPressed(e -> {

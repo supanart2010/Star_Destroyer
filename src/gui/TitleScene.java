@@ -1,5 +1,6 @@
 package gui;
 
+import application.AudioManager;
 import application.Main;
 import application.ResourceManager;
 import javafx.geometry.Insets;
@@ -66,7 +67,11 @@ public class TitleScene{
 		//add canvas and VBox to root
 		root.getChildren().addAll(canvas,vb);
 		
+		
 		Scene titleScene = new Scene(root,800,600);
+		
+		
+		
 		return titleScene;
 	}
 	
