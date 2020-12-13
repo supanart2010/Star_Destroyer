@@ -39,7 +39,7 @@ public class AudioManager {
 		}
 	}
 	
-	//method for sound effect ex. bullets bomb //maybe can.t used
+	//method for sound effect ex. bullets bomb //maybe cut off
 	public static void playSFX(AudioClip sfx, double localVolume) {
 		sfx.setVolume(GLOBAL_VOLUME * localVolume);
 		sfx.play();

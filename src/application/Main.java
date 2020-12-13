@@ -4,6 +4,8 @@ import gui.CreditsScene;
 import gui.GameStartScene;
 import gui.HowToScene;
 import gui.TitleScene;
+import javafx.animation.Animation;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -17,11 +19,21 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) {
 		// TODO Auto-generated method stub
+
 		setUpScene();
 		window.setScene(titleScene);
 		window.setTitle("Star Destroyer");
 		window.setResizable(false);
 		window.show();
+
+		AnimationTimer timer = new AnimationTimer() {
+			
+			@Override
+			public void handle(long arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		};
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
