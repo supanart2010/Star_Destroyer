@@ -1,11 +1,11 @@
 package application;
 
 public class Controller{
-	private static boolean isMoveLeft;
-	private static boolean isMoveRight;
-	private static boolean isMoveUp;
-	private static boolean isMoveDown;
-	private static boolean isShooting;
+	private static boolean isMoveLeft = false;
+	private static boolean isMoveRight = false;
+	private static boolean isMoveUp = false;
+	private static boolean isMoveDown = false;
+	private static boolean isShooting = false;
 	
 	
 	public static boolean isMoveLeft() {

@@ -1,6 +1,7 @@
 package gui;
 
 import application.Main;
+import application.Controller;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -16,8 +17,6 @@ public class GameStartScene {
 
 	public static Scene getGameStartScene() {
 
-		
-
 		// draw bg image
 		Canvas canvas = new Canvas(800, 600);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -30,7 +29,7 @@ public class GameStartScene {
 
 		// container for object
 		VBox vb = new VBox();
-		//vb.getChildren().addAll(TitleButton);
+		// vb.getChildren().addAll(TitleButton);
 
 		// addAll object
 		root.getChildren().addAll(canvas);
@@ -41,13 +40,63 @@ public class GameStartScene {
 			@Override
 			public void handle(long arg0) {
 				// TODO Auto-generated method stub
-				
 			}
 		};
 		timer.start();
 
-		Scene titleScene = new Scene(root, 800, 600);
-		return titleScene;
+		Scene gameStartedScene = new Scene(root, 800, 600);
+		gameStartedScene.setOnKeyPressed(e -> {
+			switch (e.getCode()) {
+			case LEFT:
+				Controller.setMoveLeft(true);
+				System.out.println("isPressedLeft");
+				break;
+			case RIGHT:
+				Controller.setMoveRight(true);
+				System.out.println("isPressedRight");
+				break;
+			case UP:
+				Controller.setMoveUp(true);
+				System.out.println("isPressedUp");
+				break;
+			case DOWN:
+				Controller.setMoveDown(true);
+				System.out.println("isPressedDown");
+				break;
+			case SPACE:
+				Controller.setShooting(true);
+				System.out.println("isPressedSpace");
+			default:
+				break;
+
+			}
+		});
+		gameStartedScene.setOnKeyReleased(e -> {
+			switch (e.getCode()) {
+			case LEFT:
+				Controller.setMoveLeft(false);
+				System.out.println("isReleasedLeft");
+				break;
+			case RIGHT:
+				Controller.setMoveRight(false);
+				System.out.println("isReleasedRight");
+				break;
+			case UP:
+				Controller.setMoveUp(false);
+				System.out.println("isReleasedUp");
+				break;
+			case DOWN:
+				Controller.setMoveDown(false);
+				System.out.println("isReleasedDown");
+				break;
+			case SPACE:
+				Controller.setShooting(false);
+				System.out.println("isReleasedSpace");
+			default:
+				break;
+			}
+		});
+		return gameStartedScene;
 
 	}
 }

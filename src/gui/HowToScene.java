@@ -45,7 +45,7 @@ public class HowToScene {
 		vb.getChildren().addAll(HowToTitle,Desc1,Desc2,TitleButton);
 		//add canvas to root and VBox
 		root.getChildren().addAll(canvas,vb);		
-		Scene titleScene = new Scene(root,800,600);
-		return titleScene;
+		Scene HowtoScene = new Scene(root,800,600);
+		return HowtoScene;
 	}
 }
