@@ -29,21 +29,35 @@ public class TitleScene {
 	private static Button CreditButton;
 
 	public static Scene getTitleScene() {
+		
 		nameText = new Label("STAR DESTROYER");
-		// nameText.set
 		nameText.setTextFill(Color.WHITE);
-		nameText.setFont(new Font(40));
+		nameText.setFont(new Font("Times New Roman",60));
+		
+		
 
 		startGameButton = new Button("Game Start");
-		startGameButton.setPrefSize(80, 50);
+		startGameButton.setFont(new Font("Times New Roman", 50));
+		startGameButton.setBackground(null);
+		startGameButton.setTextFill(Color.WHITE);
 		startGameButton.setPadding(new Insets(5));
+		
+		//handler
 		startGameButton.setOnMouseClicked(e -> {
 			Main.selectRocketHandle(Main.window);
 		});
+		startGameButton.setOnMouseEntered(e -> {
+			startGameButton.setTextFill(Color.YELLOW);
+		});
+		startGameButton.setOnMouseExited(e -> {
+			startGameButton.setTextFill(Color.WHITE);
+		});
 
-		HowtoButton = new Button("How to play?");
+		HowtoButton = new Button("Tutorial");
 		HowtoButton.setPrefSize(80, 50);
 		HowtoButton.setPadding(new Insets(5));
+		
+		//handler
 		HowtoButton.setOnMouseClicked(e -> {
 			Main.howToHandle(Main.window);
 		});
@@ -51,15 +65,16 @@ public class TitleScene {
 		CreditButton = new Button("Credits");
 		CreditButton.setPrefSize(80, 50);
 		CreditButton.setPadding(new Insets(5));
+		
+		//handler
 		CreditButton.setOnMouseClicked(e -> {
 			Main.creditsHandle(Main.window);
 		});
 		// set background image
-		Image bg_path = ResourceManager.readImg("spacebg.jpg");
+		Image bg_path = ResourceManager.readImg("title_bg.png");
 		Background bg = new Background(
 				new BackgroundImage(bg_path, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
 						BackgroundPosition.DEFAULT, new BackgroundSize(800, 600, false, false, false, false)));
-
 
 		StackPane root = new StackPane();
 
@@ -67,6 +82,10 @@ public class TitleScene {
 
 		VBox vb = new VBox();
 		vb.getChildren().addAll(nameText, startGameButton, HowtoButton, CreditButton);
+		vb.setPadding(new Insets(50));
+		vb.setSpacing(20);
+		vb.setPrefSize(800, 600);
+		vb.setAlignment(Pos.TOP_CENTER);
 
 		// add canvas and VBox to root
 		root.getChildren().addAll(vb);

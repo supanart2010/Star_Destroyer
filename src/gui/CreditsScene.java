@@ -43,7 +43,7 @@ public class CreditsScene {
 		});
 
 		// set background image
-		Image bg_path = ResourceManager.readImg("spacebg.jpg");
+		Image bg_path = ResourceManager.readImg("title_bg.png");
 		Background bg = new Background(
 				new BackgroundImage(bg_path, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
 						BackgroundPosition.DEFAULT, new BackgroundSize(800, 600, false, false, false, false)));

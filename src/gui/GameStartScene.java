@@ -34,7 +34,7 @@ public class GameStartScene {
 		//VAR for Rocket type
 
 		// set background image
-		Image bg_path = ResourceManager.readImg("spacebg.jpg");
+		Image bg_path = ResourceManager.readImg("title_bg.png");
 		Background bg = new Background(
 				new BackgroundImage(bg_path, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
 						BackgroundPosition.DEFAULT, new BackgroundSize(800, 600, false, false, false, false)));
@@ -68,6 +68,7 @@ public class GameStartScene {
 			@Override
 			public void handle(long arg0) {
 				// TODO Auto-generated method stub
+				//create Override new method for update because it has long line
 				gc.clearRect(0, 0, 800, 600);
 				rocket.update();
 				rocket.render(gc);
