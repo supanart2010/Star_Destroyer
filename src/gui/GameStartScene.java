@@ -31,6 +31,7 @@ public class GameStartScene {
 	private static Rocket rocket;
 
 	public static Scene getGameStartScene() {
+		//VAR for Rocket type
 
 		// set background image
 		Image bg_path = ResourceManager.readImg("spacebg.jpg");
