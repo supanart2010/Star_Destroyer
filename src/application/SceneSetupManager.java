@@ -1,5 +1,6 @@
 package application;
 
+import gui.GameStartScene;
 import javafx.scene.Scene;
 
 public class SceneSetupManager {

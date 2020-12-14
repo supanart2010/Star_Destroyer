@@ -12,7 +12,7 @@ import logic.Moveable;
 import logic.Sprite;
 import logic.Updatable;
 
-public class Rocket extends Sprite implements Hitable, Moveable {
+public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 	private String name;
 	private int type;
 	private Storage storage;
@@ -70,10 +70,11 @@ public class Rocket extends Sprite implements Hitable, Moveable {
 			AudioManager.playSFX(ResourceManager.readAudioClip("gunsound.wav"), 0.3);
 		}
 		if (Controller.isShootingLaser()) {
-
+			laser();
+			
 		}
-		if (Controller.isShootingLaser()) {
-
+		if (Controller.isShootingBomb()) {
+			bomb();
 		}
 		bulletManager.update(gc, height);
 	}
@@ -165,13 +166,29 @@ public class Rocket extends Sprite implements Hitable, Moveable {
 		this.speedY = speedY;
 	}
 
-	// bullet
+	// Pointbullet
 	public void shoot() {
 		bulletManager.addBullet();
+	}
+	
+	// laserbullet
+	public void laser() {
+		bulletManager.addLaserBullet();
+	}
+	
+	//bombbullet
+	public void bomb() {
+		bulletManager.addBombBullet();
 	}
 
 	public BulletManager getBulletManager() {
 		return bulletManager;
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import application.ResourceManager;
+import bullets.BombBullet;
 import bullets.Bullet;
+import bullets.LaserBullet;
+import bullets.PointBullet;
 import javafx.scene.canvas.GraphicsContext;
 import rocket.Rocket;
 
 public class BulletManager {
-	//class for contain bullets
+	// class for contain bullets
 	private Rocket rocket;
 	private static ArrayList<Bullet> bullets = new ArrayList<>();
 
@@ -18,13 +21,28 @@ public class BulletManager {
 	}
 
 	public void addBullet() {
-		Bullet bullet = new Bullet(this.rocket);
+		Bullet bullet = new PointBullet(this.rocket);
 		bullet.setImage(ResourceManager.readImg("pointbullettest.png"));
-		bullet.setHeight(100);
-		bullet.setWidth(100);
-		bullet.setPositionX(rocket.positionX + rocket.getWidth() / 2);
+		bullet.setSize(10, 10);
+		bullet.setPositionX(rocket.positionX + 40);
 		bullet.setPositionY(rocket.positionY);
 		bullets.add(bullet);
+	}
+
+	public void addLaserBullet() {
+		Bullet laserBullet = new LaserBullet(this.rocket);
+		laserBullet.setImage(ResourceManager.readImg("lasercontinue.png"));
+		laserBullet.setSize(10, 10);
+		laserBullet.setPosition(rocket.positionX + 40, rocket.positionY);
+		bullets.add(laserBullet);
+	}
+
+	public void addBombBullet() {
+		Bullet bombBullet = new BombBullet(this.rocket);
+		bombBullet.setImage(ResourceManager.readImg("bombbullet.png"));
+		bombBullet.setSize(10, 10);
+		bombBullet.setPosition(rocket.positionX+40, rocket.positionY);
+		bullets.add(bombBullet);
 	}
 
 	public void update(GraphicsContext gc, double height) {

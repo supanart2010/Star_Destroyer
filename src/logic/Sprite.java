@@ -39,6 +39,11 @@ public class Sprite {
 		this.image = image;
 	}
 
+	public void setPosition(double positionX,double positionY) {
+		this.positionX = positionX;
+		this.positionY = positionY;
+	}
+	
 	public double getPositionX() {
 		return positionX;
 	}
@@ -59,6 +64,11 @@ public class Sprite {
 		return width;
 	}
 
+	public void setSize(double width,double height) {
+		this.width = width;
+		this.height = height;
+	}
+	
 	public void setWidth(double width) {
 		this.width = width;
 	}

@@ -76,7 +76,7 @@ public class GameStartScene {
 			public void handle(long arg0) {
 				// TODO Auto-generated method stub
 				// create Override new method for update because it has long line
-				gc.clearRect(0, 0, 800, 600);
+				gc.clearRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 				rocketA.update(WINDOW_WIDTH, WINDOW_HEIGHT, gc);
 				rocketA.render(gc);
 			}
