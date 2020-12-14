@@ -11,11 +11,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 
 import javafx.scene.layout.StackPane;
@@ -34,7 +35,7 @@ public class SelectRocketScene {
 		chooseRocket.setFont(new Font(40));
 
 		TitleButton = new Button("Go Back");
-		//TitleButton.setPrefSize(80, 50);
+		// TitleButton.setPrefSize(80, 50);
 		TitleButton.setBackground(null);
 		TitleButton.setTextFill(Color.WHITE);
 		TitleButton.setFont(new Font(40));
@@ -60,8 +61,15 @@ public class SelectRocketScene {
 		rocketABtn.setGraphic(new ImageView(ResourceManager.readImg("rocketA200px.png")));
 		rocketABtn.setBackground(null);
 		rocketABtn.setOnMouseClicked(e -> {
-			//GameStartScene.setRocketA(true);
+			// GameStartScene.setRocketA(true);
 			Main.gameStartHandle(Main.window);
+		});
+		rocketABtn.setOnMouseEntered(e -> {
+			rocketABtn
+					.setBackground(new Background(new BackgroundFill(new Color(0.8, 1, 1, 0.5), CornerRadii.EMPTY, Insets.EMPTY)));
+		});
+		rocketABtn.setOnMouseExited(e -> {
+			rocketABtn.setBackground(null);
 		});
 
 		Button rocketBBtn = new Button();
@@ -69,14 +77,22 @@ public class SelectRocketScene {
 		rocketBBtn.setGraphic(new ImageView(ResourceManager.readImg("rocketB200px.png")));
 		rocketBBtn.setBackground(null);
 		rocketBBtn.setOnMouseClicked(e -> {
-			//GameStartScene.setRocketB(true);
+			// GameStartScene.setRocketB(true);
 			Main.gameStartHandle(Main.window);
+		});
+		rocketBBtn.setOnMouseEntered(e -> {
+			rocketBBtn
+					.setBackground(new Background(new BackgroundFill(new Color(0.8, 1, 1, 0.5), CornerRadii.EMPTY, Insets.EMPTY)));
+		});
+		rocketBBtn.setOnMouseExited(e -> {
+			rocketBBtn.setBackground(null);
 		});
 
 		HBox hB = new HBox();
 		hB.getChildren().add(rocketABtn);
 		hB.getChildren().add(rocketBBtn);
 		hB.setAlignment(Pos.CENTER);
+		hB.setSpacing(20);
 
 		StackPane root = new StackPane();
 

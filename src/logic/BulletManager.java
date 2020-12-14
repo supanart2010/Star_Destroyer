@@ -33,7 +33,7 @@ public class BulletManager {
 		Bullet laserBullet = new LaserBullet(this.rocket);
 		laserBullet.setImage(ResourceManager.readImg("lasercontinue.png"));
 		laserBullet.setSize(10, 10);
-		laserBullet.setPosition(rocket.positionX + 40, rocket.positionY);
+		laserBullet.setPosition(rocket.positionX + 40, rocket.positionY-30);
 		bullets.add(laserBullet);
 	}
 
