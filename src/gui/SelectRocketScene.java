@@ -42,6 +42,12 @@ public class SelectRocketScene {
 		TitleButton.setOnMouseClicked(e -> {
 			Main.titleHandle(Main.window);
 		});
+		TitleButton.setOnMouseEntered(e -> {
+			TitleButton.setTextFill(Color.RED);
+		});
+		TitleButton.setOnMouseExited(e -> {
+			TitleButton.setTextFill(Color.WHITE);
+		});
 
 		// set background image
 		Image bg_path = ResourceManager.readImg("title_bg.png");
