@@ -15,7 +15,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.GridPane;
+
 import javafx.scene.layout.HBox;
 
 import javafx.scene.layout.StackPane;
