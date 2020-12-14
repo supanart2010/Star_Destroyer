@@ -4,8 +4,10 @@ import application.Main;
 import application.ResourceManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
-
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -26,6 +28,9 @@ public class SelectRocketScene {
 
 	private static Button TitleButton;
 	private static Button Start;
+	private static Label chooseRocket;
+	private static Canvas rocketA;
+	private static Canvas rocketB;
 
 	public static Scene getSelectRocketScene() {
 
