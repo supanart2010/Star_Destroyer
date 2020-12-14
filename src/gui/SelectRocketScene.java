@@ -5,7 +5,6 @@ import application.ResourceManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -95,11 +94,11 @@ public class SelectRocketScene {
 		hB.setSpacing(20);
 
 		StackPane root = new StackPane();
-
 		VBox vB = new VBox();
 		vB.getChildren().addAll(chooseRocket, hB, TitleButton);
 		vB.setAlignment(Pos.CENTER);
 
+		// add canvas and VBox to root
 		root.getChildren().addAll(vB);
 		root.setBackground(bg);
 
