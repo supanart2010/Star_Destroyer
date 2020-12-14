@@ -44,9 +44,9 @@ public class Controller {
 	public static boolean isShooting() {
 		return isShooting;
 	}
-
-	public static void setShooting(boolean isShootingLaser) {
-		Controller.isShootingLaser = isShootingLaser;
+	
+	public static void setShooting(boolean isShooting) {
+		Controller.isShooting = isShooting;
 	}
 
 	public static boolean isShootingLaser() {

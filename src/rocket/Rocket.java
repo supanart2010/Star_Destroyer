@@ -1,12 +1,17 @@
 package rocket;
 
+import application.AudioManager;
 import application.Controller;
+import application.ResourceManager;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.media.AudioClip;
+import logic.BulletManager;
 import logic.Hitable;
 import logic.Moveable;
 import logic.Sprite;
 import logic.Updatable;
 
-public class Rocket extends Sprite implements Hitable, Moveable, Updatable {
+public class Rocket extends Sprite implements Hitable, Moveable {
 	private String name;
 	private int type;
 	private Storage storage;
@@ -14,7 +19,7 @@ public class Rocket extends Sprite implements Hitable, Moveable, Updatable {
 	private int hp;
 	private int speedX;
 	private int speedY;
-
+	private BulletManager bulletManager;
 	// Constructor
 	public Rocket(String name, int type, Storage storage, int maxHp, int speedX, int speedY) {
 		super(0, 0, 0, 0); // edit it later
@@ -25,6 +30,7 @@ public class Rocket extends Sprite implements Hitable, Moveable, Updatable {
 		setHp(maxHp); // when instance, it has full HP
 		setSpeedX(speedX);
 		setSpeedY(speedY);
+		bulletManager = new BulletManager(this);
 	}
 
 	// Addition Method
@@ -41,7 +47,8 @@ public class Rocket extends Sprite implements Hitable, Moveable, Updatable {
 	}
 
 	// Interface Method
-	public void update() {
+	//debug update with parameter and unimplement Updatable
+	public void update(double width, double height , GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		if (Controller.isMoveUp() && positionY > 0) {
 			moveUp();
@@ -55,6 +62,19 @@ public class Rocket extends Sprite implements Hitable, Moveable, Updatable {
 		if (Controller.isMoveRight() && positionX < 400) {
 			moveRight();
 		}
+		if (Controller.isShooting()) {
+			shoot();
+			//sfx for shooting
+
+			AudioManager.playSFX(ResourceManager.readAudioClip("gunsound.wav"),0.3);
+		}
+		if (Controller.isShootingLaser()) {
+			
+		}
+		if (Controller.isShootingLaser()) {
+			
+		}
+		bulletManager.update(gc,height);
 	}
 
 	@Override
@@ -143,5 +163,14 @@ public class Rocket extends Sprite implements Hitable, Moveable, Updatable {
 	public void setSpeedY(int speedY) {
 		this.speedY = speedY;
 	}
+	
+	//bullet
+	public void shoot() {
+		bulletManager.addBullet();
+	}
+	
+	public BulletManager getBulletManager() {
+        return bulletManager;
+    }
 
 }

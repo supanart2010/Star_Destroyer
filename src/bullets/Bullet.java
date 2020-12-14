@@ -4,9 +4,10 @@ import entity.Entity;
 import logic.Hitable;
 import logic.Moveable;
 import logic.Sprite;
+import logic.Updatable;
 import rocket.Rocket;
 
-public class Bullet extends Sprite implements Moveable, Hitable{
+public class Bullet extends Sprite implements Moveable, Hitable,Updatable{
 	private boolean isPlayerBullet;
 	private int bulletDamage;
 	private int speedX;
@@ -16,7 +17,7 @@ public class Bullet extends Sprite implements Moveable, Hitable{
 	public Bullet(Rocket rocket) {
 		super(0,0,0,0); //edit it later
 		setPlayerBullet(true);
-		setBulletDamage(5); //edit it later (5 -> some Constant such as ROCKETBULLETDAMAGE)
+		setBulletDamage(5);//edit it later (5 -> some Constant such as ROCKETBULLETDAMAGE)
 		setSpeedX(0);
 		setSpeedY(10); //edit it later (10 -> some Constant such as ROCKETBULLETSPEED)
 	}
@@ -71,7 +72,7 @@ public class Bullet extends Sprite implements Moveable, Hitable{
 	@Override
 	public void moveUp() {
 		// TODO Auto-generated method stub
-		
+		positionY -= speedY;
 	}
 
 	@Override
@@ -90,6 +91,13 @@ public class Bullet extends Sprite implements Moveable, Hitable{
 	public void moveRight() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	//update for bullet
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		moveUp();
 	}
 	
 }

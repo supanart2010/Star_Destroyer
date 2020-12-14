@@ -71,7 +71,6 @@ public class CreditsScene {
 		vb.setPrefSize(800, 600);
 		vb.setAlignment(Pos.TOP_CENTER);
 
-		// add canvas to root and VBox
 		root.getChildren().addAll(vb);
 		root.setBackground(bg);
 

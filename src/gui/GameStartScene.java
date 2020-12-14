@@ -16,15 +16,21 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.StackPane;
 import rocket.Rocket;
 import rocket.RocketTypeA;
+import rocket.RocketTypeB;
 
 public class GameStartScene {
-	private static Rocket rocket;
-	//border of window
-	//public static final int WIDTH = 800;
-	//public static final int HEIGHT = 600;
+	private static Rocket rocketA;
+	private static Rocket rocketB;
+	private static Rocket choosedRocket;
+	private static Canvas gameLayer;
+	// border of window
+	public static final int WINDOW_WIDTH = 800;
+	public static final int WINDOW_HEIGHT = 600;
+
+	private static boolean isRocketA = false;
+	private static boolean isRocketB = false;
 
 	public static Scene getGameStartScene() {
-		//VAR for Rocket type
 
 		// set background image
 		Image bg_path = ResourceManager.readImg("default_bg.png");
@@ -33,38 +39,50 @@ public class GameStartScene {
 						BackgroundPosition.DEFAULT, new BackgroundSize(800, 600, false, false, false, false)));
 
 		// draw canvas
-		Canvas canvas = new Canvas(800, 600);
-		GraphicsContext gc = canvas.getGraphicsContext2D();
+		gameLayer = new Canvas(800, 600);
+		GraphicsContext gc = gameLayer.getGraphicsContext2D();
 
 		// root
 		StackPane root = new StackPane();
 
-		// container for object
-		// VBox vb = new VBox();
-		// vb.getChildren().add(bg)
-
 		// addAll object
-		root.getChildren().addAll(canvas);
+		root.getChildren().addAll(gameLayer);
 		root.setBackground(bg);
 
-		rocket = new RocketTypeA();
-		
-		rocket.setImage(ResourceManager.readImg("rocketA.png"));
-		rocket.setWidth(1);
-		rocket.setHeight(1);
-		rocket.setPositionX(250);
-		rocket.setPositionY(300 - rocket.getHeight());
-		rocket.render(gc);
+		// select rocket
+		//if else rocket type
+		rocketA = new RocketTypeA();
+		rocketA.setImage(ResourceManager.readImg("rocketA.png"));
+		rocketA.setWidth(100);
+		rocketA.setHeight(100);
+		rocketA.setPositionX(250 - rocketA.getWidth());
+		rocketA.setPositionY(500);
+		rocketA.render(gc);
+
+		rocketB = new RocketTypeB();
+		rocketB.setImage(ResourceManager.readImg("rocketB.png"));
+		rocketB.setWidth(100);
+		rocketB.setHeight(100);
+		rocketB.setPositionX(250 - rocketB.getWidth());
+		rocketB.setPositionY(500);
+		rocketB.render(gc);
+
+		if (isRocketA()) {
+			choosedRocket = rocketA;
+		} else
+			choosedRocket = rocketB;
+		choosedRocket.render(gc);
+
 		// Thread for animation timer
 		AnimationTimer timer = new AnimationTimer() {
 
 			@Override
 			public void handle(long arg0) {
 				// TODO Auto-generated method stub
-				//create Override new method for update because it has long line
+				// create Override new method for update because it has long line
 				gc.clearRect(0, 0, 800, 600);
-				rocket.update();
-				rocket.render(gc);
+				choosedRocket.update(WINDOW_WIDTH, WINDOW_HEIGHT, gc);
+				choosedRocket.render(gc);
 			}
 		};
 		timer.start();
@@ -73,5 +91,21 @@ public class GameStartScene {
 		SceneSetupManager.setSceneControlable(gameStartedScene);
 		return gameStartedScene;
 
+	}
+
+	public static boolean isRocketA() {
+		return isRocketA;
+	}
+
+	public static void setRocketA(boolean isRocketA) {
+		GameStartScene.isRocketA = isRocketA;
+	}
+
+	public static boolean isRocketB() {
+		return isRocketB;
+	}
+
+	public static void setRocketB(boolean isRocketB) {
+		GameStartScene.isRocketB = isRocketB;
 	}
 }
