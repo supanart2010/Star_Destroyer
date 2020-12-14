@@ -60,7 +60,7 @@ public class SelectRocketScene {
 		rocketABtn.setGraphic(new ImageView(ResourceManager.readImg("rocketA200px.png")));
 		rocketABtn.setBackground(null);
 		rocketABtn.setOnMouseClicked(e -> {
-			GameStartScene.setRocketA(true);
+			//GameStartScene.setRocketA(true);
 			Main.gameStartHandle(Main.window);
 		});
 
@@ -69,7 +69,7 @@ public class SelectRocketScene {
 		rocketBBtn.setGraphic(new ImageView(ResourceManager.readImg("rocketB200px.png")));
 		rocketBBtn.setBackground(null);
 		rocketBBtn.setOnMouseClicked(e -> {
-			GameStartScene.setRocketB(true);
+			//GameStartScene.setRocketB(true);
 			Main.gameStartHandle(Main.window);
 		});
 

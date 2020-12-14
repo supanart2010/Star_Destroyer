@@ -22,6 +22,7 @@ public class GameStartScene {
 	private static Rocket rocketB;
 	private static Rocket choosedRocket;
 	private static Canvas gameLayer;
+	static boolean spacetrig = false;
 	// border of window
 	public static final int WINDOW_WIDTH = 800;
 	public static final int WINDOW_HEIGHT = 600;
@@ -49,7 +50,7 @@ public class GameStartScene {
 		root.setBackground(bg);
 
 		// select rocket
-		//if else rocket type
+		// if else rocket type
 		rocketA = new RocketTypeA();
 		rocketA.setImage(ResourceManager.readImg("rocketA.png"));
 		rocketA.setWidth(100);
@@ -66,11 +67,6 @@ public class GameStartScene {
 		rocketB.setPositionY(500);
 		rocketB.render(gc);
 
-		if (isRocketA()) {
-			choosedRocket = rocketA;
-		} else
-			choosedRocket = rocketB;
-		choosedRocket.render(gc);
 
 		// Thread for animation timer
 		AnimationTimer timer = new AnimationTimer() {
@@ -80,8 +76,8 @@ public class GameStartScene {
 				// TODO Auto-generated method stub
 				// create Override new method for update because it has long line
 				gc.clearRect(0, 0, 800, 600);
-				choosedRocket.update(WINDOW_WIDTH, WINDOW_HEIGHT, gc);
-				choosedRocket.render(gc);
+				rocketA.update(WINDOW_WIDTH, WINDOW_HEIGHT, gc);
+				rocketA.render(gc);
 			}
 		};
 		timer.start();
@@ -106,8 +102,11 @@ public class GameStartScene {
 				System.out.println("isPressedDown");
 				break;
 			case SPACE:
-				Controller.setShooting(true);
-				System.out.println("isPressedSpace");
+				if (!spacetrig) {
+					spacetrig = true;
+					Controller.setShooting(true);
+					System.out.println("isPressedSpace");
+				}
 				break;
 			case Z:
 				Controller.setShootingLaser(true);
@@ -141,6 +140,7 @@ public class GameStartScene {
 				System.out.println("isReleasedDown");
 				break;
 			case SPACE:
+				spacetrig = false;
 				Controller.setShooting(false);
 				System.out.println("isReleasedSpace");
 				break;
@@ -160,19 +160,7 @@ public class GameStartScene {
 
 	}
 
-	public static boolean isRocketA() {
-		return isRocketA;
-	}
-
-	public static void setRocketA(boolean isRocketA) {
-		GameStartScene.isRocketA = isRocketA;
-	}
-
-	public static boolean isRocketB() {
-		return isRocketB;
-	}
-
-	public static void setRocketB(boolean isRocketB) {
-		GameStartScene.isRocketB = isRocketB;
+	public static boolean isSpacetrig() {
+		return spacetrig;
 	}
 }
