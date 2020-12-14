@@ -10,4 +10,10 @@ public class Boss extends Entity{
 	public Boss() {
 		super(BOSS_NAME,BOSS_MAXHP,BOSS_SPEEDX,BOSS_SPEEDY);
 	}
+
+	@Override
+	public int getDamage() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

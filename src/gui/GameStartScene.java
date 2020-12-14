@@ -3,6 +3,7 @@ package gui;
 import application.Controller;
 import application.ResourceManager;
 import application.SceneSetupManager;
+import entity.Minion;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -14,6 +15,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.StackPane;
+import logic.MinionManager;
 import rocket.Rocket;
 import rocket.RocketTypeA;
 import rocket.RocketTypeB;
@@ -58,7 +60,7 @@ public class GameStartScene {
 		rocketA.setHeight(100);
 		rocketA.setPositionX(250 - rocketA.getWidth());
 		rocketA.setPositionY(500);
-		rocketA.render(gc);
+		rocketA.render(gc,100,100);
 
 		rocketB = new RocketTypeB();
 		rocketB.setImage(ResourceManager.readImg("rocketB.png"));
@@ -66,8 +68,9 @@ public class GameStartScene {
 		rocketB.setHeight(100);
 		rocketB.setPositionX(250 - rocketB.getWidth());
 		rocketB.setPositionY(500);
-		rocketB.render(gc);
+		rocketB.render(gc,100,100);
 
+		MinionManager minionManager = new MinionManager();
 
 		// Thread for animation timer
 		AnimationTimer timer = new AnimationTimer() {
@@ -78,7 +81,9 @@ public class GameStartScene {
 				// create Override new method for update because it has long line
 				gc.clearRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 				rocketA.update(WINDOW_WIDTH, WINDOW_HEIGHT, gc);
-				rocketA.render(gc);
+				rocketA.render(gc,100,100);
+				minionManager.update(rocketA.getBulletManager(),gc,WINDOW_WIDTH,WINDOW_HEIGHT,rocketA);
+				
 			}
 		};
 		timer.start();

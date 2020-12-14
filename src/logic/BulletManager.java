@@ -65,7 +65,7 @@ public class BulletManager {
 		bullets.clear();
 	}
 
-	public ArrayList<Bullet> getbullets() {
+	public ArrayList<Bullet> getBullets() {
 		return bullets;
 	}
 }

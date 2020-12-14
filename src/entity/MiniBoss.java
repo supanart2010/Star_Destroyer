@@ -10,4 +10,10 @@ public class MiniBoss extends Entity{
 	public MiniBoss() {
 		super(MINIBOSS_NAME,MINIBOSS_MAXHP,MINIBOSS_SPEEDX,MINIBOSS_SPEEDY);
 	}
+
+	@Override
+	public int getDamage() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

@@ -23,6 +23,10 @@ public class Sprite {
 	public void render(GraphicsContext gc){
         gc.drawImage(image, positionX, positionY);
     }
+	public void render(GraphicsContext gc,double width,double height){
+        gc.drawImage(image, positionX, positionY,width,height);
+    }
+	
     public Rectangle2D getBoundary(){
         return new Rectangle2D(positionX, positionY, width, height);
     }

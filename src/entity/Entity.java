@@ -8,7 +8,7 @@ import logic.Sprite;
 import logic.Updatable;
 import rocket.Storage;
 
-public class Entity extends Sprite implements Updatable, Moveable, Hitable {
+public abstract class Entity extends Sprite implements Updatable, Moveable, Hitable {
 	private String name;
 	private int maxHp;
 	private int hp;
@@ -134,4 +134,5 @@ public class Entity extends Sprite implements Updatable, Moveable, Hitable {
 		this.speedY = speedY;
 	}
 
+	public abstract int getDamage();
 }

@@ -7,6 +7,11 @@ public class Minion extends Entity{
 	private static final int MINION_MAXHP = 20;
 	private static final int MINION_SPEEDX_RANGE = 10;
 	private static final int MINION_SPEEDY_RANGE = 5;
+	private static final int MINION_DAMAGE = 10;
+	public int getDamage() {
+		return MINION_DAMAGE;
+	}
+
 	private int type; //use when load res (InvaderColor)
 //	MINION_TYPE = new Random().nextInt(3) + 1;
 //	
