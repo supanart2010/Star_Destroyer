@@ -41,7 +41,7 @@ public class CreditsScene {
 //		NameTag2.setTextFill(Color.WHITE);
 
 		TitleButton = new Button("Go back");
-		TitleButton.setFont(Font.font("Arial",FontWeight.BOLD,28));
+		TitleButton.setFont(Font.font("Times New Roman",FontWeight.BOLD,30));
 		TitleButton.setBackground(null);
 		TitleButton.setTextFill(Color.WHITE);
 		TitleButton.setPadding(new Insets(5));
