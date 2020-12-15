@@ -24,17 +24,17 @@ public class GameStartScene {
 	private static Rocket rocketA;
 	private static Rocket rocketB;
 	private static Rocket choosedRocket;
+	private static Rocket myRocket;
 	private static Canvas gameLayer;
 	static boolean spacetrig = false;
 	// border of window
 	public static final int WINDOW_WIDTH = 800;
 	public static final int WINDOW_HEIGHT = 600;
 
-	private static boolean isRocketA = false;
-	private static boolean isRocketB = false;
+//	private static boolean isRocketA = false;
+//	private static boolean isRocketB = false;
 
 	public static Scene getGameStartScene() {
-
 		// set background image
 		Image bg_path = ResourceManager.readImg("default_bg.png");
 		Background bg = new Background(

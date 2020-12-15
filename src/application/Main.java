@@ -66,5 +66,8 @@ public class Main extends Application{
 		AudioManager.playBGM(ResourceManager.readMedia("selectRocketBGM.mp3"),0.5,true);
 		
 	}
+	public static Scene getGameStartScene() {
+		return gameStartScene;
+	}
 	
 }

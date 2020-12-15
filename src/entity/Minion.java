@@ -5,7 +5,7 @@ import java.util.Random;
 public class Minion extends Entity{
 	private static final String MINION_NAME = "Invader";
 	private static final int MINION_MAXHP = 20;
-	private static final int MINION_SPEEDX_RANGE = 10;
+	private static final int MINION_SPEEDX_RANGE = 5;
 	private static final int MINION_SPEEDY_RANGE = 5;
 	private static final int MINION_DAMAGE = 10;
 	public int getDamage() {
@@ -33,7 +33,7 @@ public class Minion extends Entity{
 	}
 	
 	private int randomMinionSpeedY() {
-		return new Random().nextInt(MINION_SPEEDY_RANGE)+0;
+		return new Random().nextInt(MINION_SPEEDY_RANGE)+1;
 	}
 	
 	public int getType() {
