@@ -77,6 +77,7 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 			bomb();
 		}
 		bulletManager.update(gc, height);
+		this.render(gc);
 	}
 
 	@Override

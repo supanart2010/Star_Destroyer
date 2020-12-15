@@ -81,7 +81,6 @@ public class GameStartScene {
 				// create Override new method for update because it has long line
 				gc.clearRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 				rocketA.update(WINDOW_WIDTH, WINDOW_HEIGHT, gc);
-				rocketA.render(gc,100,100);
 				minionManager.update(rocketA.getBulletManager(),gc,WINDOW_WIDTH,WINDOW_HEIGHT,rocketA);
 				
 			}

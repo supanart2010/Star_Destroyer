@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 
-public class Sprite {
+public class Sprite implements Renderable{
 	protected Image image;
 	protected double positionX;
 	protected double positionY;
