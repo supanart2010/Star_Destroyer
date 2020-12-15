@@ -3,6 +3,7 @@ package rocket;
 import application.AudioManager;
 import application.Controller;
 import application.ResourceManager;
+import application.SceneSetupManager;
 import gui.GameStartScene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.media.AudioClip;
@@ -69,12 +70,22 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 			// sfx for shooting
 			AudioManager.playSFX(ResourceManager.readAudioClip("gunsound.wav"), 0.3);
 		}
-		if (Controller.isShootingLaser()) {
+		if (Controller.isShootingLaser() && getStorage().hasLaserBullet()) {
 			laser();
+			getStorage().consumeLaserBullet();
+			System.out.println(getStorage().getLaserRemain());
 			
 		}
-		if (Controller.isShootingBomb()) {
+		if (Controller.isShootingBomb() && getStorage().hasBombBullet()) {
 			bomb();
+			getStorage().consumeBombBullet();
+			System.out.println(getStorage().getBombRemain());
+		}
+		if (Controller.isShootingLaser() && !getStorage().hasLaserBullet()) {
+			System.out.println("out of laser ammo");
+		}
+		if (Controller.isShootingBomb() && !getStorage().hasBombBullet()) {
+			System.out.println("out of bomb ammo");
 		}
 		bulletManager.update(gc, height);
 		this.render(gc);

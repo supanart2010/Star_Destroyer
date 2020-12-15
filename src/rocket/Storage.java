@@ -32,13 +32,13 @@ public class Storage {
 		}
 	}
 	public boolean hasBombBullet() {
-		return bombRemain != 0;
+		return bombRemain > 0;
 	}
 	public void consumeBombBullet() {
 		bombRemain--;
 	}
 	public boolean hasLaserBullet() {
-		return laserRemain != 0;
+		return laserRemain > 0;
 	}
 	public void consumeLaserBullet() {
 		laserRemain--;
