@@ -6,7 +6,9 @@ import java.util.HashSet;
 
 import application.AudioManager;
 import application.ResourceManager;
+import bullets.BombBullet;
 import bullets.Bullet;
+import bullets.LaserBullet;
 import entity.Entity;
 import entity.Minion;
 import gui.Bomb;
@@ -55,12 +57,19 @@ public class MinionManager {
 			for (Bullet bullet : bulletManager.getBullets()) {
 				if (minion.intersects(bullet)) {
 					
+					if (bullet instanceof LaserBullet) {
+						System.out.println("laser");
+					}else if (bullet instanceof BombBullet) {
+						System.out.println("bomb");
+					}else {
+						System.out.println("point");
+					}
 					toRemoveMinions.add(minions.indexOf(minion));
 					toRemoveBullets.add(bulletManager.getBullets().indexOf(bullet));
 					//explosion effect
-					Bomb b = new Bomb(minion.getPositionX(),minion.getPositionY());
-					b.update();
-					b.render(gc,b.getWidth()+10,b.getHeight()+10);
+//					Bomb b = new Bomb(minion.getPositionX(),minion.getPositionY());
+//					b.update();
+//					b.render(gc,b.getWidth()+10,b.getHeight()+10);
 				}
 			}
 		}
