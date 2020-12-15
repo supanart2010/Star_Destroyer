@@ -9,6 +9,7 @@ import application.ResourceManager;
 import bullets.Bullet;
 import entity.Entity;
 import entity.Minion;
+import gui.Bomb;
 import javafx.scene.canvas.GraphicsContext;
 import rocket.Rocket;
 
@@ -16,7 +17,7 @@ public class MinionManager {
 	private static ArrayList<Entity> minions = new ArrayList<>();
 
 	public MinionManager() {
-		for (int i = 0; i < 5; ++i) {
+		for (int i = 0; i < 1; ++i) {
 			addMinion();
 		}
 	}
@@ -24,7 +25,7 @@ public class MinionManager {
 	public void addMinion() {
 		Entity minion = new Minion();
 		minion.setImage(ResourceManager.readImg("alien_green.png"));
-		minion.setSize(50, 50);
+		minion.setSize(100, 100);
 		minions.add(minion);
 
 	}
@@ -34,12 +35,12 @@ public class MinionManager {
 		ArrayList<Integer> toRemoveMinions = new ArrayList<>();
 		for (Entity minion : minions) {
 			minion.update();
-			minion.render(gc, 50, 50);
+			minion.render(gc,minion.getWidth(), minion.getHeight());
 		}
 		int more = 0;
 		for (Entity minion : minions) {
 			minion.update();
-			minion.render(gc, 50, 50);
+			minion.render(gc,minion.getWidth(), minion.getHeight());
 			if (minion.positionY > height) {
 				toRemoveMinions.add(minions.indexOf(minion));
 			}
@@ -53,10 +54,13 @@ public class MinionManager {
 			}
 			for (Bullet bullet : bulletManager.getBullets()) {
 				if (minion.intersects(bullet)) {
+					
 					toRemoveMinions.add(minions.indexOf(minion));
 					toRemoveBullets.add(bulletManager.getBullets().indexOf(bullet));
-
-					AudioManager.playSFX(ResourceManager.readAudioClip("bomb.mp3"), 0.4);
+					//explosion effect
+					Bomb b = new Bomb(minion.getPositionX(),minion.getPositionY());
+					b.update();
+					b.render(gc,b.getWidth(),b.getHeight());
 				}
 			}
 		}

@@ -29,7 +29,7 @@ public class Minion extends Entity{
 	}
 	
 	private int randomMinionSpeedX() {
-		return new Random().nextInt(MINION_SPEEDX_RANGE)+5;
+		return new Random().nextInt(MINION_SPEEDX_RANGE)+3;
 	}
 	
 	private int randomMinionSpeedY() {
