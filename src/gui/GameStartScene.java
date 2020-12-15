@@ -21,9 +21,9 @@ import rocket.RocketTypeA;
 import rocket.RocketTypeB;
 
 public class GameStartScene {
-//	private static Rocket rocketA;
-//	private static Rocket rocketB;
-//	private static Rocket choosedRocket;
+	private static Rocket rocketA;
+	private static Rocket rocketB;
+	private static Rocket choosedRocket;
 	private static Rocket myRocket;
 	private static Canvas gameLayer;
 	static boolean spacetrig = false;
@@ -97,40 +97,5 @@ public class GameStartScene {
 
 	public static boolean isSpacetrig() {
 		return spacetrig;
-	}
-	
-	public static void setAndPlay() {
-		// select rocket
-				// if else rocket type
-				rocketA = new RocketTypeA();
-				rocketA.setImage(ResourceManager.readImg("rocketA.png"));
-				rocketA.setWidth(100);
-				rocketA.setHeight(100);
-				rocketA.setPositionX(250 - rocketA.getWidth());
-				rocketA.setPositionY(500);
-				rocketA.render(gc);
-
-				rocketB = new RocketTypeB();
-				rocketB.setImage(ResourceManager.readImg("rocketB.png"));
-				rocketB.setWidth(100);
-				rocketB.setHeight(100);
-				rocketB.setPositionX(250 - rocketB.getWidth());
-				rocketB.setPositionY(500);
-				rocketB.render(gc);
-				
-
-				// Thread for animation timer
-				AnimationTimer timer = new AnimationTimer() {
-
-					@Override
-					public void handle(long arg0) {
-						// TODO Auto-generated method stub
-						// create Override new method for update because it has long line
-						gc.clearRect(0, 0, 800, 600);
-						rocketA.update(WINDOW_WIDTH, WINDOW_HEIGHT, gc);
-						rocketA.render(gc);
-					}
-				};
-				timer.start();
 	}
 }
