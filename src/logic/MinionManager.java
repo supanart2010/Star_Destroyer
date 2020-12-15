@@ -92,6 +92,9 @@ public class MinionManager {
 			addMinion();
 		}
 
+		
+		
+		
 	}
 
 	public void clear() {
