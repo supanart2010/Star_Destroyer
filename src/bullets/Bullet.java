@@ -18,7 +18,7 @@ public class Bullet extends Sprite implements Moveable, Hitable,Updatable{
 	public Bullet(Rocket rocket) {
 		super(0,0,0,0); //edit it later
 		setPlayerBullet(true);
-		setBulletDamage(1);//edit it later (5 -> some Constant such as ROCKETBULLETDAMAGE)
+		setBulletDamage(5);//edit it later (5 -> some Constant such as ROCKETBULLETDAMAGE)
 		setSpeedX(0);
 		setSpeedY(10); //edit it later (10 -> some Constant such as ROCKETBULLETSPEED)
 		setConsumed(false);
