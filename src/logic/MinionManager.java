@@ -25,8 +25,14 @@ public class MinionManager {
 	}
 
 	public void addMinion() {
-		Entity minion = new Minion();
-		minion.setImage(ResourceManager.readImg("alien_green.png"));
+		Minion minion = new Minion();
+		if (minion.getType() == 1) {
+			minion.setImage(ResourceManager.readImg("alien_green.png"));
+		} else if (minion.getType() == 2) {
+			minion.setImage(ResourceManager.readImg("alien_yellow.png"));
+		} else {
+			minion.setImage(ResourceManager.readImg("alien_red.png"));
+		}
 		minion.setSize(100, 100);
 		minions.add(minion);
 
