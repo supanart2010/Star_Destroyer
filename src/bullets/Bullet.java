@@ -8,6 +8,8 @@ import logic.Updatable;
 import rocket.Rocket;
 
 public class Bullet extends Sprite implements Moveable, Hitable, Updatable {
+	public static final int BULLET_SPEEDX = 0;
+	public static final int BULLET_SPEEDY = 10;
 	private boolean isPlayerBullet;
 	private int bulletDamage;
 	private int speedX;
@@ -18,18 +20,8 @@ public class Bullet extends Sprite implements Moveable, Hitable, Updatable {
 	public Bullet(Rocket rocket) {
 		super(0, 0, 0, 0);
 		setPlayerBullet(true);
-		setBulletDamage(5);// edit it later (5 -> some Constant such as ROCKETBULLETDAMAGE)
-		setSpeedX(0);
-		setSpeedY(10); // edit it later (10 -> some Constant such as ROCKETBULLETSPEED)
-		setConsumed(false);
-	}
-
-	public Bullet(Entity entity) {
-		super(0, 0, 0, 0); // edit it later
-		setPlayerBullet(false);
-		setBulletDamage(5); // edit it later (5 -> some Constant such as ENTITYBULLETDAMAGE)
-		setSpeedX(0);
-		setSpeedY(10); // edit it later (10 -> some Constant such as ENTITYBULLETSPEED)
+		setSpeedX(BULLET_SPEEDX);
+		setSpeedY(BULLET_SPEEDY);
 		setConsumed(false);
 	}
 
