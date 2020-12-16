@@ -26,17 +26,17 @@ public class HowToScene {
 
 	public static Scene getHowToScene() {
 
-		HowToTitle = new Label("How To Play ?");
-		HowToTitle.setFont(new Font(40));
-		HowToTitle.setTextFill(Color.WHITE);
+//		HowToTitle = new Label("How To Play ?");
+//		HowToTitle.setFont(new Font(40));
+//		HowToTitle.setTextFill(Color.WHITE);
 
-		Desc1 = new Label(
-				"Use arrow key to move your rocket and use key 'Space', 'Z', 'X' and 'C' to shoot different bullets.");
-		Desc1.setFont(new Font(15));
-		Desc1.setTextFill(Color.WHITE);
-		Desc2 = new Label("Defeats the Invader and protects the Universe.");
-		Desc2.setFont(new Font(15));
-		Desc2.setTextFill(Color.WHITE);
+//		Desc1 = new Label(
+//				"Use arrow key to move your rocket and use key 'Space', 'Z', 'X' and 'C' to shoot different bullets.");
+//		Desc1.setFont(new Font(15));
+//		Desc1.setTextFill(Color.WHITE);
+//		Desc2 = new Label("Defeats the Invader and protects the Universe.");
+//		Desc2.setFont(new Font(15));
+//		Desc2.setTextFill(Color.WHITE);
 
 		TitleButton = new Button("Go back");
 		TitleButton.setFont(new Font(30));
@@ -54,7 +54,7 @@ public class HowToScene {
 		});
 
 		// set background image
-		Image bg_path = ResourceManager.readImg("title_bg.png");
+		Image bg_path = ResourceManager.readImg("tutorialbg.png");
 		Background bg = new Background(
 				new BackgroundImage(bg_path, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
 						BackgroundPosition.DEFAULT, new BackgroundSize(800, 600, false, false, false, false)));
@@ -62,8 +62,8 @@ public class HowToScene {
 		StackPane root = new StackPane();
 
 		VBox vb = new VBox();
-		vb.getChildren().addAll(HowToTitle, Desc1, Desc2, TitleButton);
-		vb.setAlignment(Pos.CENTER);
+		vb.getChildren().addAll(TitleButton);
+		vb.setAlignment(Pos.BOTTOM_LEFT);
 	
 		root.getChildren().addAll(vb);
 		root.setBackground(bg);
