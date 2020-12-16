@@ -35,10 +35,6 @@ public class MinionManager {
 	public void update(BulletManager bulletManager, GraphicsContext gc, double width, double height, Rocket rocket) {
 		ArrayList<Integer> toRemoveBullets = new ArrayList<>();
 		ArrayList<Integer> toRemoveMinions = new ArrayList<>();
-		for (Entity minion : minions) {
-			minion.update();
-			minion.render(gc, minion.getWidth(), minion.getHeight());
-		}
 		int more = 0;
 		for (Entity minion : minions) {
 			minion.update();
