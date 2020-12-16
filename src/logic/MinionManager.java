@@ -11,7 +11,7 @@ import bullets.Bullet;
 import bullets.LaserBullet;
 import entity.Entity;
 import entity.Minion;
-import gui.Bomb;
+import gui.BombAnimation;
 import javafx.scene.canvas.GraphicsContext;
 import rocket.Rocket;
 

@@ -8,7 +8,7 @@ import bullets.BombBullet;
 import bullets.LaserBullet;
 import bullets.PointBullet;
 import entity.Entity;
-import gui.Bomb;
+import gui.BombAnimation;
 import gui.GameStartScene;
 import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
