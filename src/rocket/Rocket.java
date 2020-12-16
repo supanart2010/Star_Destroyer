@@ -6,6 +6,7 @@ import application.ResourceManager;
 import application.SceneSetupManager;
 import bullets.BombBullet;
 import bullets.LaserBullet;
+import bullets.PointBullet;
 import entity.Entity;
 import gui.Bomb;
 import gui.GameStartScene;
@@ -72,10 +73,30 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 		if (Controller.isMoveRight() && positionX+this.getWidth() < width-300) {
 			moveRight();
 		}
-		if (Controller.isShooting()) {
-			shoot();
-			// sfx for shooting
-			AudioManager.playSFX(ResourceManager.readAudioClip("gunsound.wav"), 0.3);
+		if (Controller.isShooting() && !Controller.isPointDelay()) {
+			Thread t = new Thread() {
+		    public void run() {
+		        Platform.runLater(new Runnable() {
+		            public void run() {
+		            	shoot();
+		            	AudioManager.playSFX(ResourceManager.readAudioClip("gunsound.wav"), 0.3);
+						Controller.setPointDelay(true);
+		            }
+		        });
+		        try {
+		            Thread.sleep(PointBullet.POINT_DELAYTIME);
+		        }
+		        catch(InterruptedException ex) {
+		        	ex.printStackTrace();
+		        }
+		        Platform.runLater(new Runnable() {
+		            public void run() {
+		                Controller.setPointDelay(false);
+		            }
+		        });
+		    }
+		};
+		t.start();
 		}
 		if (Controller.isShootingLaser() && getStorage().hasLaserBullet() && !Controller.isLaserDelay()) {
 			Thread t = new Thread() {
@@ -101,7 +122,6 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 			    }
 			};
 			t.start();
-//			System.out.println(getStorage().getLaserRemain());
 			
 		}
 		if (Controller.isShootingBomb() && getStorage().hasBombBullet() && !Controller.isBombDelay()) {

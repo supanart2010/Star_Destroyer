@@ -8,6 +8,7 @@ public class Controller {
 	private static boolean isShooting = false;
 	private static boolean isShootingLaser = false;
 	private static boolean isShootingBomb = false;
+	private static boolean pointDelay = false;
 	private static boolean laserDelay = false;
 	private static boolean bombDelay = false;
 
@@ -81,6 +82,14 @@ public class Controller {
 
 	public static void setBombDelay(boolean bombDelay) {
 		Controller.bombDelay = bombDelay;
+	}
+
+	public static boolean isPointDelay() {
+		return pointDelay;
+	}
+
+	public static void setPointDelay(boolean shootDelay) {
+		Controller.pointDelay = shootDelay;
 	}
 
 }
