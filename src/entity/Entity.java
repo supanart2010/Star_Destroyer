@@ -48,7 +48,7 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hita
 	}
 	public boolean isBoarderCollision() {
 		int CanvasWidth = 500;
-		return (getPositionX() < 0) || (getPositionX() > CanvasWidth);
+		return (getPositionX() < 0) || (getPositionX()+this.getWidth() > CanvasWidth);
 		// edit CanvasWidht later
 	}
 	

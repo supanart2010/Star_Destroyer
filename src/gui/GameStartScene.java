@@ -5,6 +5,7 @@ import application.ResourceManager;
 import application.SceneSetupManager;
 import entity.Minion;
 import javafx.animation.AnimationTimer;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -14,7 +15,13 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import logic.MinionManager;
 import rocket.Rocket;
 import rocket.RocketTypeA;
@@ -42,11 +49,11 @@ public class GameStartScene {
 						BackgroundPosition.DEFAULT, new BackgroundSize(800, 600, false, false, false, false)));
 
 		// draw canvas
-		gameLayer = new Canvas(800, 600);
+		gameLayer = new Canvas(500, 600);
 		GraphicsContext gc = gameLayer.getGraphicsContext2D();
 
 		// root
-		StackPane root = new StackPane();
+		HBox root = new HBox();
 
 		// addAll object
 		root.getChildren().addAll(gameLayer);
@@ -60,7 +67,7 @@ public class GameStartScene {
 		rocketA.setHeight(100);
 		rocketA.setPositionX(250 - rocketA.getWidth());
 		rocketA.setPositionY(500);
-		rocketA.render(gc,100,100);
+		rocketA.render(gc, 100, 100);
 
 		rocketB = new RocketTypeB();
 		rocketB.setImage(ResourceManager.readImg("rocketB.png"));
@@ -68,7 +75,32 @@ public class GameStartScene {
 		rocketB.setHeight(100);
 		rocketB.setPositionX(250 - rocketB.getWidth());
 		rocketB.setPositionY(500);
-		rocketB.render(gc,100,100);
+		rocketB.render(gc, 100, 100);
+
+		// Right Field
+		VBox rightField = new VBox();
+		Text hp = new Text("Health : " + rocketA.getHp());
+		hp.setFill(Color.WHITE);
+		hp.setFont(new Font(20));
+
+		Text stage = new Text("stage : ");
+		stage.setFill(Color.WHITE);
+		stage.setFont(new Font(20));
+
+		Text laser = new Text("Laser ammo : "+ rocketA.getStorage().getLaserCapacity());
+		laser.setFill(Color.WHITE);
+		laser.setFont(new Font(20));
+
+		Text bomb = new Text("Bomb ammo : "+rocketA.getStorage().getBombCapacity());
+		bomb.setFill(Color.WHITE);
+		bomb.setFont(new Font(20));
+		
+		//score add later
+		
+		
+		
+		rightField.getChildren().addAll(stage,hp,laser,bomb);
+		root.getChildren().add(rightField);
 
 		MinionManager minionManager = new MinionManager();
 
@@ -81,8 +113,10 @@ public class GameStartScene {
 				// create Override new method for update because it has long line
 				gc.clearRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 				rocketA.update(WINDOW_WIDTH, WINDOW_HEIGHT, gc);
-				minionManager.update(rocketA.getBulletManager(),gc,WINDOW_WIDTH,WINDOW_HEIGHT,rocketA);
-				
+				minionManager.update(rocketA.getBulletManager(), gc, WINDOW_WIDTH, WINDOW_HEIGHT, rocketA);
+				hp.setText("Health : " + rocketA.getHp());
+				laser.setText("Laser ammo : "+rocketA.getStorage().getLaserRemain());
+				bomb.setText("Bomb ammo : "+rocketA.getStorage().getBombRemain());
 			}
 		};
 		timer.start();

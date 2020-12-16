@@ -59,13 +59,13 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 		if (Controller.isMoveUp() && positionY > 0) {
 			moveUp();
 		}
-		if (Controller.isMoveDown() && positionY < 500) {
+		if (Controller.isMoveDown() && positionY+this.getHeight() < height) {
 			moveDown();
 		}
 		if (Controller.isMoveLeft() && positionX > 0) {
 			moveLeft();
 		}
-		if (Controller.isMoveRight() && positionX < 400) {
+		if (Controller.isMoveRight() && positionX+this.getWidth() < width-300) {
 			moveRight();
 		}
 		if (Controller.isShooting()) {
