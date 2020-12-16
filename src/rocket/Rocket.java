@@ -4,8 +4,12 @@ import application.AudioManager;
 import application.Controller;
 import application.ResourceManager;
 import application.SceneSetupManager;
+import bullets.BombBullet;
+import bullets.LaserBullet;
 import entity.Entity;
+import gui.Bomb;
 import gui.GameStartScene;
+import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.media.AudioClip;
 import logic.BulletManager;
@@ -73,23 +77,65 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 			// sfx for shooting
 			AudioManager.playSFX(ResourceManager.readAudioClip("gunsound.wav"), 0.3);
 		}
-		if (Controller.isShootingLaser() && getStorage().hasLaserBullet()) {
-			laser();
-			getStorage().consumeLaserBullet();
-			System.out.println(getStorage().getLaserRemain());
+		if (Controller.isShootingLaser() && getStorage().hasLaserBullet() && !Controller.isLaserDelay()) {
+			Thread t = new Thread() {
+			    public void run() {
+			        Platform.runLater(new Runnable() {
+			            public void run() {
+							laser();
+							getStorage().consumeLaserBullet();
+							Controller.setLaserDelay(true);
+			            }
+			        });
+			        try {
+			            Thread.sleep(LaserBullet.LASER_DELAYTIME);
+			        }
+			        catch(InterruptedException ex) {
+			        	ex.printStackTrace();
+			        }
+			        Platform.runLater(new Runnable() {
+			            public void run() {
+			                Controller.setLaserDelay(false);
+			            }
+			        });
+			    }
+			};
+			t.start();
+//			System.out.println(getStorage().getLaserRemain());
 			
 		}
-		if (Controller.isShootingBomb() && getStorage().hasBombBullet()) {
-			bomb();
-			getStorage().consumeBombBullet();
-			System.out.println(getStorage().getBombRemain());
+		if (Controller.isShootingBomb() && getStorage().hasBombBullet() && !Controller.isBombDelay()) {
+			Thread t = new Thread() {
+			    public void run() {
+			        Platform.runLater(new Runnable() {
+			            public void run() {	
+			            	bomb();
+			            	getStorage().consumeBombBullet();
+							Controller.setBombDelay(true);
+			            }
+			        });
+			        try {
+			            Thread.sleep(BombBullet.BOMB_DELAYTIME);
+			        }
+			        catch(InterruptedException ex) {
+			        	ex.printStackTrace();
+			        }
+			        Platform.runLater(new Runnable() {
+			            public void run() {
+			                Controller.setBombDelay(false);
+			            }
+			        });
+			    }
+			};
+			t.start();
+//			System.out.println(getStorage().getBombRemain());
 		}
-		if (Controller.isShootingLaser() && !getStorage().hasLaserBullet()) {
-			System.out.println("out of laser ammo");
-		}
-		if (Controller.isShootingBomb() && !getStorage().hasBombBullet()) {
-			System.out.println("out of bomb ammo");
-		}
+//		if (Controller.isShootingLaser() && !getStorage().hasLaserBullet()) {
+//			System.out.println("out of laser ammo");
+//		}
+//		if (Controller.isShootingBomb() && !getStorage().hasBombBullet()) {
+//			System.out.println("out of bomb ammo");
+//		}
 		bulletManager.update(gc, height);
 		this.render(gc);
 	}

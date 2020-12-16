@@ -5,6 +5,7 @@ import rocket.Rocket;
 
 public class BombBullet extends Bullet{
 	//field of bomb bullet
+	public static final int BOMB_DELAYTIME = 3000; // 3 seconds
 	private int radius;
 
 	public BombBullet(Rocket rocket) {

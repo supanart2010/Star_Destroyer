@@ -8,6 +8,8 @@ public class Controller {
 	private static boolean isShooting = false;
 	private static boolean isShootingLaser = false;
 	private static boolean isShootingBomb = false;
+	private static boolean laserDelay = false;
+	private static boolean bombDelay = false;
 
 	public static boolean isMoveLeft() {
 		return isMoveLeft;
@@ -63,6 +65,22 @@ public class Controller {
 
 	public static void setShootingBomb(boolean isShootingBomb) {
 		Controller.isShootingBomb = isShootingBomb;
+	}
+
+	public static boolean isLaserDelay() {
+		return laserDelay;
+	}
+
+	public static void setLaserDelay(boolean laserDelay) {
+		Controller.laserDelay = laserDelay;
+	}
+
+	public static boolean isBombDelay() {
+		return bombDelay;
+	}
+
+	public static void setBombDelay(boolean bombDelay) {
+		Controller.bombDelay = bombDelay;
 	}
 
 }
