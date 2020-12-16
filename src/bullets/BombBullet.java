@@ -20,7 +20,7 @@ public class BombBullet extends Bullet{
 	
 	//method for calculate bomb damage
 //	@Override
-//	public hit() {
+//	public void hit() {
 //		//calculate Aoe damage
 //	}
 }
