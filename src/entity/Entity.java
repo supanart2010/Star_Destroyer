@@ -14,9 +14,9 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hita
 	private String name;
 	private int maxHp;
 	private int hp;
-	private int speedX;
-	private int speedY;
-	private boolean isMovingLeftDirection = new Random().nextBoolean();
+	private double speedX;
+	private double speedY;
+	private boolean isMovingLeftDirection;
 
 	// Constructor
 	public Entity(String name, int maxHp, int speedX, int speedY) {
@@ -26,9 +26,14 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hita
 		setHp(maxHp); // when instance, it has full HP
 		setSpeedX(0);
 		setSpeedY(0);
+		setMovingLeftDirection(randomDirection());
 	}
 
 	// Addition Method
+	public boolean randomDirection() {
+		return new Random().nextBoolean();
+	}
+
 	public void looted(Rocket rocket) {
 		int score = new Random().nextInt(10) + 1;
 		rocket.addScore(score);
@@ -136,21 +141,29 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hita
 		this.hp = hp;
 	}
 
-	public int getSpeedX() {
+	public double getSpeedX() {
 		return speedX;
 	}
 
-	public void setSpeedX(int speedX) {
+	public void setSpeedX(double speedX) {
 		this.speedX = speedX;
 	}
 
-	public int getSpeedY() {
+	public double getSpeedY() {
 		return speedY;
 	}
 
-	public void setSpeedY(int speedY) {
+	public void setSpeedY(double speedY) {
 		this.speedY = speedY;
 	}
 
+	public boolean isMovingLeftDirection() {
+		return isMovingLeftDirection;
+	}
+
+	public void setMovingLeftDirection(boolean isMovingLeftDirection) {
+		this.isMovingLeftDirection = isMovingLeftDirection;
+	}
+	
 	public abstract int getDamage();
 }
