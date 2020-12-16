@@ -37,22 +37,16 @@ public class MinionManager {
 		ArrayList<Integer> toRemoveMinions = new ArrayList<>();
 		for (Entity minion : minions) {
 			minion.update();
-			minion.render(gc,minion.getWidth(), minion.getHeight());
+			minion.render(gc, minion.getWidth(), minion.getHeight());
 		}
 		int more = 0;
 		for (Entity minion : minions) {
 			minion.update();
-			minion.render(gc,minion.getWidth(), minion.getHeight());
+			minion.render(gc, minion.getWidth(), minion.getHeight());
 			if (minion.positionY > height) {
 				toRemoveMinions.add(minions.indexOf(minion));
 			}
-//            if (minion.positionX > width || minion.positionX < 0){
-//                toRemoveMinions.add(minions.indexOf(minion));
-//            }
 			if (minion.intersects(rocket)) {
-//				rocket.setHp(rocket.getHp() - minion.getDamage());
-//				toRemoveMinions.add(minions.indexOf(minion));
-//				System.out.println(rocket.getHp());
 				minion.hit(rocket);
 				rocket.hit(minion);
 			}
@@ -61,26 +55,26 @@ public class MinionManager {
 					if (bullet instanceof LaserBullet) {
 						System.out.println("laser");
 						minion.hit(bullet);
-					}else if (bullet instanceof BombBullet) {
+					} else if (bullet instanceof BombBullet) {
 						System.out.println("bomb");
 						minion.hit(bullet);
 						bullet.hit();
-					}else {
+					} else {
 						System.out.println("point");
 						minion.hit(bullet);
 						bullet.hit();
 					}
-					
-					//explosion effect
+
+					// explosion effect
 //					Bomb b = new Bomb(minion.getPositionX(),minion.getPositionY());
 //					b.update();
 //					b.render(gc,b.getWidth()+10,b.getHeight()+10);
 				}
-				if(bullet.isConsumed()) {
+				if (bullet.isConsumed()) {
 					toRemoveBullets.add(bulletManager.getBullets().indexOf(bullet));
 				}
 			}
-			if(minion.isDead()) {
+			if (minion.isDead()) {
 				toRemoveMinions.add(minions.indexOf(minion));
 			}
 		}
@@ -103,9 +97,6 @@ public class MinionManager {
 			addMinion();
 		}
 
-		
-		
-		
 	}
 
 	public void clear() {

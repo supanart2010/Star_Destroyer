@@ -7,33 +7,39 @@ import logic.Sprite;
 import logic.Updatable;
 import rocket.Rocket;
 
-public class Bullet extends Sprite implements Moveable, Hitable,Updatable{
+public class Bullet extends Sprite implements Moveable, Hitable, Updatable {
 	private boolean isPlayerBullet;
 	private int bulletDamage;
 	private int speedX;
 	private int speedY;
 	private boolean isConsumed;
-	
-	//Constructor
+
+	// Constructor
 	public Bullet(Rocket rocket) {
-		super(0,0,0,0); //edit it later
+		super(0, 0, 0, 0);
 		setPlayerBullet(true);
-		setBulletDamage(5);//edit it later (5 -> some Constant such as ROCKETBULLETDAMAGE)
+		setBulletDamage(5);// edit it later (5 -> some Constant such as ROCKETBULLETDAMAGE)
 		setSpeedX(0);
-		setSpeedY(10); //edit it later (10 -> some Constant such as ROCKETBULLETSPEED)
-		setConsumed(false);
-	}
-	
-	public Bullet(Entity entity) {
-		super(0,0,0,0); //edit it later
-		setPlayerBullet(false);
-		setBulletDamage(5); //edit it later (5 -> some Constant such as ENTITYBULLETDAMAGE)
-		setSpeedX(0);
-		setSpeedY(10); //edit it later (10 -> some Constant such as ENTITYBULLETSPEED)
+		setSpeedY(10); // edit it later (10 -> some Constant such as ROCKETBULLETSPEED)
 		setConsumed(false);
 	}
 
-	//Getter & Setter
+	public Bullet(Entity entity) {
+		super(0, 0, 0, 0); // edit it later
+		setPlayerBullet(false);
+		setBulletDamage(5); // edit it later (5 -> some Constant such as ENTITYBULLETDAMAGE)
+		setSpeedX(0);
+		setSpeedY(10); // edit it later (10 -> some Constant such as ENTITYBULLETSPEED)
+		setConsumed(false);
+	}
+
+	// Interface Methods
+	@Override
+	public void update() {
+		moveUp();
+	}
+
+	// Getter & Setter
 	public boolean isPlayerBullet() {
 		return isPlayerBullet;
 	}
@@ -68,34 +74,26 @@ public class Bullet extends Sprite implements Moveable, Hitable,Updatable{
 
 	@Override
 	public void hit() {
-		// TODO Auto-generated method stub
 		setConsumed(true);
 	}
-	
+
 	@Override
 	public void moveUp() {
-		// TODO Auto-generated method stub
 		positionY -= speedY;
 	}
 
 	@Override
 	public void moveDown() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void moveLeft() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void moveRight() {
-		// TODO Auto-generated method stub
-		
 	}
-	
+
 	public boolean isConsumed() {
 		return isConsumed;
 	}
@@ -103,13 +101,4 @@ public class Bullet extends Sprite implements Moveable, Hitable,Updatable{
 	public void setConsumed(boolean isConsumed) {
 		this.isConsumed = isConsumed;
 	}
-
-	//update for bullet
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		moveUp();
-	}
-
-	
 }

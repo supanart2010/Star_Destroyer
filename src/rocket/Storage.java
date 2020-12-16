@@ -5,8 +5,8 @@ public class Storage {
 	private int laserCapacity;
 	private int bombRemain;
 	private int laserRemain;
-	
-	//Constructor
+
+	// Constructor
 	public Storage(int bombCapacity, int laserCapacity) {
 		setBombCapacity(bombCapacity);
 		setBombRemain(bombCapacity);
@@ -14,58 +14,68 @@ public class Storage {
 		setLaserRemain(laserCapacity);
 	}
 
-	//Addition Method
+	// Addition Method
 	public void addBombBullet(int bombAmount) {
-		if(bombRemain + bombAmount > bombCapacity) {
+		if (bombRemain + bombAmount > bombCapacity) {
 			setBombRemain(bombCapacity);
-		}
-		else {
+		} else {
 			setBombRemain(bombAmount + bombRemain);
 		}
 	}
+
 	public void addLaserBullet(int laserAmount) {
-		if(laserRemain + laserAmount > laserCapacity) {
+		if (laserRemain + laserAmount > laserCapacity) {
 			setLaserRemain(laserCapacity);
-		}
-		else {
+		} else {
 			setLaserRemain(laserAmount + laserRemain);
 		}
 	}
+
 	public boolean hasBombBullet() {
 		return bombRemain > 0;
 	}
+
 	public void consumeBombBullet() {
 		bombRemain--;
 	}
+
 	public boolean hasLaserBullet() {
 		return laserRemain > 0;
 	}
+
 	public void consumeLaserBullet() {
 		laserRemain--;
 	}
-		
-	//Getter & Setter
+
+	// Getter & Setter
 	public int getBombCapacity() {
 		return bombCapacity;
 	}
+
 	public void setBombCapacity(int bombCapacity) {
 		this.bombCapacity = bombCapacity;
 	}
+
 	public int getLaserCapacity() {
 		return laserCapacity;
 	}
+
 	public void setLaserCapacity(int laserCapacity) {
 		this.laserCapacity = laserCapacity;
 	}
+
 	public int getBombRemain() {
 		return bombRemain;
 	}
+
 	public void setBombRemain(int bombRemain) {
 		this.bombRemain = bombRemain;
 	}
+
 	public int getLaserRemain() {
 		return laserRemain;
 	}
+
 	public void setLaserRemain(int laserRemain) {
 		this.laserRemain = laserRemain;
 	}

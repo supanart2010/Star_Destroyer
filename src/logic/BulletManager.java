@@ -12,7 +12,6 @@ import javafx.scene.canvas.GraphicsContext;
 import rocket.Rocket;
 
 public class BulletManager {
-	// class for contain bullets
 	private Rocket rocket;
 	private static ArrayList<Bullet> bullets = new ArrayList<>();
 
@@ -33,7 +32,7 @@ public class BulletManager {
 		Bullet laserBullet = new LaserBullet(this.rocket);
 		laserBullet.setImage(ResourceManager.readImg("lasercontinue.png"));
 		laserBullet.setSize(10, 10);
-		laserBullet.setPosition(rocket.positionX + 40, rocket.positionY-30);
+		laserBullet.setPosition(rocket.positionX + 40, rocket.positionY - 30);
 		bullets.add(laserBullet);
 	}
 
@@ -41,7 +40,7 @@ public class BulletManager {
 		Bullet bombBullet = new BombBullet(this.rocket);
 		bombBullet.setImage(ResourceManager.readImg("bombbullet.png"));
 		bombBullet.setSize(10, 10);
-		bombBullet.setPosition(rocket.positionX+40, rocket.positionY);
+		bombBullet.setPosition(rocket.positionX + 40, rocket.positionY);
 		bullets.add(bombBullet);
 	}
 

@@ -13,11 +13,11 @@ public class AudioManager {
 	private static boolean isBGMPlaying() {
 		return bgmPlayer != null;
 	}
-	
+
 	public static Media getCurrentBGM() {
 		return isBGMPlaying() ? bgmPlayer.getMedia() : null;
 	}
-	
+
 	public static void playBGM(Media bgm, double localVolume, boolean isLoop) {
 		if (bgm == null) {
 			stopBGM();
@@ -31,20 +31,18 @@ public class AudioManager {
 			bgmPlayer.play();
 		}
 	}
-	
+
 	public static void stopBGM() {
 		if (isBGMPlaying()) {
 			bgmPlayer.stop();
 			bgmPlayer = null;
 		}
 	}
-	
-	//method for sound effect ex. bullets bomb //maybe cut off
+
+	// method for sound effect ex. bullets bomb //maybe cut off
 	public static void playSFX(AudioClip sfx, double localVolume) {
 		sfx.setVolume(GLOBAL_VOLUME * localVolume);
 		sfx.play();
 	}
-	
-	
-	
+
 }
