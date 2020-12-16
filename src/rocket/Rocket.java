@@ -19,7 +19,7 @@ import logic.Moveable;
 import logic.Sprite;
 import logic.Updatable;
 
-public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
+public class Rocket extends Sprite implements Hitable, Moveable, Updatable {
 	private String name;
 	private int type;
 	private Storage storage;
@@ -29,9 +29,10 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 	private int speedY;
 	private BulletManager bulletManager;
 	private int bodyDamage;
+	private int score;
 
 	// Constructor
-	public Rocket(String name, int type, Storage storage, int maxHp, int speedX, int speedY,int bodyDamage) {
+	public Rocket(String name, int type, Storage storage, int maxHp, int speedX, int speedY, int bodyDamage) {
 		super(0, 0, 0, 0); // edit it later
 		setName(name);
 		setType(type);
@@ -41,10 +42,15 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 		setSpeedX(speedX);
 		setSpeedY(speedY);
 		setBodyDamage(bodyDamage);
+		setScore(0);
 		bulletManager = new BulletManager(this);
 	}
 
 	// Addition Method
+	public void addScore(int score) {
+		setScore(score + getScore());
+	}
+
 	public void decreaseHp(int damage) {
 		if (damage > hp) {
 			hp = 0;
@@ -64,88 +70,85 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 		if (Controller.isMoveUp() && positionY > 0) {
 			moveUp();
 		}
-		if (Controller.isMoveDown() && positionY+this.getHeight() < height) {
+		if (Controller.isMoveDown() && positionY + this.getHeight() < height) {
 			moveDown();
 		}
 		if (Controller.isMoveLeft() && positionX > 0) {
 			moveLeft();
 		}
-		if (Controller.isMoveRight() && positionX+this.getWidth() < width-300) {
+		if (Controller.isMoveRight() && positionX + this.getWidth() < width - 300) {
 			moveRight();
 		}
 		if (Controller.isShooting() && !Controller.isPointDelay()) {
 			Thread t = new Thread() {
-		    public void run() {
-		        Platform.runLater(new Runnable() {
-		            public void run() {
-		            	shoot();
-		            	AudioManager.playSFX(ResourceManager.readAudioClip("gunsound.wav"), 0.3);
-						Controller.setPointDelay(true);
-		            }
-		        });
-		        try {
-		            Thread.sleep(PointBullet.POINT_DELAYTIME);
-		        }
-		        catch(InterruptedException ex) {
-		        	ex.printStackTrace();
-		        }
-		        Platform.runLater(new Runnable() {
-		            public void run() {
-		                Controller.setPointDelay(false);
-		            }
-		        });
-		    }
-		};
-		t.start();
+				public void run() {
+					Platform.runLater(new Runnable() {
+						public void run() {
+							shoot();
+							AudioManager.playSFX(ResourceManager.readAudioClip("gunsound.wav"), 0.3);
+							Controller.setPointDelay(true);
+						}
+					});
+					try {
+						Thread.sleep(PointBullet.POINT_DELAYTIME);
+					} catch (InterruptedException ex) {
+						ex.printStackTrace();
+					}
+					Platform.runLater(new Runnable() {
+						public void run() {
+							Controller.setPointDelay(false);
+						}
+					});
+				}
+			};
+			t.start();
 		}
 		if (Controller.isShootingLaser() && getStorage().hasLaserBullet() && !Controller.isLaserDelay()) {
 			Thread t = new Thread() {
-			    public void run() {
-			        Platform.runLater(new Runnable() {
-			            public void run() {
+				public void run() {
+					Platform.runLater(new Runnable() {
+						public void run() {
 							laser();
 							getStorage().consumeLaserBullet();
 							Controller.setLaserDelay(true);
-			            }
-			        });
-			        try {
-			            Thread.sleep(LaserBullet.LASER_DELAYTIME);
-			        }
-			        catch(InterruptedException ex) {
-			        	ex.printStackTrace();
-			        }
-			        Platform.runLater(new Runnable() {
-			            public void run() {
-			                Controller.setLaserDelay(false);
-			            }
-			        });
-			    }
+						}
+					});
+					try {
+						Thread.sleep(LaserBullet.LASER_DELAYTIME);
+					} catch (InterruptedException ex) {
+						ex.printStackTrace();
+					}
+					Platform.runLater(new Runnable() {
+						public void run() {
+							Controller.setLaserDelay(false);
+						}
+					});
+				}
 			};
 			t.start();
-			
+
 		}
 		if (Controller.isShootingBomb() && getStorage().hasBombBullet() && !Controller.isBombDelay()) {
 			Thread t = new Thread() {
-			    public void run() {
-			        Platform.runLater(new Runnable() {
-			            public void run() {	
-			            	bomb();
-			            	getStorage().consumeBombBullet();
+				public void run() {
+					Platform.runLater(new Runnable() {
+						public void run() {
+							bomb();
+							getStorage().consumeBombBullet();
 							Controller.setBombDelay(true);
-			            }
-			        });
-			        try {
-			            Thread.sleep(BombBullet.BOMB_DELAYTIME);
-			        }
-			        catch(InterruptedException ex) {
-			        	ex.printStackTrace();
-			        }
-			        Platform.runLater(new Runnable() {
-			            public void run() {
-			                Controller.setBombDelay(false);
-			            }
-			        });
-			    }
+						}
+					});
+					try {
+						Thread.sleep(BombBullet.BOMB_DELAYTIME);
+					} catch (InterruptedException ex) {
+						ex.printStackTrace();
+					}
+					Platform.runLater(new Runnable() {
+						public void run() {
+							Controller.setBombDelay(false);
+						}
+					});
+				}
 			};
 			t.start();
 //			System.out.println(getStorage().getBombRemain());
@@ -164,7 +167,7 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 	public void hit() {
 		// TODO Auto-generated method stub
 	}
-	
+
 	public void hit(Entity entity) {
 		// TODO Auto-generated method stub
 		decreaseHp(entity.getDamage());
@@ -255,13 +258,13 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 	public void shoot() {
 		bulletManager.addBullet();
 	}
-	
+
 	// laserbullet
 	public void laser() {
 		bulletManager.addLaserBullet();
 	}
-	
-	//bombbullet
+
+	// bombbullet
 	public void bomb() {
 		bulletManager.addBombBullet();
 	}
@@ -273,7 +276,7 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public int getBodyDamage() {
@@ -284,5 +287,12 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 		this.bodyDamage = bodyDamage;
 	}
 
-	
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
 }

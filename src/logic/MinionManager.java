@@ -74,6 +74,7 @@ public class MinionManager {
 				}
 			}
 			if (minion.isDead()) {
+				minion.looted(rocket);
 				toRemoveMinions.add(minions.indexOf(minion));
 			}
 		}

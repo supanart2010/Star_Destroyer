@@ -87,19 +87,19 @@ public class GameStartScene {
 		stage.setFill(Color.WHITE);
 		stage.setFont(new Font(20));
 
-		Text laser = new Text("Laser ammo : "+ rocketA.getStorage().getLaserCapacity());
+		Text laser = new Text("Laser ammo : " + rocketA.getStorage().getLaserCapacity());
 		laser.setFill(Color.WHITE);
 		laser.setFont(new Font(20));
 
-		Text bomb = new Text("Bomb ammo : "+rocketA.getStorage().getBombCapacity());
+		Text bomb = new Text("Bomb ammo : " + rocketA.getStorage().getBombCapacity());
 		bomb.setFill(Color.WHITE);
 		bomb.setFont(new Font(20));
-		
-		//score add later
-		
-		
-		
-		rightField.getChildren().addAll(stage,hp,laser,bomb);
+
+		Text score = new Text("Score : " + rocketA.getScore());
+		score.setFill(Color.WHITE);
+		score.setFont(new Font(20));
+
+		rightField.getChildren().addAll(stage, hp, laser, bomb, score);
 		root.getChildren().add(rightField);
 
 		MinionManager minionManager = new MinionManager();
@@ -115,8 +115,10 @@ public class GameStartScene {
 				rocketA.update(WINDOW_WIDTH, WINDOW_HEIGHT, gc);
 				minionManager.update(rocketA.getBulletManager(), gc, WINDOW_WIDTH, WINDOW_HEIGHT, rocketA);
 				hp.setText("Health : " + rocketA.getHp());
-				laser.setText("Laser ammo : "+rocketA.getStorage().getLaserRemain());
-				bomb.setText("Bomb ammo : "+rocketA.getStorage().getBombRemain());
+				laser.setText("Laser ammo : " + rocketA.getStorage().getLaserRemain());
+				bomb.setText("Bomb ammo : " + rocketA.getStorage().getBombRemain());
+				score.setText("Score : " + rocketA.getScore());
+
 			}
 		};
 		timer.start();

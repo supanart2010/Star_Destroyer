@@ -29,6 +29,11 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hita
 	}
 
 	// Addition Method
+	public void looted(Rocket rocket) {
+		int score = new Random().nextInt(10) + 1;
+		rocket.addScore(score);
+	}
+
 	public void decreaseHp(int damage) {
 		if (damage > hp) {
 			hp = 0;
@@ -42,16 +47,17 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hita
 	}
 
 	public void checkDirectionX() {
-		if(isBoarderCollision()) {
+		if (isBoarderCollision()) {
 			isMovingLeftDirection = !isMovingLeftDirection;
 		}
 	}
+
 	public boolean isBoarderCollision() {
 		int CanvasWidth = 500;
-		return (getPositionX() < 0) || (getPositionX()+this.getWidth() > CanvasWidth);
+		return (getPositionX() < 0) || (getPositionX() + this.getWidth() > CanvasWidth);
 		// edit CanvasWidht later
 	}
-	
+
 	// Interface Method
 	@Override
 	public void update() {
@@ -75,18 +81,18 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hita
 		// TODO Auto-generated method stub
 		decreaseHp(rocket.getBodyDamage());
 	}
-	
+
 	public void hit(Bullet bullet) {
 		// TODO Auto-generated method stub
 		decreaseHp(bullet.getBulletDamage());
 	}
-	
+
 	@Override
 	public void moveUp() {
 		// TODO Auto-generated method stub
-		//Do nothing.
+		// Do nothing.
 	}
-	
+
 	@Override
 	public void moveDown() {
 		// TODO Auto-generated method stub
