@@ -9,9 +9,10 @@ public class RocketTypeB extends Rocket{
 	private static final int TYPE_B_MAXHP = 350;
 	private static final int TYPE_B_SPEEDX = 7;
 	private static final int TYPE_B_SPEEDY = 7;
+	private static final int TYPE_A_BODYDAMAGE = 30;
 
 	public RocketTypeB() {
 		// TODO Auto-generated constructor stub
-		super(TYPE_B_NAME, TYPE_B, TYPE_B_STORAGE, TYPE_B_MAXHP, TYPE_B_SPEEDX, TYPE_B_SPEEDY);
+		super(TYPE_B_NAME, TYPE_B, TYPE_B_STORAGE, TYPE_B_MAXHP, TYPE_B_SPEEDX, TYPE_B_SPEEDY, TYPE_A_BODYDAMAGE);
 	}
 }

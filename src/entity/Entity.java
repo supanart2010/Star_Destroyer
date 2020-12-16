@@ -2,10 +2,12 @@ package entity;
 
 import java.util.Random;
 
+import bullets.Bullet;
 import logic.Hitable;
 import logic.Moveable;
 import logic.Sprite;
 import logic.Updatable;
+import rocket.Rocket;
 import rocket.Storage;
 
 public abstract class Entity extends Sprite implements Updatable, Moveable, Hitable {
@@ -69,6 +71,16 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hita
 
 	}
 
+	public void hit(Rocket rocket) {
+		// TODO Auto-generated method stub
+		decreaseHp(rocket.getBodyDamage());
+	}
+	
+	public void hit(Bullet bullet) {
+		// TODO Auto-generated method stub
+		decreaseHp(bullet.getBulletDamage());
+	}
+	
 	@Override
 	public void moveUp() {
 		// TODO Auto-generated method stub

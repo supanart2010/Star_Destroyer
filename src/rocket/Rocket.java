@@ -4,6 +4,7 @@ import application.AudioManager;
 import application.Controller;
 import application.ResourceManager;
 import application.SceneSetupManager;
+import entity.Entity;
 import gui.GameStartScene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.media.AudioClip;
@@ -22,9 +23,10 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 	private int speedX;
 	private int speedY;
 	private BulletManager bulletManager;
+	private int bodyDamage;
 
 	// Constructor
-	public Rocket(String name, int type, Storage storage, int maxHp, int speedX, int speedY) {
+	public Rocket(String name, int type, Storage storage, int maxHp, int speedX, int speedY,int bodyDamage) {
 		super(0, 0, 0, 0); // edit it later
 		setName(name);
 		setType(type);
@@ -33,6 +35,7 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 		setHp(maxHp); // when instance, it has full HP
 		setSpeedX(speedX);
 		setSpeedY(speedY);
+		setBodyDamage(bodyDamage);
 		bulletManager = new BulletManager(this);
 	}
 
@@ -94,7 +97,11 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 	@Override
 	public void hit() {
 		// TODO Auto-generated method stub
-
+	}
+	
+	public void hit(Entity entity) {
+		// TODO Auto-generated method stub
+		decreaseHp(entity.getDamage());
 	}
 
 	@Override
@@ -203,4 +210,13 @@ public class Rocket extends Sprite implements Hitable, Moveable ,Updatable {
 		
 	}
 
+	public int getBodyDamage() {
+		return bodyDamage;
+	}
+
+	public void setBodyDamage(int bodyDamage) {
+		this.bodyDamage = bodyDamage;
+	}
+
+	
 }

@@ -50,27 +50,38 @@ public class MinionManager {
 //                toRemoveMinions.add(minions.indexOf(minion));
 //            }
 			if (minion.intersects(rocket)) {
-				rocket.setHp(rocket.getHp() - minion.getDamage());
-				toRemoveMinions.add(minions.indexOf(minion));
-				System.out.println(rocket.getHp());
+//				rocket.setHp(rocket.getHp() - minion.getDamage());
+//				toRemoveMinions.add(minions.indexOf(minion));
+//				System.out.println(rocket.getHp());
+				minion.hit(rocket);
+				rocket.hit(minion);
 			}
 			for (Bullet bullet : bulletManager.getBullets()) {
 				if (minion.intersects(bullet)) {
-					
 					if (bullet instanceof LaserBullet) {
 						System.out.println("laser");
+						minion.hit(bullet);
 					}else if (bullet instanceof BombBullet) {
 						System.out.println("bomb");
+						minion.hit(bullet);
+						bullet.hit();
 					}else {
 						System.out.println("point");
+						minion.hit(bullet);
+						bullet.hit();
 					}
-					toRemoveMinions.add(minions.indexOf(minion));
-					toRemoveBullets.add(bulletManager.getBullets().indexOf(bullet));
+					
 					//explosion effect
 //					Bomb b = new Bomb(minion.getPositionX(),minion.getPositionY());
 //					b.update();
 //					b.render(gc,b.getWidth()+10,b.getHeight()+10);
 				}
+				if(bullet.isConsumed()) {
+					toRemoveBullets.add(bulletManager.getBullets().indexOf(bullet));
+				}
+			}
+			if(minion.isDead()) {
+				toRemoveMinions.add(minions.indexOf(minion));
 			}
 		}
 		HashSet<Integer> b = new HashSet<>(toRemoveBullets);
