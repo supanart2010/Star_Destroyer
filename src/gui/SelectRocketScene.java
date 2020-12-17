@@ -1,7 +1,9 @@
 package gui;
 
+import application.AudioManager;
 import application.Main;
 import application.ResourceManager;
+import application.SceneManager.State;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -23,13 +25,20 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-public class SelectRocketScene {
+public class SelectRocketScene extends GameScene {
 
-	private static Button TitleButton;
+	private Button TitleButton;
+	private Button rocketABtn;
+	private Button rocketBBtn;
+	private Label chooseRocket;
+	private HBox selectRocket;
 
-	public static Scene getSelectRocketScene() {
+	public SelectRocketScene() {
+		super();
+		this.sceneState = State.SELECTROCKET;
+		setGameBackground(ResourceManager.selectRocket.SELECTROCKET_BACKGROUND);
 
-		Label chooseRocket = new Label("Choose your Rocket");
+		chooseRocket = new Label("Choose your Rocket");
 		chooseRocket.setTextFill(Color.WHITE);
 		chooseRocket.setFont(new Font(40));
 
@@ -39,8 +48,40 @@ public class SelectRocketScene {
 		TitleButton.setTextFill(Color.WHITE);
 		TitleButton.setFont(new Font(40));
 		TitleButton.setPadding(new Insets(5));
+
+		rocketABtn = new Button();
+		rocketABtn.setPrefSize(200, 200);
+		rocketABtn.setGraphic(new ImageView(ResourceManager.selectRocket.ROCKETA));
+		rocketABtn.setBackground(null);
+
+		rocketBBtn = new Button();
+		rocketABtn.setPrefSize(200, 200);
+		rocketBBtn.setGraphic(new ImageView(ResourceManager.selectRocket.ROCKETB));
+		rocketBBtn.setBackground(null);
+
+		selectRocket = new HBox();
+		selectRocket.getChildren().add(rocketABtn);
+		selectRocket.getChildren().add(rocketBBtn);
+		selectRocket.setAlignment(Pos.CENTER);
+		selectRocket.setSpacing(20);
+
+		addListener();
+
+		VBox vB = new VBox();
+		vB.getChildren().addAll(chooseRocket, selectRocket, TitleButton);
+		vB.setAlignment(Pos.CENTER);
+
+		root.getChildren().addAll(vB);
+
+		AudioManager.playBGM(ResourceManager.readMedia("selectRocketBGM.mp3"), 0.5, true);
+	}
+
+	@Override
+	protected void addListener() {
+		// TODO Auto-generated method stub
 		TitleButton.setOnMouseClicked(e -> {
-			Main.titleHandle(Main.window);
+			changeScene(State.TITLE);
+			;
 		});
 		TitleButton.setOnMouseEntered(e -> {
 			TitleButton.setTextFill(Color.RED);
@@ -49,63 +90,38 @@ public class SelectRocketScene {
 			TitleButton.setTextFill(Color.WHITE);
 		});
 
-		// set background image
-		Image bg_path = ResourceManager.readImg("title_bg.png");
-		Background bg = new Background(
-				new BackgroundImage(bg_path, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-						BackgroundPosition.DEFAULT, new BackgroundSize(800, 600, false, false, false, false)));
-
-		Button rocketABtn = new Button();
-		rocketABtn.setPrefSize(200, 200);
-		rocketABtn.setGraphic(new ImageView(ResourceManager.readImg("rocketA200px.png")));
-		rocketABtn.setBackground(null);
 		rocketABtn.setOnMouseClicked(e -> {
-			// GameStartScene.setRocketA(true);
-			Main.gameStartHandle(Main.window);
+			GameStartScene.setRocketA(true);
+			changeScene(State.PLAYING);
 		});
 		rocketABtn.setOnMouseEntered(e -> {
-			rocketABtn
-					.setBackground(new Background(new BackgroundFill(new Color(0.8, 1, 1, 0.5), CornerRadii.EMPTY, Insets.EMPTY)));
+			rocketABtn.setBackground(
+					new Background(new BackgroundFill(new Color(0.8, 1, 1, 0.5), CornerRadii.EMPTY, Insets.EMPTY)));
 		});
 		rocketABtn.setOnMouseExited(e -> {
 			rocketABtn.setBackground(null);
 		});
 
-		Button rocketBBtn = new Button();
-		rocketABtn.setPrefSize(200, 200);
-		rocketBBtn.setGraphic(new ImageView(ResourceManager.readImg("rocketB200px.png")));
-		rocketBBtn.setBackground(null);
 		rocketBBtn.setOnMouseClicked(e -> {
-			// GameStartScene.setRocketB(true);
-			Main.gameStartHandle(Main.window);
+			GameStartScene.setRocketA(false);
+			changeScene(State.PLAYING);
 		});
 		rocketBBtn.setOnMouseEntered(e -> {
-			rocketBBtn
-					.setBackground(new Background(new BackgroundFill(new Color(0.8, 1, 1, 0.5), CornerRadii.EMPTY, Insets.EMPTY)));
+			rocketBBtn.setBackground(
+					new Background(new BackgroundFill(new Color(0.8, 1, 1, 0.5), CornerRadii.EMPTY, Insets.EMPTY)));
 		});
 		rocketBBtn.setOnMouseExited(e -> {
 			rocketBBtn.setBackground(null);
 		});
-
-		HBox hB = new HBox();
-		hB.getChildren().add(rocketABtn);
-		hB.getChildren().add(rocketBBtn);
-		hB.setAlignment(Pos.CENTER);
-		hB.setSpacing(20);
-
-		StackPane root = new StackPane();
-		VBox vB = new VBox();
-		vB.getChildren().addAll(chooseRocket, hB, TitleButton);
-		vB.setAlignment(Pos.CENTER);
-
-		// add canvas and VBox to root
-		root.getChildren().addAll(vB);
-		root.setBackground(bg);
-
-		Scene selectRocketScene = new Scene(root, 800, 600);
-
-		return selectRocketScene;
-
 	}
 
+	@Override
+	protected void releaseSceneComponents() {
+		// TODO Auto-generated method stub
+		ResourceManager.clearResources(State.SELECTROCKET);
+	}
+
+	public void update() {
+
+	}
 }

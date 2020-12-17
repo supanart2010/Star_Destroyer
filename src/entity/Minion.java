@@ -2,6 +2,8 @@ package entity;
 
 import java.util.Random;
 
+import application.ResourceManager;
+
 public class Minion extends Entity{
 	private static final String MINION_NAME = "Invader";
 	private static final int MINION_MAXHP = 20;
@@ -16,6 +18,8 @@ public class Minion extends Entity{
 		randomType();
 		setSpeedX(randomMinionSpeedX());
 		setSpeedY(randomMinionSpeedY());
+		this.setImage(ResourceManager.gameStart.MINION);
+		this.setSize(100, 100);
 	}
 
 	public int getDamage() {

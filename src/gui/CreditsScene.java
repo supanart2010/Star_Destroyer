@@ -1,7 +1,9 @@
 package gui;
 
+import application.AudioManager;
 import application.Main;
 import application.ResourceManager;
+import application.SceneManager.State;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -22,33 +24,37 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class CreditsScene {
-	private static Label CreditTitle;
-	private static Label NameTag1;
-	private static Label NameTag2;
-	private static Button TitleButton;
+public class CreditsScene extends GameScene {
+	private Button TitleButton;
 
-	public static Scene getCreditsScene() {
-//		CreditTitle = new Label("Credits");
-//		CreditTitle.setFont(Font.font("Arial",FontWeight.EXTRA_BOLD,50));
-//		CreditTitle.setTextFill(Color.WHITE);
-//
-//		NameTag1 = new Label("Poravee Binhayeearason 6230314421");
-//		NameTag1.setFont(Font.font("Arial",FontWeight.EXTRA_LIGHT,28));
-//		NameTag1.setTextFill(Color.WHITE);
-//		NameTag2 = new Label("Supanart Barnsongkit 6230522621");
-//		NameTag2.setFont(Font.font("Arial",FontWeight.EXTRA_LIGHT,28));
-//		NameTag2.setTextFill(Color.WHITE);
-
+	public CreditsScene() {
+		super();
+		setGameBackground(ResourceManager.credits.CREDITS_BACKGROUND);
 		TitleButton = new Button("Go back");
-		TitleButton.setFont(Font.font("Times New Roman",FontWeight.BOLD,30));
+		TitleButton.setFont(Font.font("Times New Roman", FontWeight.BOLD, 30));
 		TitleButton.setBackground(null);
 		TitleButton.setTextFill(Color.WHITE);
 		TitleButton.setPadding(new Insets(5));
-		
-		//handle
+
+		addListener();
+
+		HBox hB = new HBox();
+		hB.getChildren().add(TitleButton);
+		hB.setAlignment(Pos.BOTTOM_LEFT);
+		hB.setSpacing(10);
+		hB.setPadding(new Insets(30));
+
+		root.getChildren().addAll(hB);
+
+		AudioManager.playBGM(ResourceManager.readMedia("startMenuBGM.mp3"), 0.5, true);
+	}
+
+	@Override
+	protected void addListener() {
+		// TODO Auto-generated method stub
+		// handle
 		TitleButton.setOnMouseClicked(e -> {
-			Main.titleHandle(Main.window);
+			changeScene(State.TITLE);
 		});
 		TitleButton.setOnMouseEntered(e -> {
 			TitleButton.setTextFill(Color.RED);
@@ -56,31 +62,15 @@ public class CreditsScene {
 		TitleButton.setOnMouseExited(e -> {
 			TitleButton.setTextFill(Color.WHITE);
 		});
+	}
 
-		// set background image
-		Image bg_path = ResourceManager.readImg("democredit.png");
-		Background bg = new Background(
-				new BackgroundImage(bg_path, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-						BackgroundPosition.DEFAULT, new BackgroundSize(800, 600, false, false, false, false)));
+	@Override
+	protected void releaseSceneComponents() {
+		// TODO Auto-generated method stub
+		ResourceManager.clearResources(State.CREDITS);
+	}
 
-		StackPane root = new StackPane();
+	public void update() {
 
-//		VBox vb = new VBox();
-//		vb.getChildren().addAll(CreditTitle, NameTag1, NameTag2, TitleButton);
-//		vb.setPadding(new Insets(50));
-//		vb.setSpacing(20);
-//		vb.setPrefSize(800, 600);
-//		vb.setAlignment(Pos.TOP_CENTER);
-		HBox hB = new HBox();
-		hB.getChildren().add(TitleButton);
-		hB.setAlignment(Pos.BOTTOM_LEFT);
-		hB.setSpacing(10);
-		hB.setPadding(new Insets(30));
-		
-		root.getChildren().addAll(hB);
-		root.setBackground(bg);
-
-		Scene titleScene = new Scene(root, 800, 600);
-		return titleScene;
 	}
 }

@@ -1,77 +1,36 @@
 package application;
 
-import gui.CreditsScene;
-import gui.GameStartScene;
-import gui.HowToScene;
-import gui.SelectRocketScene;
-import gui.TitleScene;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-	private static Scene titleScene;
-	private static Scene gameStartScene;
-	private static Scene howToScene;
-	private static Scene creditsScene;
-	public static Stage window = new Stage();
-	private static Scene selectRocketScene;
 
 	@Override
-	public void start(Stage primaryStage) {
-		AudioManager.playBGM(ResourceManager.readMedia("startmenuBGM.mp3"), 0.5, true);
-		setUpScene();
-		window.setScene(titleScene);
-		window.setTitle("Star Destroyer");
-		window.setResizable(false);
-		window.show();
-	}
-
-	public static void main(String[] args) {
-		launch(args);
-	}
-
-	public static void setUpScene() {
-		titleScene = TitleScene.getTitleScene();
-		gameStartScene = GameStartScene.getGameStartScene();
-		selectRocketScene = SelectRocketScene.getSelectRocketScene();
-		howToScene = HowToScene.getHowToScene();
-		creditsScene = CreditsScene.getCreditsScene();
-	}
-
-	public static void titleHandle(Stage window) {
-		window.setScene(titleScene);
-		AudioManager.stopBGM();
-		AudioManager.playBGM(ResourceManager.readMedia("startMenuBGM.mp3"), 0.5, true);
+	public void init() {
 
 	}
 
-	public static void creditsHandle(Stage window) {
-		window.setScene(creditsScene);
-		AudioManager.stopBGM();
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		SceneManager.init(primaryStage, SceneManager.State.TITLE);
 
+		primaryStage.setTitle("Star Destroyer");
+		primaryStage.setResizable(false);
+		primaryStage.show();
+
+		AnimationTimer timer = new AnimationTimer() {
+			@Override
+			public void handle(long now) {
+				SceneManager.update();
+				// InputManager.update();
+			}
+		};
+		timer.start();
 	}
 
-	public static void howToHandle(Stage window) {
-		window.setScene(howToScene);
-		AudioManager.stopBGM();
-	}
-
-	public static void gameStartHandle(Stage window) {
-		window.setScene(gameStartScene);
-		AudioManager.stopBGM();
-		AudioManager.playBGM(ResourceManager.readMedia("gameStartBGM.mp3"), 0.5, true);
-	}
-
-	public static void selectRocketHandle(Stage window) {
-		window.setScene(selectRocketScene);
-		AudioManager.stopBGM();
-		AudioManager.playBGM(ResourceManager.readMedia("selectRocketBGM.mp3"), 0.5, true);
+	@Override
+	public void stop() {
 
 	}
-
-	public static Scene getGameStartScene() {
-		return gameStartScene;
-	}
-
 }

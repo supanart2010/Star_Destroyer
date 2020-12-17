@@ -9,6 +9,9 @@ public class PointBullet extends Bullet {
 	public PointBullet(Rocket rocket) {
 		super(rocket);
 		setBulletDamage(POINT_DAMAGE);
+		this.setSize(10, 10);
+		this.setPositionX(rocket.getPositionX() + 40);
+		this.setPositionY(rocket.getPositionY());
 	}
 
 }
