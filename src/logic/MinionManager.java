@@ -57,7 +57,7 @@ public class MinionManager {
 					}
 
 					// explosion effect
-//					Bomb b = new Bomb(minion.getPositionX(),minion.getPositionY());
+//					BombAnimation b = new BombAnimation(minion.getPositionX(),minion.getPositionY());
 //					b.update();
 //					b.render(gc, b.getWidth()+10, b.getHeight()+10);
 				}
