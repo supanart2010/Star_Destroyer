@@ -3,6 +3,7 @@ package entity;
 import java.util.Random;
 
 import application.ResourceManager;
+import application.SceneManager;
 
 public class Minion extends Entity {
 	private static final String MINION_NAME = "Invader";
@@ -26,10 +27,17 @@ public class Minion extends Entity {
 			this.setImage(ResourceManager.gameStart.REDMINION);
 		}
 		this.setSize(100, 100);
+		setPositionX(randomPositionX());
 	}
 
 	public int getDamage() {
 		return MINION_DAMAGE;
+	}
+	private double randomPositionX() {
+		double min = 1;
+		double max = SceneManager.WINDOW_WIDTH-400;
+		Random r = new Random();
+		return min + (max - min) * r.nextDouble();
 	}
 
 	private void randomType() {
