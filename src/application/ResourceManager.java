@@ -72,7 +72,7 @@ public class ResourceManager {
 		public final Image CREDITS_BACKGROUND;
 
 		CreditsResource() {
-			CREDITS_BACKGROUND = readImg("democredit.png");
+			CREDITS_BACKGROUND = readImg("creditbg.png");
 		}
 	}
 
