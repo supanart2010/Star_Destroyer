@@ -15,6 +15,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -29,16 +30,18 @@ public class HowToScene extends GameScene {
 		setGameBackground(ResourceManager.tutorial.TUTORIAL_BACKGROUND);
 
 		titleButton = new Button("Go back");
-		titleButton.setFont(new Font(30));
-		titleButton.setPadding(new Insets(5));
-		titleButton.setTextFill(Color.WHITE);
+		titleButton.setFont(new Font("Times New Roman",30));
 		titleButton.setBackground(null);
+		titleButton.setTextFill(Color.WHITE);
+		titleButton.setPadding(new Insets(5));
 
-		VBox vb = new VBox();
-		vb.getChildren().addAll(titleButton);
-		vb.setAlignment(Pos.BOTTOM_LEFT);
+		HBox hB = new HBox();
+		hB.getChildren().add(titleButton);
+		hB.setAlignment(Pos.BOTTOM_LEFT);
+		hB.setSpacing(10);
+		hB.setPadding(new Insets(30));
 
-		root.getChildren().addAll(vb);
+		root.getChildren().addAll(hB);
 
 		addListener();
 

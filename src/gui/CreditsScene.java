@@ -25,21 +25,21 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class CreditsScene extends GameScene {
-	private Button TitleButton;
+	private Button titleButton;
 
 	public CreditsScene() {
 		super();
 		setGameBackground(ResourceManager.credits.CREDITS_BACKGROUND);
-		TitleButton = new Button("Go back");
-		TitleButton.setFont(Font.font("Times New Roman", FontWeight.BOLD, 30));
-		TitleButton.setBackground(null);
-		TitleButton.setTextFill(Color.WHITE);
-		TitleButton.setPadding(new Insets(5));
+		titleButton = new Button("Go back");
+		titleButton.setFont(new Font("Times New Roman",30));
+		titleButton.setBackground(null);
+		titleButton.setTextFill(Color.WHITE);
+		titleButton.setPadding(new Insets(5));
 
 		addListener();
 
 		HBox hB = new HBox();
-		hB.getChildren().add(TitleButton);
+		hB.getChildren().add(titleButton);
 		hB.setAlignment(Pos.BOTTOM_LEFT);
 		hB.setSpacing(10);
 		hB.setPadding(new Insets(30));
@@ -53,14 +53,14 @@ public class CreditsScene extends GameScene {
 	protected void addListener() {
 		// TODO Auto-generated method stub
 		// handle
-		TitleButton.setOnMouseClicked(e -> {
+		titleButton.setOnMouseClicked(e -> {
 			changeScene(State.TITLE);
 		});
-		TitleButton.setOnMouseEntered(e -> {
-			TitleButton.setTextFill(Color.RED);
+		titleButton.setOnMouseEntered(e -> {
+			titleButton.setTextFill(Color.RED);
 		});
-		TitleButton.setOnMouseExited(e -> {
-			TitleButton.setTextFill(Color.WHITE);
+		titleButton.setOnMouseExited(e -> {
+			titleButton.setTextFill(Color.WHITE);
 		});
 	}
 

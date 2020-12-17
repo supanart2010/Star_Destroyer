@@ -17,6 +17,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 
@@ -27,7 +28,7 @@ import javafx.scene.text.Font;
 
 public class SelectRocketScene extends GameScene {
 
-	private Button TitleButton;
+	private Button titleButton;
 	private Button rocketABtn;
 	private Button rocketBBtn;
 	private Label chooseRocket;
@@ -40,14 +41,13 @@ public class SelectRocketScene extends GameScene {
 
 		chooseRocket = new Label("Choose your Rocket");
 		chooseRocket.setTextFill(Color.WHITE);
-		chooseRocket.setFont(new Font(40));
+		chooseRocket.setFont(new Font("Times New Roman",40));
 
-		TitleButton = new Button("Go Back");
-		// TitleButton.setPrefSize(80, 50);
-		TitleButton.setBackground(null);
-		TitleButton.setTextFill(Color.WHITE);
-		TitleButton.setFont(new Font(40));
-		TitleButton.setPadding(new Insets(5));
+		titleButton = new Button("Go back");
+		titleButton.setFont(new Font("Times New Roman",30));
+		titleButton.setBackground(null);
+		titleButton.setTextFill(Color.WHITE);
+		titleButton.setPadding(new Insets(5));
 
 		rocketABtn = new Button();
 		rocketABtn.setPrefSize(200, 200);
@@ -66,12 +66,21 @@ public class SelectRocketScene extends GameScene {
 		selectRocket.setSpacing(20);
 
 		addListener();
+		
+		BorderPane bP = new BorderPane();
+		bP.setPadding(new Insets(30));
+		bP.setTop(chooseRocket);
+		BorderPane.setMargin(chooseRocket, new Insets(50));
+		BorderPane.setAlignment(chooseRocket, Pos.CENTER);
+		bP.setCenter(selectRocket);
+		bP.setBottom(titleButton);
 
-		VBox vB = new VBox();
-		vB.getChildren().addAll(chooseRocket, selectRocket, TitleButton);
-		vB.setAlignment(Pos.CENTER);
+//		VBox vB = new VBox();
+//		vB.getChildren().addAll(chooseRocket, selectRocket, titleButton);
+//		vB.setAlignment(Pos.TOP_CENTER);
+//		vB.setPadding(new Insets(30));
 
-		root.getChildren().addAll(vB);
+		root.getChildren().addAll(bP);
 
 		AudioManager.playBGM(ResourceManager.bgm.SELECT, 0.5, true);
 	}
@@ -79,15 +88,15 @@ public class SelectRocketScene extends GameScene {
 	@Override
 	protected void addListener() {
 		// TODO Auto-generated method stub
-		TitleButton.setOnMouseClicked(e -> {
+		titleButton.setOnMouseClicked(e -> {
 			changeScene(State.TITLE);
 			;
 		});
-		TitleButton.setOnMouseEntered(e -> {
-			TitleButton.setTextFill(Color.RED);
+		titleButton.setOnMouseEntered(e -> {
+			titleButton.setTextFill(Color.RED);
 		});
-		TitleButton.setOnMouseExited(e -> {
-			TitleButton.setTextFill(Color.WHITE);
+		titleButton.setOnMouseExited(e -> {
+			titleButton.setTextFill(Color.WHITE);
 		});
 
 		rocketABtn.setOnMouseClicked(e -> {
