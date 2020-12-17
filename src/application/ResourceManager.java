@@ -40,7 +40,9 @@ public class ResourceManager {
 		public final Image BULLET;
 		public final Image LASERBULLET;
 		public final Image BOMBBULLET;
-		public final Image MINION;
+		public final Image GREENMINION;
+		public final Image REDMINION;
+		public final Image YELLOWMINION;
 		public final Image BOMB;
 
 		GameStartResource() {
@@ -50,7 +52,9 @@ public class ResourceManager {
 			BULLET = readImg("pointbullettest.png");
 			LASERBULLET = readImg("lasercontinue.png");
 			BOMBBULLET = readImg("bombbullet.png");
-			MINION = readImg("alien_green.png");
+			GREENMINION = readImg("alien_green.png");
+			REDMINION = readImg("alien_red.png");
+			YELLOWMINION = readImg("alien_yellow.png");
 			BOMB = readImg("explosion.png");
 		}
 

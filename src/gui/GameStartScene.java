@@ -87,7 +87,7 @@ public class GameStartScene extends GameScene {
 
 		// score add later
 
-		rightField.getChildren().addAll(stage, hp, laser, bomb);
+		rightField.getChildren().addAll(stage, hp, laser, bomb,score);
 		newroot.getChildren().add(rightField);
 		root.getChildren().add(newroot);
 

@@ -16,7 +16,7 @@ import javafx.scene.canvas.GraphicsContext;
 import rocket.Rocket;
 
 public class MinionManager {
-	private static ArrayList<Entity> minions = new ArrayList<>();
+	private ArrayList<Entity> minions = new ArrayList<>();
 
 	public MinionManager() {
 		for (int i = 0; i < 1; ++i) {
@@ -26,14 +26,6 @@ public class MinionManager {
 
 	public void addMinion() {
 		Minion minion = new Minion();
-		if (minion.getType() == 1) {
-			minion.setImage(ResourceManager.readImg("alien_green.png"));
-		} else if (minion.getType() == 2) {
-			minion.setImage(ResourceManager.readImg("alien_yellow.png"));
-		} else {
-			minion.setImage(ResourceManager.readImg("alien_red.png"));
-		}
-		minion.setSize(100, 100);
 		minions.add(minion);
 
 	}
