@@ -3,16 +3,12 @@ package rocket;
 import application.AudioManager;
 import application.Controller;
 import application.ResourceManager;
-import application.SceneSetupManager;
 import bullets.BombBullet;
 import bullets.LaserBullet;
 import bullets.PointBullet;
 import entity.Entity;
-import gui.BombAnimation;
-import gui.GameStartScene;
 import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.media.AudioClip;
 import logic.BulletManager;
 import logic.Hitable;
 import logic.Moveable;
@@ -25,22 +21,22 @@ public class Rocket extends Sprite implements Hitable, Moveable, Updatable {
 	private Storage storage;
 	private int maxHp;
 	private int hp;
-	private int speedX;
-	private int speedY;
+	private double speedX;
+	private double speedY;
 	private BulletManager bulletManager;
 	private int bodyDamage;
 	private int score;
 
 	// Constructor
-	public Rocket(String name, int type, Storage storage, int maxHp, int speedX, int speedY, int bodyDamage) {
+	public Rocket(String name, int type, Storage storage, int maxHp, double typeASpeedx, double typeASpeedy, int bodyDamage) {
 		super(0, 0, 0, 0); // edit it later
 		setName(name);
 		setType(type);
 		setStorage(storage);
 		setMaxHp(maxHp);
 		setHp(maxHp); // when instance, it has full HP
-		setSpeedX(speedX);
-		setSpeedY(speedY);
+		setSpeedX(typeASpeedx);
+		setSpeedY(typeASpeedy);
 		setBodyDamage(bodyDamage);
 		setScore(0);
 		bulletManager = new BulletManager(this);
@@ -238,20 +234,20 @@ public class Rocket extends Sprite implements Hitable, Moveable, Updatable {
 		this.hp = hp;
 	}
 
-	public int getSpeedX() {
+	public double getSpeedX() {
 		return speedX;
 	}
 
-	public void setSpeedX(int speedX) {
-		this.speedX = speedX;
+	public void setSpeedX(double typeASpeedx) {
+		this.speedX = typeASpeedx;
 	}
 
-	public int getSpeedY() {
+	public double getSpeedY() {
 		return speedY;
 	}
 
-	public void setSpeedY(int speedY) {
-		this.speedY = speedY;
+	public void setSpeedY(double typeASpeedy) {
+		this.speedY = typeASpeedy;
 	}
 
 	// Pointbullet

@@ -23,9 +23,6 @@ public class GameStartScene extends GameScene {
 	private GraphicsContext gc;
 	private MinionManager minionManager;
 	private Text hp, laser, bomb, stage, score;
-	// border of window
-//	public static final int WINDOW_WIDTH = 800;
-//	public static final int WINDOW_HEIGHT = 600;
 
 	private static boolean isRocketA = false;
 

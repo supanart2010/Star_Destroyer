@@ -9,8 +9,8 @@ public class RocketTypeA extends Rocket {
 	private static final int TYPE_A_LASERCAP = 10;
 	private static final Storage TYPE_A_STORAGE = new Storage(TYPE_A_BOMBCAP, TYPE_A_LASERCAP);
 	private static final int TYPE_A_MAXHP = 250;
-	private static final int TYPE_A_SPEEDX = 10;
-	private static final int TYPE_A_SPEEDY = 10;
+	private static final double TYPE_A_SPEEDX = 6;
+	private static final double TYPE_A_SPEEDY = 6;
 	private static final int TYPE_A_BODYDAMAGE = 20;
 
 	public RocketTypeA() {
