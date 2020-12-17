@@ -1,6 +1,8 @@
 package application;
 
 import application.ResourceManager.SoundtrackResource;
+import exception.GameException;
+import exception.ResourceNotFoundException;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
@@ -68,7 +70,7 @@ public class ResourceManager {
 			ROCKETA = readImg("rocketA.png");
 			ROCKETB = readImg("rocketB.png");
 			BULLET = readImg("pointbullettest.png");
-			LASERBULLET = readImg("lasercontinue.png");
+			LASERBULLET = readImg("laserbullet.png");
 			BOMBBULLET = readImg("bombbullet.png");
 			GREENMINION = readImg("alien_green.png");
 			REDMINION = readImg("alien_red.png");
@@ -103,39 +105,45 @@ public class ResourceManager {
 		}
 	}
 
-	public static void loadResources(SceneManager.State sceneState) {
+	public static void loadResources(SceneManager.State sceneState) throws GameException {
 
-		switch (sceneState) {
-		case TITLE:
-			if (title == null)
-				title = new TitleResource();
-			break;
-		case SELECTROCKET:
-			if (selectRocket == null)
-				selectRocket = new SelectRocketResource();
-			break;
+		try {
+			switch (sceneState) {
+			case TITLE:
+				if (title == null)
+					title = new TitleResource();
+				break;
+			case SELECTROCKET:
+				if (selectRocket == null)
+					selectRocket = new SelectRocketResource();
+				break;
 
-		case PLAYING:
-			if (gameStart == null)
-				gameStart = new GameStartResource();
-			break;
-		case TUTORIAL:
-			if (tutorial == null)
-				tutorial = new TutorialResource();
-			break;
-		case CREDITS:
-			if (credits == null)
-				credits = new CreditsResource();
-			break;
+			case PLAYING:
+				if (gameStart == null)
+					gameStart = new GameStartResource();
+				break;
+			case TUTORIAL:
+				if (tutorial == null)
+					tutorial = new TutorialResource();
+				break;
+			case CREDITS:
+				if (credits == null)
+					credits = new CreditsResource();
+				break;
 //		case WINNING:
 //			if (winning == null)
 //				winning = new WinningResource();
 //			break;
-		case LOSING:
-			if (losing == null)
-				losing = new LosingResource();
-			break;
-		default:
+			case LOSING:
+				if (losing == null)
+					losing = new LosingResource();
+				break;
+			default:
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ResourceNotFoundException(e.getMessage());
 		}
 	}
 

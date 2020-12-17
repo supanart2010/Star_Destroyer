@@ -105,6 +105,7 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 					Platform.runLater(new Runnable() {
 						public void run() {
 							laser();
+							AudioManager.playSFX(ResourceManager.readAudioClip("lasersound.wav"), 0.3);
 							getStorage().consumeLaserBullet();
 							Controller.setLaserDelay(true);
 						}
@@ -130,6 +131,7 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 					Platform.runLater(new Runnable() {
 						public void run() {
 							bomb();
+							AudioManager.playSFX(ResourceManager.readAudioClip("bombsound.wav"), 0.3);
 							getStorage().consumeBombBullet();
 							Controller.setBombDelay(true);
 						}

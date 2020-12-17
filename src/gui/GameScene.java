@@ -1,6 +1,7 @@
 package gui;
 
 import application.SceneManager;
+import exception.GameException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -45,7 +46,21 @@ public abstract class GameScene extends Scene {
 	protected void changeScene(SceneManager.State sceneState) {
 		releaseSceneComponents();
 
-		SceneManager.changeSceneState(sceneState);
+		try {
+			SceneManager.changeSceneState(sceneState);
+		} catch (GameException e) {
+			e.printStackTrace();
+			e.print();
+			System.out.println("Cannot change scene from " + this.sceneState + " to " + sceneState);
+
+			// Proceed to restart this scene instead
+			try {
+				SceneManager.changeSceneState(this.sceneState);
+			} catch (GameException e1) {
+				e1.printStackTrace();
+				e1.print();
+			}
+		}
 	}
 
 	public void update() {

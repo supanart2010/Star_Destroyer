@@ -1,5 +1,8 @@
 package application;
 
+import exception.GameException;
+import exception.ResourceNotFoundException;
+import exception.SceneChangingException;
 import gui.CreditsScene;
 import gui.GameScene;
 import gui.GameStartScene;
@@ -24,7 +27,7 @@ public final class SceneManager {
 	private static GameScene currentScene; // Can also check whether the scene is ready for .update()
 	private static State sceneState;
 
-	public static void init(Stage stage, State sceneState) {
+	public static void init(Stage stage, State sceneState) throws GameException{
 		SceneManager.window = stage;
 		ResourceManager.loadAllSharedResources();
 		SceneManager.sceneState = sceneState;
@@ -40,17 +43,17 @@ public final class SceneManager {
 		return sceneState;
 	}
 
-	public static void changeSceneState(State sceneState) {
-//		if (window == null) {
-//			//throw new SceneChangingException("At SceneManager, window is null");
-//		}
+	public static void changeSceneState(State sceneState) throws GameException {
+		if (window == null) {
+			throw new SceneChangingException("At SceneManager, window is null");
+		}
 		SceneManager.sceneState = sceneState;
 		setCurrentSceneFromSceneState(sceneState);
 		window.setScene(currentScene);
 		window.show();
 	}
 
-	private static void setCurrentSceneFromSceneState(State sceneState) {
+	private static void setCurrentSceneFromSceneState(State sceneState) throws GameException{
 		GameScene scene = null;
 		currentScene = null; // Preventing other thread to access .update() while changing scene
 		switch (sceneState) {
