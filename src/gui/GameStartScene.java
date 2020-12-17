@@ -87,13 +87,14 @@ public class GameStartScene extends GameScene {
 
 		// score add later
 
-		rightField.getChildren().addAll(stage, hp, laser, bomb,score);
+		rightField.getChildren().addAll(stage, hp, laser, bomb, score);
 		newroot.getChildren().add(rightField);
 		root.getChildren().add(newroot);
 
 		minionManager = new MinionManager();
-
-		SceneSetupManager.setSceneControlable(this);
+		addListener();
+		//SceneSetupManager.setSceneControlable(this);
+		setDefaultController();
 
 		AudioManager.playBGM(ResourceManager.readMedia("gameStartBGM.mp3"), 0.5, true);
 	}
@@ -101,7 +102,61 @@ public class GameStartScene extends GameScene {
 	@Override
 	protected void addListener() {
 		// TODO Auto-generated method stub
+		this.setOnKeyPressed(e -> {
+			switch (e.getCode()) {
+			case LEFT:
+				Controller.setMoveLeft(true);
+				break;
+			case RIGHT:
+				Controller.setMoveRight(true);
+				break;
+			case UP:
+				Controller.setMoveUp(true);
+				break;
+			case DOWN:
+				Controller.setMoveDown(true);
+				break;
+			case SPACE:
+				Controller.setShooting(true);
+				break;
+			case Z:
+				Controller.setShootingLaser(true);
+				break;
+			case X:
+				Controller.setShootingBomb(true);
+				break;
+			default:
+				break;
 
+			}
+		});
+		this.setOnKeyReleased(e -> {
+			switch (e.getCode()) {
+			case LEFT:
+				Controller.setMoveLeft(false);
+				break;
+			case RIGHT:
+				Controller.setMoveRight(false);
+				break;
+			case UP:
+				Controller.setMoveUp(false);
+				break;
+			case DOWN:
+				Controller.setMoveDown(false);
+				break;
+			case SPACE:
+				Controller.setShooting(false);
+				break;
+			case Z:
+				Controller.setShootingLaser(false);
+				break;
+			case X:
+				Controller.setShootingBomb(false);
+				break;
+			default:
+				break;
+			}
+		});
 	}
 
 	@Override
@@ -131,5 +186,18 @@ public class GameStartScene extends GameScene {
 
 	public static void setRocketA(boolean isRocketA) {
 		GameStartScene.isRocketA = isRocketA;
+	}
+
+	public void setDefaultController() {
+		Controller.setMoveLeft(false);
+		Controller.setMoveRight(false);
+		Controller.setMoveDown(false);
+		Controller.setMoveUp(false);
+		Controller.setShooting(false);
+		Controller.setShootingLaser(false);
+		Controller.setShootingBomb(false);
+		Controller.setPointDelay(false);
+		Controller.setLaserDelay(false);
+		Controller.setBombDelay(false);
 	}
 }
