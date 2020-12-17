@@ -1,6 +1,6 @@
 package logic;
 
-public interface Hitable {
+public interface Hittable {
 	public void hit();
 
 }

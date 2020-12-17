@@ -10,12 +10,12 @@ import entity.Entity;
 import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
 import logic.BulletManager;
-import logic.Hitable;
+import logic.Hittable;
 import logic.Moveable;
 import logic.Sprite;
 import logic.Updatable;
 
-public class Rocket extends Sprite implements Hitable, Moveable, Updatable {
+public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 	private String name;
 	private int type;
 	private Storage storage;

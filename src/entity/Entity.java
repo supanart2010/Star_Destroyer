@@ -3,14 +3,14 @@ package entity;
 import java.util.Random;
 
 import bullets.Bullet;
-import logic.Hitable;
+import logic.Hittable;
 import logic.Moveable;
 import logic.Sprite;
 import logic.Updatable;
 import rocket.Rocket;
 import rocket.Storage;
 
-public abstract class Entity extends Sprite implements Updatable, Moveable, Hitable {
+public abstract class Entity extends Sprite implements Updatable, Moveable, Hittable {
 	private String name;
 	private int maxHp;
 	private int hp;

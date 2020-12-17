@@ -1,12 +1,12 @@
 package bullets;
 
-import logic.Hitable;
+import logic.Hittable;
 import logic.Moveable;
 import logic.Sprite;
 import logic.Updatable;
 import rocket.Rocket;
 
-public class Bullet extends Sprite implements Moveable, Hitable, Updatable {
+public class Bullet extends Sprite implements Moveable, Hittable, Updatable {
 	public static final int BULLET_SPEEDX = 0;
 	public static final int BULLET_SPEEDY = 10;
 	private int bulletDamage;
