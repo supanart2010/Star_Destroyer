@@ -19,7 +19,7 @@ public class MinionManager {
 	private ArrayList<Entity> minions = new ArrayList<>();
 
 	public MinionManager() {
-		for (int i = 0; i < 1; ++i) {
+		for (int i = 0; i < 3; ++i) {
 			addMinion();
 		}
 	}
