@@ -70,7 +70,7 @@ public class TitleScene extends GameScene {
 		// add canvas and VBox to root
 		root.getChildren().addAll(vb);
 
-		AudioManager.playBGM(ResourceManager.readMedia("startMenuBGM.mp3"), 0.5, true);
+		AudioManager.playBGM(ResourceManager.bgm.TITLE, 0.5, true);
 	}
 
 	@Override

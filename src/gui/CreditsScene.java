@@ -46,7 +46,7 @@ public class CreditsScene extends GameScene {
 
 		root.getChildren().addAll(hB);
 
-		AudioManager.playBGM(ResourceManager.readMedia("startMenuBGM.mp3"), 0.5, true);
+		AudioManager.playBGM(ResourceManager.bgm.TITLE, 0.5, true);
 	}
 
 	@Override

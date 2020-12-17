@@ -26,6 +26,7 @@ public final class SceneManager {
 
 	public static void init(Stage stage, State sceneState) {
 		SceneManager.window = stage;
+		ResourceManager.loadAllSharedResources();
 		SceneManager.sceneState = sceneState;
 		setCurrentSceneFromSceneState(sceneState);
 		SceneManager.window.setScene(currentScene);

@@ -15,6 +15,8 @@ public class LosingScene extends GameScene {
 	private Button title;
 	private Button newGame;
 	private Label gameOver;
+	private Label score;
+	private Label highScore;
 
 	public LosingScene() {
 		super();
@@ -39,14 +41,22 @@ public class LosingScene extends GameScene {
 		newGame.setTextFill(Color.WHITE);
 		newGame.setPadding(new Insets(5));
 
-		vB.getChildren().addAll(gameOver, newGame, title);
+		score = new Label("Your score : " + GameStartScene.getCurrentScore());
+		score.setFont(new Font("Times New Roman", 30));
+		score.setTextFill(Color.WHITE);
+
+		highScore = new Label("High score : " + GameStartScene.getHighScore());
+		highScore.setFont(new Font("Times New Roman", 30));
+		highScore.setTextFill(Color.WHITE);
+
+		vB.getChildren().addAll(gameOver, score, highScore, newGame, title);
 		vB.setAlignment(Pos.CENTER);
 		vB.setSpacing(20);
 
 		root.getChildren().add(vB);
 		addListener();
-		
-		AudioManager.playBGM(ResourceManager.readMedia("losing_theme.mp3"),0.5,false);
+
+		AudioManager.playBGM(ResourceManager.bgm.LOSING, 0.5, false);
 	}
 
 	@Override

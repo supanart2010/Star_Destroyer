@@ -1,8 +1,10 @@
 package application;
 
+import application.ResourceManager.SoundtrackResource;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class ResourceManager {
 	public static TitleResource title;
@@ -13,11 +15,27 @@ public class ResourceManager {
 //	public static WinningResource winning;
 	public static LosingResource losing;
 
+	public static SoundtrackResource bgm;
+
+	public static class SoundtrackResource {
+		public final Media TITLE;
+		public final Media SELECT;
+		public final Media LOSING;
+		public final Media START;
+
+		SoundtrackResource() {
+			TITLE = readMedia("startMenuBGM.mp3");
+			SELECT = readMedia("selectRocketBGM.mp3");
+			START = readMedia("gameStartBGM.mp3");
+			LOSING = readMedia("losing_theme.mp3");
+		}
+	}
+
 	public static class TitleResource {
 		public final Image TITLE_BACKGROUND;
 
 		TitleResource() {
-			this.TITLE_BACKGROUND = readImg("title_bg.png");
+			TITLE_BACKGROUND = readImg("title_bg.png");
 		}
 	}
 
@@ -140,6 +158,11 @@ public class ResourceManager {
 		default:
 			break;
 		}
+	}
+
+	public static void loadAllSharedResources() {
+		if (bgm == null)
+			bgm = new SoundtrackResource();
 	}
 
 	public static Image readImg(String filename) {

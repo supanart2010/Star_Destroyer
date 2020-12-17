@@ -23,7 +23,6 @@ public class Main extends Application {
 			@Override
 			public void handle(long now) {
 				SceneManager.update();
-				// InputManager.update();
 			}
 		};
 		timer.start();

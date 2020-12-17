@@ -24,6 +24,8 @@ public class GameStartScene extends GameScene {
 	private MinionManager minionManager;
 	private Text hp, laser, bomb, stage, score;
 
+	private static int currentScore;
+	private static int highScore = 0;
 	private static boolean isRocketA = false;
 
 	public GameStartScene() {
@@ -75,10 +77,11 @@ public class GameStartScene extends GameScene {
 
 		minionManager = new MinionManager();
 		addListener();
-		//SceneSetupManager.setSceneControlable(this);
-		setDefaultController();
+		// SceneSetupManager.setSceneControlable(this);
 
-		AudioManager.playBGM(ResourceManager.readMedia("gameStartBGM.mp3"), 0.5, true);
+		setDefaultController();
+		setCurrentScore(0);
+		AudioManager.playBGM(ResourceManager.bgm.START, 0.5, true);
 	}
 
 	@Override
@@ -160,6 +163,10 @@ public class GameStartScene extends GameScene {
 		laser.setText("Laser ammo : " + myRocket.getStorage().getLaserRemain());
 		bomb.setText("Bomb ammo : " + myRocket.getStorage().getBombRemain());
 		score.setText("Score : " + myRocket.getScore());
+		setCurrentScore(myRocket.getScore());
+		if (getHighScore() < getCurrentScore()) {
+			setHighScore(currentScore);
+		}
 	}
 
 	public static boolean isRocketA() {
@@ -181,5 +188,21 @@ public class GameStartScene extends GameScene {
 		Controller.setPointDelay(false);
 		Controller.setLaserDelay(false);
 		Controller.setBombDelay(false);
+	}
+
+	public static int getCurrentScore() {
+		return currentScore;
+	}
+
+	public static void setCurrentScore(int currentScore) {
+		GameStartScene.currentScore = currentScore;
+	}
+
+	public static int getHighScore() {
+		return highScore;
+	}
+
+	public static void setHighScore(int highScore) {
+		GameStartScene.highScore = highScore;
 	}
 }

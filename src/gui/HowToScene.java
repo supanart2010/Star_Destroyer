@@ -21,7 +21,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class HowToScene extends GameScene {
-	private static Label HowToTitle;
 	private Button titleButton;
 
 	public HowToScene() {
@@ -43,7 +42,7 @@ public class HowToScene extends GameScene {
 
 		addListener();
 
-		AudioManager.playBGM(ResourceManager.readMedia("startMenuBGM.mp3"), 0.5, true);
+		AudioManager.playBGM(ResourceManager.bgm.TITLE, 0.5, true);
 	}
 
 	@Override

@@ -73,7 +73,7 @@ public class SelectRocketScene extends GameScene {
 
 		root.getChildren().addAll(vB);
 
-		AudioManager.playBGM(ResourceManager.readMedia("selectRocketBGM.mp3"), 0.5, true);
+		AudioManager.playBGM(ResourceManager.bgm.SELECT, 0.5, true);
 	}
 
 	@Override
