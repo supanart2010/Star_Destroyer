@@ -1,6 +1,5 @@
 package bullets;
 
-import entity.Entity;
 import logic.Hitable;
 import logic.Moveable;
 import logic.Sprite;
@@ -10,7 +9,6 @@ import rocket.Rocket;
 public class Bullet extends Sprite implements Moveable, Hitable, Updatable {
 	public static final int BULLET_SPEEDX = 0;
 	public static final int BULLET_SPEEDY = 10;
-	private boolean isPlayerBullet;
 	private int bulletDamage;
 	private int speedX;
 	private int speedY;
@@ -19,7 +17,6 @@ public class Bullet extends Sprite implements Moveable, Hitable, Updatable {
 	// Constructor
 	public Bullet(Rocket rocket) {
 		super(0, 0, 0, 0);
-		setPlayerBullet(true);
 		setSpeedX(BULLET_SPEEDX);
 		setSpeedY(BULLET_SPEEDY);
 		setConsumed(false);
@@ -32,14 +29,6 @@ public class Bullet extends Sprite implements Moveable, Hitable, Updatable {
 	}
 
 	// Getter & Setter
-	public boolean isPlayerBullet() {
-		return isPlayerBullet;
-	}
-
-	public void setPlayerBullet(boolean isPlayerBullet) {
-		this.isPlayerBullet = isPlayerBullet;
-	}
-
 	public int getBulletDamage() {
 		return bulletDamage;
 	}
