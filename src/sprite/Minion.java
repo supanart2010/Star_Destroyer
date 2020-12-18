@@ -2,6 +2,7 @@ package sprite;
 
 import java.util.Random;
 
+import gui.GameStartScene;
 import logic.ResourceManager;
 import logic.SceneManager;
 
@@ -36,7 +37,7 @@ public class Minion extends Entity {
 	
 	public double randomPositionX() {
 		double min = 1;
-		double max = SceneManager.WINDOW_WIDTH-400;
+		double max = GameStartScene.GAMELAYER_WIDTH - getWidth();
 		Random r = new Random();
 		return min + (max - min) * r.nextDouble();
 	}
