@@ -10,6 +10,8 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hitt
 	private double speedX;
 	private double speedY;
 	private boolean isMovingLeftDirection;
+	public static final int ENTITY_WIDTH = 100;
+	public static final int ENTITY_HEIGHT = 100;
 
 	// Constructor
 	public Entity(int maxHp) {

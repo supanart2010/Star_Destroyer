@@ -14,10 +14,8 @@ public class Minion extends Entity {
 
 	// Constructor
 	public Minion() {
-		super(0);
+		super(MINION_MAXHP);
 		randomType();
-		setMaxHp(MINION_MAXHP);
-		setHp(MINION_MAXHP);
 		setSpeedX(randomMinionSpeedX());
 		setSpeedY(randomMinionSpeedY());
 		if (this.getType() == 1) {
@@ -27,7 +25,7 @@ public class Minion extends Entity {
 		} else {
 			this.setImage(ResourceManager.gameStart.REDMINION);
 		}
-		this.setSize(100, 100);
+		this.setSize(ENTITY_WIDTH, ENTITY_HEIGHT);
 		setPositionX(randomPositionX());
 	}
 
