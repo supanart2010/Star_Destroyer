@@ -2,6 +2,9 @@ package sprite;
 
 import java.util.Random;
 
+import gui.GameStartScene;
+import logic.SceneManager;
+
 public abstract class Entity extends Sprite implements Updatable, Moveable, Hittable {
 	private int maxHp;
 	private int hp;
@@ -48,8 +51,7 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hitt
 	}
 
 	public boolean isBoarderCollision() {
-		int CanvasWidth = 500;
-		return (getPositionX() < 0) || (getPositionX() + this.getWidth() > CanvasWidth);
+		return (getPositionX() < 0) || (getPositionX() + this.getWidth() > GameStartScene.GAMELAYER_WIDTH);
 		// edit CanvasWidht later
 	}
 
