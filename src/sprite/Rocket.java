@@ -8,6 +8,8 @@ import logic.Controller;
 import logic.ResourceManager;
 
 public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
+	public static final int ROCKET_WIDTH = 100;
+	public static final int ROCKET_HEIGHT = 100;
 	private String name;
 	private int type;
 	private Storage storage;
@@ -35,6 +37,22 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 	}
 
 	// Addition Method
+	public void shoot() {
+		bulletManager.addBullet();
+	}
+
+	public void laser() {
+		bulletManager.addLaserBullet();
+	}
+
+	public void bomb() {
+		bulletManager.addBombBullet();
+	}
+
+	public BulletManager getBulletManager() {
+		return bulletManager;
+	}
+	
 	public void addScore(int score) {
 		setScore(score + getScore());
 	}
@@ -53,6 +71,12 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 
 	// Interface Method
 	// debug update with parameter and unimplement Updatable
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+
+	}
+	
 	public void update(double width, double height, GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		if (Controller.isMoveUp() && positionY > 0) {
@@ -141,14 +165,7 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 				}
 			};
 			t.start();
-//			System.out.println(getStorage().getBombRemain());
 		}
-//		if (Controller.isShootingLaser() && !getStorage().hasLaserBullet()) {
-//			System.out.println("out of laser ammo");
-//		}
-//		if (Controller.isShootingBomb() && !getStorage().hasBombBullet()) {
-//			System.out.println("out of bomb ammo");
-//		}
 		bulletManager.update(gc, height);
 		this.render(gc);
 	}
@@ -244,30 +261,6 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 		this.speedY = typeASpeedy;
 	}
 
-	// Pointbullet
-	public void shoot() {
-		bulletManager.addBullet();
-	}
-
-	// laserbullet
-	public void laser() {
-		bulletManager.addLaserBullet();
-	}
-
-	// bombbullet
-	public void bomb() {
-		bulletManager.addBombBullet();
-	}
-
-	public BulletManager getBulletManager() {
-		return bulletManager;
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-
-	}
 
 	public int getBodyDamage() {
 		return bodyDamage;

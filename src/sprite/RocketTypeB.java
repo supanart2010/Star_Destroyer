@@ -1,5 +1,6 @@
 package sprite;
 
+import gui.GameStartScene;
 import logic.ResourceManager;
 
 public class RocketTypeB extends Rocket {
@@ -16,9 +17,9 @@ public class RocketTypeB extends Rocket {
 	public RocketTypeB() {
 		super(TYPE_B_NAME, TYPE_B, TYPE_B_STORAGE, TYPE_B_MAXHP, TYPE_B_SPEEDX, TYPE_B_SPEEDY, TYPE_A_BODYDAMAGE);
 		this.setImage(ResourceManager.gameStart.ROCKETB);
-		this.setWidth(100);
-		this.setHeight(100);
-		this.setPositionX(250 - this.getWidth());
-		this.setPositionY(500);
+		this.setWidth(ROCKET_WIDTH);
+		this.setHeight(ROCKET_HEIGHT);
+		this.setPositionX(GameStartScene.GAMELAYER_WIDTH/2 - this.getWidth());
+		this.setPositionY(GameStartScene.GAMELAYER_HEIGHT - this.getHeight());
 	}
 }

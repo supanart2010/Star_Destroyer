@@ -1,7 +1,12 @@
 package gui;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -18,11 +23,16 @@ import sprite.RocketTypeA;
 import sprite.RocketTypeB;
 
 public class GameStartScene extends GameScene {
+	public static final int GAMELAYER_WIDTH = 500;
+	public static final int GAMELAYER_HEIGHT = 600;
+	public static final int DATALAYER_WIDTH = 300;
+	public static final int DATALAYER_HEIGHT = 600;
+
 	private Rocket myRocket;
 
 	private GraphicsContext gc;
 	private MinionManager minionManager;
-	private Text rocketName, hp, laser, bomb, stage, score;
+	private Text rocketName, hp, laser, bomb, score;
 
 	private static int currentScore;
 	private static int highScore = 0;
@@ -33,34 +43,32 @@ public class GameStartScene extends GameScene {
 		this.sceneState = State.PLAYING;
 		setGameBackground(ResourceManager.gameStart.GAMESTART_BACKGROUND);
 
-		gameLayer = new Canvas(500, 600);
+		gameLayer = new Canvas(GAMELAYER_WIDTH, GAMELAYER_HEIGHT);
 		gc = gameLayer.getGraphicsContext2D();
 
 		HBox newroot = new HBox();
-		newroot.getChildren().add(gameLayer);
-		newroot.setPrefSize(800, 600);
+		newroot.setPrefSize(SceneManager.WINDOW_WIDTH, SceneManager.WINDOW_HEIGHT);
 
 		if (isRocketA) {
 			myRocket = new RocketTypeA();
-			myRocket.render(gc, 100, 100);
+			myRocket.render(gc, Rocket.ROCKET_WIDTH, Rocket.ROCKET_HEIGHT);
 		} else {
 			myRocket = new RocketTypeB();
-			myRocket.render(gc, 100, 100);
+			myRocket.render(gc, Rocket.ROCKET_WIDTH, Rocket.ROCKET_HEIGHT);
 		}
 		// Right Field
-		VBox rightField = new VBox();
-		
+		VBox dataLayer = new VBox();
+		dataLayer.setPrefSize(DATALAYER_WIDTH, DATALAYER_HEIGHT);
+		dataLayer.setAlignment(Pos.CENTER);
+		dataLayer.setBackground(new Background(new BackgroundFill(null, CornerRadii.EMPTY, new Insets(0))));
+
 		rocketName = new Text("Rocket : " + myRocket.getName());
 		rocketName.setFill(Color.WHITE);
 		rocketName.setFont(new Font(20));
-		
+
 		hp = new Text("Health : " + myRocket.getHp());
 		hp.setFill(Color.WHITE);
 		hp.setFont(new Font(20));
-
-		stage = new Text("stage : ");
-		stage.setFill(Color.WHITE);
-		stage.setFont(new Font(20));
 
 		laser = new Text("Laser ammo : " + myRocket.getStorage().getLaserCapacity());
 		laser.setFill(Color.WHITE);
@@ -74,15 +82,13 @@ public class GameStartScene extends GameScene {
 		score.setFill(Color.WHITE);
 		score.setFont(new Font(20));
 
-		// score add later
-
-		rightField.getChildren().addAll(rocketName, stage, hp, laser, bomb, score);
-		newroot.getChildren().add(rightField);
+		dataLayer.getChildren().addAll(rocketName, hp, laser, bomb, score);
+		newroot.getChildren().add(gameLayer);
+		newroot.getChildren().add(dataLayer);
 		root.getChildren().add(newroot);
 
 		minionManager = new MinionManager();
 		addListener();
-		// SceneSetupManager.setSceneControlable(this);
 
 		setDefaultController();
 		setCurrentScore(0);
