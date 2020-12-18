@@ -1,11 +1,13 @@
 package sprite;
 
+import gui.GameStartScene;
 import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
 import logic.AudioManager;
 import logic.BulletManager;
 import logic.Controller;
 import logic.ResourceManager;
+import logic.SceneManager;
 
 public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 	public static final int ROCKET_WIDTH = 100;
@@ -21,20 +23,35 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 	private int score;
 
 	// Constructor
-	public Rocket(String name, int type, Storage storage, int maxHp, double typeASpeedx, double typeASpeedy, int bodyDamage) {
+	public Rocket(String name, Storage storage, int maxHp, double speedX, double speedY, int bodyDamage) {
 		super(0, 0, 0, 0); // edit it later
 		setName(name);
 		setStorage(storage);
 		setMaxHp(maxHp);
 		setHp(maxHp); // when instance, it has full HP
-		setSpeedX(typeASpeedx);
-		setSpeedY(typeASpeedy);
+		setSpeedX(speedX);
+		setSpeedY(speedY);
 		setBodyDamage(bodyDamage);
 		setScore(0);
 		bulletManager = new BulletManager(this);
 	}
 
 	// Addition Method
+	public void move() {
+		if (Controller.isMoveUp() && positionY > 0) {
+			moveUp();
+		}
+		if (Controller.isMoveDown() && positionY + getHeight() < GameStartScene.GAMELAYER_HEIGHT) {
+			moveDown();
+		}
+		if (Controller.isMoveLeft() && positionX > 0) {
+			moveLeft();
+		}
+		if (Controller.isMoveRight() && positionX + getWidth() < GameStartScene.GAMELAYER_WIDTH) {
+			moveRight();
+		}
+	}
+	
 	public void shoot() {
 		bulletManager.addBullet();
 	}
@@ -47,10 +64,6 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 		bulletManager.addBombBullet();
 	}
 
-	public BulletManager getBulletManager() {
-		return bulletManager;
-	}
-	
 	public void addScore(int score) {
 		setScore(score + getScore());
 	}
@@ -70,6 +83,30 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 	// Interface Method
 	// debug update with parameter and unimplement Updatable
 	@Override
+	public void moveUp() {
+		// TODO Auto-generated method stub
+		positionY -= speedY;
+	}
+
+	@Override
+	public void moveDown() {
+		// TODO Auto-generated method stub
+		positionY += speedY;
+	}
+
+	@Override
+	public void moveLeft() {
+		// TODO Auto-generated method stub
+		positionX -= speedX;
+	}
+
+	@Override
+	public void moveRight() {
+		// TODO Auto-generated method stub
+		positionX += speedX;
+	}
+	
+	@Override
 	public void update() {
 		// TODO Auto-generated method stub
 
@@ -77,18 +114,7 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 	
 	public void update(double width, double height, GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		if (Controller.isMoveUp() && positionY > 0) {
-			moveUp();
-		}
-		if (Controller.isMoveDown() && positionY + this.getHeight() < height) {
-			moveDown();
-		}
-		if (Controller.isMoveLeft() && positionX > 0) {
-			moveLeft();
-		}
-		if (Controller.isMoveRight() && positionX + this.getWidth() < width - 300) {
-			moveRight();
-		}
+		move();
 		if (Controller.isShooting() && !Controller.isPointDelay()) {
 			Thread t = new Thread() {
 				public void run() {
@@ -178,29 +204,7 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 		decreaseHp(entity.getDamage());
 	}
 
-	@Override
-	public void moveUp() {
-		// TODO Auto-generated method stub
-		positionY -= speedY;
-	}
-
-	@Override
-	public void moveDown() {
-		// TODO Auto-generated method stub
-		positionY += speedY;
-	}
-
-	@Override
-	public void moveLeft() {
-		// TODO Auto-generated method stub
-		positionX -= speedX;
-	}
-
-	@Override
-	public void moveRight() {
-		// TODO Auto-generated method stub
-		positionX += speedX;
-	}
+	
 
 	// Getter & Setter
 	public String getName() {
@@ -268,4 +272,8 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 		this.score = score;
 	}
 
+	public BulletManager getBulletManager() {
+		return bulletManager;
+	}
+	
 }
