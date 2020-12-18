@@ -81,7 +81,6 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 	}
 
 	// Interface Method
-	// debug update with parameter and unimplement Updatable
 	@Override
 	public void moveUp() {
 		// TODO Auto-generated method stub
