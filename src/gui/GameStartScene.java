@@ -168,8 +168,7 @@ public class GameStartScene extends GameScene {
 		}
 		gc.clearRect(0, 0, SceneManager.WINDOW_WIDTH, SceneManager.WINDOW_HEIGHT);
 		myRocket.update(gc);
-		minionManager.update(myRocket.getBulletManager(), gc, SceneManager.WINDOW_WIDTH, SceneManager.WINDOW_HEIGHT,
-				myRocket);
+		minionManager.update(myRocket.getBulletManager(), gc, myRocket);
 		hp.setText("Health : " + myRocket.getHp());
 		laser.setText("Laser ammo : " + myRocket.getStorage().getLaserRemain());
 		bomb.setText("Bomb ammo : " + myRocket.getStorage().getBombRemain());

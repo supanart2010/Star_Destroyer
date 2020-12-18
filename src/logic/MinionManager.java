@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 
+import gui.GameStartScene;
 import javafx.scene.canvas.GraphicsContext;
 import sprite.BombAnimation;
 import sprite.BombBullet;
@@ -28,14 +29,14 @@ public class MinionManager {
 
 	}
 
-	public void update(BulletManager bulletManager, GraphicsContext gc, double width, double height, Rocket rocket) {
+	public void update(BulletManager bulletManager, GraphicsContext gc, Rocket rocket) {
 		ArrayList<Integer> toRemoveBullets = new ArrayList<>();
 		ArrayList<Integer> toRemoveMinions = new ArrayList<>();
 		int more = 0;
 		for (Entity minion : minions) {
 			minion.update();
 			minion.render(gc, minion.getWidth(), minion.getHeight());
-			if (minion.getPositionY() > height) {
+			if (minion.getPositionY() > GameStartScene.GAMELAYER_HEIGHT) {
 				toRemoveMinions.add(minions.indexOf(minion));
 			}
 			if (minion.intersects(rocket)) {

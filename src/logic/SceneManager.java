@@ -17,16 +17,17 @@ public final class SceneManager {
 
 	public static final int WINDOW_WIDTH = 800;
 	public static final int WINDOW_HEIGHT = 600;
+	private static Stage window;
+	private static GameScene currentScene; // Can also check whether the scene is ready for .update()
+	private static State sceneState;
+
 
 	public static enum State {
 		TITLE, SELECTROCKET, PLAYING, // GameplayScene
 		TUTORIAL, CREDITS, LOSING
 	}
 
-	private static Stage window;
-	private static GameScene currentScene; // Can also check whether the scene is ready for .update()
-	private static State sceneState;
-
+	
 	public static void init(Stage stage, State sceneState) throws GameException{
 		SceneManager.window = stage;
 		ResourceManager.loadAllSharedResources();
@@ -78,10 +79,6 @@ public final class SceneManager {
 			ResourceManager.loadResources(State.CREDITS);
 			scene = new CreditsScene();
 			break;
-//		case WINNING:
-//			// ResourceManager.loadResources(State.WINNING);
-//			scene = new WinningScene();
-//			break;
 		case LOSING:
 			ResourceManager.loadResources(State.LOSING);
 			scene = new LosingScene();

@@ -19,8 +19,8 @@ public class BulletManager {
 	}
 
 	public void addBullet() {
-		Bullet bullet = new PointBullet(this.rocket);
-		bullets.add(bullet);
+		Bullet pointBullet = new PointBullet(this.rocket);
+		bullets.add(pointBullet);
 	}
 
 	public void addLaserBullet() {
