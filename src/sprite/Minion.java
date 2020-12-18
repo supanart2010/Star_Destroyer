@@ -29,25 +29,27 @@ public class Minion extends Entity {
 		setPositionX(randomPositionX());
 	}
 
+	@Override
 	public int getDamage() {
 		return MINION_DAMAGE;
 	}
-	private double randomPositionX() {
+	
+	public double randomPositionX() {
 		double min = 1;
 		double max = SceneManager.WINDOW_WIDTH-400;
 		Random r = new Random();
 		return min + (max - min) * r.nextDouble();
 	}
 
-	private void randomType() {
+	public void randomType() {
 		type = new Random().nextInt(3) + 1;
 	}
 
-	private double randomMinionSpeedX() {
+	public double randomMinionSpeedX() {
 		return new Random().nextDouble() * MINION_SPEEDX_RANGE + 1;
 	}
 
-	private double randomMinionSpeedY() {
+	public double randomMinionSpeedY() {
 		return new Random().nextDouble() * MINION_SPEEDY_RANGE + 1;
 	}
 
