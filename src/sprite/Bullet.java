@@ -1,4 +1,4 @@
-package sprites;
+package sprite;
 
 public class Bullet extends Sprite implements Moveable, Hittable, Updatable {
 	public static final int BULLET_SPEEDX = 0;

@@ -8,12 +8,12 @@ import application.AudioManager;
 import application.ResourceManager;
 import gui.BombAnimation;
 import javafx.scene.canvas.GraphicsContext;
-import sprites.BombBullet;
-import sprites.Bullet;
-import sprites.Entity;
-import sprites.LaserBullet;
-import sprites.Minion;
-import sprites.Rocket;
+import sprite.BombBullet;
+import sprite.Bullet;
+import sprite.Entity;
+import sprite.LaserBullet;
+import sprite.Minion;
+import sprite.Rocket;
 
 public class MinionManager {
 	private ArrayList<Entity> minions = new ArrayList<>();

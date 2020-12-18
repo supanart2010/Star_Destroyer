@@ -5,11 +5,11 @@ import java.util.Collections;
 
 import application.ResourceManager;
 import javafx.scene.canvas.GraphicsContext;
-import sprites.BombBullet;
-import sprites.Bullet;
-import sprites.LaserBullet;
-import sprites.PointBullet;
-import sprites.Rocket;
+import sprite.BombBullet;
+import sprite.Bullet;
+import sprite.LaserBullet;
+import sprite.PointBullet;
+import sprite.Rocket;
 
 public class BulletManager {
 	private Rocket rocket;

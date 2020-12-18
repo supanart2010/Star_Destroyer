@@ -1,4 +1,4 @@
-package sprites;
+package sprite;
 
 public interface Moveable {
 	public void moveUp();

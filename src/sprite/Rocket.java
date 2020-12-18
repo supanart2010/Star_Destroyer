@@ -1,4 +1,4 @@
-package sprites;
+package sprite;
 
 import application.AudioManager;
 import application.Controller;

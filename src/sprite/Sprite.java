@@ -1,4 +1,4 @@
-package sprites;
+package sprite;
 
 import javafx.scene.image.Image;
 import javafx.geometry.Rectangle2D;
