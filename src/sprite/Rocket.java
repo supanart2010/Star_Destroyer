@@ -84,23 +84,15 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 		if (Controller.isShooting() && !Controller.isPointDelay()) {
 			Thread t = new Thread() {
 				public void run() {
-					Platform.runLater(new Runnable() {
-						public void run() {
-							shoot();
-							AudioManager.playSFX(ResourceManager.readAudioClip("gunsound.wav"), 0.3);
-							Controller.setPointDelay(true);
-						}
-					});
+					shoot();
+					AudioManager.playSFX(ResourceManager.readAudioClip("gunsound.wav"), 0.3);
+					Controller.setPointDelay(true);
 					try {
 						Thread.sleep(PointBullet.POINT_DELAYTIME);
 					} catch (InterruptedException ex) {
 						ex.printStackTrace();
 					}
-					Platform.runLater(new Runnable() {
-						public void run() {
-							Controller.setPointDelay(false);
-						}
-					});
+					Controller.setPointDelay(false);
 				}
 			};
 			t.start();
@@ -111,24 +103,16 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 		if (Controller.isShootingLaser() && getStorage().hasLaserBullet() && !Controller.isLaserDelay()) {
 			Thread t = new Thread() {
 				public void run() {
-					Platform.runLater(new Runnable() {
-						public void run() {
-							laser();
-							AudioManager.playSFX(ResourceManager.readAudioClip("lasersound.wav"), 0.3);
-							getStorage().consumeLaserBullet();
-							Controller.setLaserDelay(true);
-						}
-					});
+					laser();
+					AudioManager.playSFX(ResourceManager.readAudioClip("lasersound.wav"), 0.3);
+					getStorage().consumeLaserBullet();
+					Controller.setLaserDelay(true);
 					try {
 						Thread.sleep(LaserBullet.LASER_DELAYTIME);
 					} catch (InterruptedException ex) {
 						ex.printStackTrace();
 					}
-					Platform.runLater(new Runnable() {
-						public void run() {
-							Controller.setLaserDelay(false);
-						}
-					});
+					Controller.setLaserDelay(false);
 				}
 			};
 			t.start();
@@ -139,24 +123,16 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 		if (Controller.isShootingBomb() && getStorage().hasBombBullet() && !Controller.isBombDelay()) {
 			Thread t = new Thread() {
 				public void run() {
-					Platform.runLater(new Runnable() {
-						public void run() {
-							bomb();
-							AudioManager.playSFX(ResourceManager.readAudioClip("bombsound.wav"), 0.3);
-							getStorage().consumeBombBullet();
-							Controller.setBombDelay(true);
-						}
-					});
+					bomb();
+					AudioManager.playSFX(ResourceManager.readAudioClip("bombsound.wav"), 0.3);
+					getStorage().consumeBombBullet();
+					Controller.setBombDelay(true);
 					try {
 						Thread.sleep(BombBullet.BOMB_DELAYTIME);
 					} catch (InterruptedException ex) {
 						ex.printStackTrace();
 					}
-					Platform.runLater(new Runnable() {
-						public void run() {
-							Controller.setBombDelay(false);
-						}
-					});
+					Controller.setBombDelay(false);
 				}
 			};
 			t.start();
@@ -193,7 +169,7 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 
 	}
 	
-	public void update(double width, double height, GraphicsContext gc) {
+	public void update(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		move();
 		updatePointShoot();

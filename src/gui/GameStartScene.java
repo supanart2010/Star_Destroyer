@@ -167,7 +167,7 @@ public class GameStartScene extends GameScene {
 			return;
 		}
 		gc.clearRect(0, 0, SceneManager.WINDOW_WIDTH, SceneManager.WINDOW_HEIGHT);
-		myRocket.update(SceneManager.WINDOW_WIDTH, SceneManager.WINDOW_HEIGHT, gc);
+		myRocket.update(gc);
 		minionManager.update(myRocket.getBulletManager(), gc, SceneManager.WINDOW_WIDTH, SceneManager.WINDOW_HEIGHT,
 				myRocket);
 		hp.setText("Health : " + myRocket.getHp());
