@@ -33,7 +33,7 @@ public class BulletManager {
 		bullets.add(bombBullet);
 	}
 
-	public void update(GraphicsContext gc, double height) {
+	public void update(GraphicsContext gc) {
 		ArrayList<Integer> toRemove = new ArrayList<>();
 		for (Bullet b : bullets) {
 			if (b.getPositionX() < 0) {

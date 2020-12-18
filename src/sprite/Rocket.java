@@ -175,7 +175,7 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 		updatePointShoot();
 		updateLaserShoot();
 		updateBombShoot();
-		bulletManager.update(gc, height);
+		bulletManager.update(gc);
 		render(gc);
 	}
 
