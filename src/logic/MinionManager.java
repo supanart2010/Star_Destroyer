@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 
-import gui.BombAnimation;
 import javafx.scene.canvas.GraphicsContext;
+import sprite.BombAnimation;
 import sprite.BombBullet;
 import sprite.Bullet;
 import sprite.Entity;
@@ -46,6 +46,7 @@ public class MinionManager {
 				if (minion.intersects(bullet)) {
 					if (bullet instanceof LaserBullet) {
 						minion.hit(bullet);
+						bullet.hit()
 					} else if (bullet instanceof BombBullet) {
 						minion.hit(bullet);
 						bullet.hit();
