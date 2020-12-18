@@ -1,6 +1,6 @@
 package sprite;
 
-import application.ResourceManager;
+import logic.ResourceManager;
 
 public class RocketTypeA extends Rocket {
 	private static final String TYPE_A_NAME = "Hawk";

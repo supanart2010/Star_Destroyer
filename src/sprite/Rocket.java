@@ -1,11 +1,11 @@
 package sprite;
 
-import application.AudioManager;
-import application.Controller;
-import application.ResourceManager;
 import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
+import logic.AudioManager;
 import logic.BulletManager;
+import logic.Controller;
+import logic.ResourceManager;
 
 public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 	private String name;

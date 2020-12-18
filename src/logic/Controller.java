@@ -1,4 +1,4 @@
-package application;
+package logic;
 
 public class Controller {
 	private static boolean isMoveLeft = false;

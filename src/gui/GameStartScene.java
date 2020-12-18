@@ -1,10 +1,5 @@
 package gui;
 
-import application.AudioManager;
-import application.Controller;
-import application.ResourceManager;
-import application.SceneManager;
-import application.SceneManager.State;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.HBox;
@@ -12,7 +7,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import logic.AudioManager;
+import logic.Controller;
 import logic.MinionManager;
+import logic.ResourceManager;
+import logic.SceneManager;
+import logic.SceneManager.State;
 import sprite.Rocket;
 import sprite.RocketTypeA;
 import sprite.RocketTypeB;

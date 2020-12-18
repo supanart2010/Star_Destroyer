@@ -1,6 +1,6 @@
 package sprite;
 
-import application.ResourceManager;
+import logic.ResourceManager;
 
 public class PointBullet extends Bullet {
 	public static final int POINT_DELAYTIME = 50;

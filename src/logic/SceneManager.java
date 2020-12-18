@@ -1,4 +1,4 @@
-package application;
+package logic;
 
 import exception.GameException;
 import exception.ResourceNotFoundException;

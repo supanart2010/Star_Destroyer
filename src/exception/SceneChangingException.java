@@ -1,6 +1,6 @@
 package exception;
 
-import application.SceneManager;
+import logic.SceneManager;
 
 public class SceneChangingException extends GameException {
 

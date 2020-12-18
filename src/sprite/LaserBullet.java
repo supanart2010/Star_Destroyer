@@ -1,6 +1,6 @@
 package sprite;
 
-import application.ResourceManager;
+import logic.ResourceManager;
 
 public class LaserBullet extends Bullet {
 	public static final int LASER_DELAYTIME = 3000;

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 
-import application.AudioManager;
-import application.ResourceManager;
 import gui.BombAnimation;
 import javafx.scene.canvas.GraphicsContext;
 import sprite.BombBullet;

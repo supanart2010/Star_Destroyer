@@ -1,8 +1,5 @@
 package gui;
 
-import application.AudioManager;
-import application.ResourceManager;
-import application.SceneManager.State;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -10,6 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import logic.AudioManager;
+import logic.ResourceManager;
+import logic.SceneManager.State;
 
 public class LosingScene extends GameScene {
 	private Button title;

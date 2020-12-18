@@ -3,7 +3,6 @@ package logic;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import application.ResourceManager;
 import javafx.scene.canvas.GraphicsContext;
 import sprite.BombBullet;
 import sprite.Bullet;

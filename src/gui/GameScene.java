@@ -1,6 +1,5 @@
 package gui;
 
-import application.SceneManager;
 import exception.GameException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,6 +12,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import logic.SceneManager;
 
 public abstract class GameScene extends Scene {
 	protected SceneManager.State sceneState;

@@ -1,9 +1,6 @@
 package gui;
 
-import application.AudioManager;
 import application.Main;
-import application.ResourceManager;
-import application.SceneManager.State;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -23,6 +20,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import logic.AudioManager;
+import logic.ResourceManager;
+import logic.SceneManager.State;
 
 public class CreditsScene extends GameScene {
 	private Button titleButton;

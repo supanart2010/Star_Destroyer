@@ -1,8 +1,8 @@
 package gui;
 
-import application.AudioManager;
-import application.ResourceManager;
 import javafx.scene.canvas.GraphicsContext;
+import logic.AudioManager;
+import logic.ResourceManager;
 import sprite.Sprite;
 
 public class BombAnimation extends Sprite {

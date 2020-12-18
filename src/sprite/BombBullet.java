@@ -1,6 +1,6 @@
 package sprite;
 
-import application.ResourceManager;
+import logic.ResourceManager;
 
 public class BombBullet extends Bullet {
 	public static final int BOMB_DELAYTIME = 3000;

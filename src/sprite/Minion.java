@@ -2,8 +2,8 @@ package sprite;
 
 import java.util.Random;
 
-import application.ResourceManager;
-import application.SceneManager;
+import logic.ResourceManager;
+import logic.SceneManager;
 
 public class Minion extends Entity {
 	private static final String MINION_NAME = "Invader";
