@@ -22,7 +22,7 @@ public class GameStartScene extends GameScene {
 
 	private GraphicsContext gc;
 	private MinionManager minionManager;
-	private Text hp, laser, bomb, stage, score;
+	private Text rocketName, hp, laser, bomb, stage, score;
 
 	private static int currentScore;
 	private static int highScore = 0;
@@ -49,6 +49,11 @@ public class GameStartScene extends GameScene {
 		}
 		// Right Field
 		VBox rightField = new VBox();
+		
+		rocketName = new Text("Rocket : " + myRocket.getName());
+		rocketName.setFill(Color.WHITE);
+		rocketName.setFont(new Font(20));
+		
 		hp = new Text("Health : " + myRocket.getHp());
 		hp.setFill(Color.WHITE);
 		hp.setFont(new Font(20));
@@ -71,7 +76,7 @@ public class GameStartScene extends GameScene {
 
 		// score add later
 
-		rightField.getChildren().addAll(stage, hp, laser, bomb, score);
+		rightField.getChildren().addAll(rocketName, stage, hp, laser, bomb, score);
 		newroot.getChildren().add(rightField);
 		root.getChildren().add(newroot);
 
