@@ -14,7 +14,6 @@ public class ResourceManager {
 	public static GameStartResource gameStart;
 	public static TutorialResource tutorial;
 	public static CreditsResource credits;
-//	public static WinningResource winning;
 	public static LosingResource losing;
 
 	public static SoundtrackResource bgm;
@@ -130,10 +129,6 @@ public class ResourceManager {
 				if (credits == null)
 					credits = new CreditsResource();
 				break;
-//		case WINNING:
-//			if (winning == null)
-//				winning = new WinningResource();
-//			break;
 			case LOSING:
 				if (losing == null)
 					losing = new LosingResource();
@@ -159,8 +154,6 @@ public class ResourceManager {
 			tutorial = null;
 		case CREDITS:
 			credits = null;
-//		case WINNING:
-//			winning = null;
 		case LOSING:
 			losing = null;
 		default:

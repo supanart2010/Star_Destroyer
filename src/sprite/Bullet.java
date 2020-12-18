@@ -23,6 +23,27 @@ public class Bullet extends Sprite implements Moveable, Hittable, Updatable {
 	public void update() {
 		moveUp();
 	}
+	@Override
+	public void hit() {
+		setConsumed(true);
+	}
+
+	@Override
+	public void moveUp() {
+		positionY -= speedY;
+	}
+
+	@Override
+	public void moveDown() {
+	}
+
+	@Override
+	public void moveLeft() {
+	}
+
+	@Override
+	public void moveRight() {
+	}
 
 	// Getter & Setter
 	public int getBulletDamage() {
@@ -47,28 +68,6 @@ public class Bullet extends Sprite implements Moveable, Hittable, Updatable {
 
 	public void setSpeedY(int speedY) {
 		this.speedY = speedY;
-	}
-
-	@Override
-	public void hit() {
-		setConsumed(true);
-	}
-
-	@Override
-	public void moveUp() {
-		positionY -= speedY;
-	}
-
-	@Override
-	public void moveDown() {
-	}
-
-	@Override
-	public void moveLeft() {
-	}
-
-	@Override
-	public void moveRight() {
 	}
 
 	public boolean isConsumed() {

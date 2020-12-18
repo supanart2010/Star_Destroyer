@@ -15,22 +15,6 @@ public class Storage {
 	}
 
 	// Addition Method
-	public void addBombBullet(int bombAmount) {
-		if (bombRemain + bombAmount > bombCapacity) {
-			setBombRemain(bombCapacity);
-		} else {
-			setBombRemain(bombAmount + bombRemain);
-		}
-	}
-
-	public void addLaserBullet(int laserAmount) {
-		if (laserRemain + laserAmount > laserCapacity) {
-			setLaserRemain(laserCapacity);
-		} else {
-			setLaserRemain(laserAmount + laserRemain);
-		}
-	}
-
 	public boolean hasBombBullet() {
 		return bombRemain > 0;
 	}
