@@ -3,7 +3,6 @@ package sprite;
 import java.util.Random;
 
 public abstract class Entity extends Sprite implements Updatable, Moveable, Hittable {
-	private String name;
 	private int maxHp;
 	private int hp;
 	private double speedX;
@@ -11,9 +10,8 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hitt
 	private boolean isMovingLeftDirection;
 
 	// Constructor
-	public Entity(String name, int maxHp, int speedX, int speedY) {
+	public Entity(int maxHp, int speedX, int speedY) {
 		super(0, 0, 0, 0); // edit it later
-		setName(name);
 		setMaxHp(maxHp);
 		setHp(maxHp); // when instance, it has full HP
 		setSpeedX(0);
@@ -43,7 +41,7 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hitt
 		return hp == 0;
 	}
 
-	public void checkDirectionX() {
+	public void checkDirectionAfterMove() {
 		if (isBoarderCollision()) {
 			isMovingLeftDirection = !isMovingLeftDirection;
 		}
@@ -65,7 +63,7 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hitt
 		} else {
 			moveRight();
 		}
-		checkDirectionX();
+		checkDirectionAfterMove();
 	}
 
 	@Override
@@ -109,14 +107,6 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hitt
 	}
 
 	// Getter & Setter
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public int getMaxHp() {
 		return maxHp;
 	}
