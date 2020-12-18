@@ -8,9 +8,9 @@ public class BombBullet extends Bullet {
 
 	public BombBullet(Rocket rocket) {
 		super(rocket);
-		this.setImage(ResourceManager.gameStart.BOMBBULLET);
-		this.setSize(10, 10);
-		this.setPosition(rocket.getPositionX() + 40, rocket.getPositionY());
 		setBulletDamage(BOMB_DAMAGE);	
+		setImage(ResourceManager.gameStart.BOMBBULLET);
+		setSize(BULLET_WIDTH,BULLET_HEIGHT);
+		setPosition(rocket.getPositionX() + rocket.getWidth()/2 - 10, rocket.getPositionY() - BULLET_HEIGHT);
 	}
 }

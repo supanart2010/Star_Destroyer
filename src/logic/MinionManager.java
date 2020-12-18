@@ -46,7 +46,7 @@ public class MinionManager {
 				if (minion.intersects(bullet)) {
 					if (bullet instanceof LaserBullet) {
 						minion.hit(bullet);
-						bullet.hit()
+//						bullet.hit();
 					} else if (bullet instanceof BombBullet) {
 						minion.hit(bullet);
 						bullet.hit();

@@ -3,6 +3,8 @@ package sprite;
 public class Bullet extends Sprite implements Moveable, Hittable, Updatable {
 	public static final int BULLET_SPEEDX = 0;
 	public static final int BULLET_SPEEDY = 10;
+	public static final int BULLET_WIDTH = 10;
+	public static final int BULLET_HEIGHT = 10;
 	private int bulletDamage;
 	private int speedX;
 	private int speedY;
