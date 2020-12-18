@@ -13,9 +13,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import logic.MinionManager;
-import rocket.Rocket;
-import rocket.RocketTypeA;
-import rocket.RocketTypeB;
+import sprites.Rocket;
+import sprites.RocketTypeA;
+import sprites.RocketTypeB;
 
 public class GameStartScene extends GameScene {
 	private Rocket myRocket;

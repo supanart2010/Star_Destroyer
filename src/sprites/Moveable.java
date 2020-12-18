@@ -1,4 +1,4 @@
-package logic;
+package sprites;
 
 public interface Moveable {
 	public void moveUp();

@@ -1,7 +1,6 @@
-package bullets;
+package sprites;
 
 import application.ResourceManager;
-import rocket.Rocket;
 
 public class BombBullet extends Bullet {
 	public static final int BOMB_DELAYTIME = 3000;

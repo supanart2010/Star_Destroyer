@@ -1,4 +1,4 @@
-package logic;
+package sprites;
 
 import javafx.scene.image.Image;
 import javafx.geometry.Rectangle2D;

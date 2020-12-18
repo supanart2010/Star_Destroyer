@@ -1,4 +1,4 @@
-package rocket;
+package sprites;
 
 import application.ResourceManager;
 

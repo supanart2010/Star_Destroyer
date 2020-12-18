@@ -3,7 +3,7 @@ package gui;
 import application.AudioManager;
 import application.ResourceManager;
 import javafx.scene.canvas.GraphicsContext;
-import logic.Sprite;
+import sprites.Sprite;
 
 public class BombAnimation extends Sprite {
 

@@ -1,19 +1,11 @@
-package rocket;
+package sprites;
 
 import application.AudioManager;
 import application.Controller;
 import application.ResourceManager;
-import bullets.BombBullet;
-import bullets.LaserBullet;
-import bullets.PointBullet;
-import entity.Entity;
 import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
 import logic.BulletManager;
-import logic.Hittable;
-import logic.Moveable;
-import logic.Sprite;
-import logic.Updatable;
 
 public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 	private String name;

@@ -1,4 +1,4 @@
-package rocket;
+package sprites;
 
 public class Storage {
 	private int bombCapacity;

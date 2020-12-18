@@ -1,10 +1,4 @@
-package bullets;
-
-import logic.Hittable;
-import logic.Moveable;
-import logic.Sprite;
-import logic.Updatable;
-import rocket.Rocket;
+package sprites;
 
 public class Bullet extends Sprite implements Moveable, Hittable, Updatable {
 	public static final int BULLET_SPEEDX = 0;

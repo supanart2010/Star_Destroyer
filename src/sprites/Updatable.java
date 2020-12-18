@@ -1,4 +1,4 @@
-package logic;
+package sprites;
 
 public interface Updatable {
 	public void update();

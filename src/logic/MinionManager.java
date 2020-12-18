@@ -6,14 +6,14 @@ import java.util.HashSet;
 
 import application.AudioManager;
 import application.ResourceManager;
-import bullets.BombBullet;
-import bullets.Bullet;
-import bullets.LaserBullet;
-import entity.Entity;
-import entity.Minion;
 import gui.BombAnimation;
 import javafx.scene.canvas.GraphicsContext;
-import rocket.Rocket;
+import sprites.BombBullet;
+import sprites.Bullet;
+import sprites.Entity;
+import sprites.LaserBullet;
+import sprites.Minion;
+import sprites.Rocket;
 
 public class MinionManager {
 	private ArrayList<Entity> minions = new ArrayList<>();
@@ -37,7 +37,7 @@ public class MinionManager {
 		for (Entity minion : minions) {
 			minion.update();
 			minion.render(gc, minion.getWidth(), minion.getHeight());
-			if (minion.positionY > height) {
+			if (minion.getPositionY() > height) {
 				toRemoveMinions.add(minions.indexOf(minion));
 			}
 			if (minion.intersects(rocket)) {

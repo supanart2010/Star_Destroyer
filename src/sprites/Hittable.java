@@ -1,4 +1,4 @@
-package logic;
+package sprites;
 
 public interface Hittable {
 	public void hit();

@@ -1,7 +1,6 @@
-package bullets;
+package sprites;
 
 import application.ResourceManager;
-import rocket.Rocket;
 
 public class LaserBullet extends Bullet {
 	public static final int LASER_DELAYTIME = 3000;

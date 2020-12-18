@@ -1,7 +1,6 @@
-package bullets;
+package sprites;
 
 import application.ResourceManager;
-import rocket.Rocket;
 
 public class PointBullet extends Bullet {
 	public static final int POINT_DELAYTIME = 50;

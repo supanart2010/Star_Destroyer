@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import application.ResourceManager;
-import bullets.BombBullet;
-import bullets.Bullet;
-import bullets.LaserBullet;
-import bullets.PointBullet;
 import javafx.scene.canvas.GraphicsContext;
-import rocket.Rocket;
+import sprites.BombBullet;
+import sprites.Bullet;
+import sprites.LaserBullet;
+import sprites.PointBullet;
+import sprites.Rocket;
 
 public class BulletManager {
 	private Rocket rocket;
