@@ -11,7 +11,6 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 	public static final int ROCKET_WIDTH = 100;
 	public static final int ROCKET_HEIGHT = 100;
 	private String name;
-	private int type;
 	private Storage storage;
 	private int maxHp;
 	private int hp;
@@ -25,7 +24,6 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 	public Rocket(String name, int type, Storage storage, int maxHp, double typeASpeedx, double typeASpeedy, int bodyDamage) {
 		super(0, 0, 0, 0); // edit it later
 		setName(name);
-		setType(type);
 		setStorage(storage);
 		setMaxHp(maxHp);
 		setHp(maxHp); // when instance, it has full HP
@@ -211,14 +209,6 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getType() {
-		return type;
-	}
-
-	public void setType(int type) {
-		this.type = type;
 	}
 
 	public Storage getStorage() {
