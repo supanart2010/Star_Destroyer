@@ -3,7 +3,6 @@ package sprite;
 import java.util.Random;
 
 import gui.GameStartScene;
-import logic.SceneManager;
 
 public abstract class Entity extends Sprite implements Updatable, Moveable, Hittable {
 	private int maxHp;
@@ -13,12 +12,10 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hitt
 	private boolean isMovingLeftDirection;
 
 	// Constructor
-	public Entity(int maxHp, int speedX, int speedY) {
+	public Entity(int maxHp) {
 		super(0, 0, 0, 0); // edit it later
 		setMaxHp(maxHp);
 		setHp(maxHp); // when instance, it has full HP
-		setSpeedX(0);
-		setSpeedY(0);
 		setMovingLeftDirection(randomDirection());
 	}
 
@@ -45,14 +42,13 @@ public abstract class Entity extends Sprite implements Updatable, Moveable, Hitt
 	}
 
 	public void checkDirectionAfterMove() {
-		if (isBoarderCollision()) {
+		if (isBorderCollision()) {
 			isMovingLeftDirection = !isMovingLeftDirection;
 		}
 	}
 
-	public boolean isBoarderCollision() {
-		return (getPositionX() < 0) || (getPositionX() + this.getWidth() > GameStartScene.GAMELAYER_WIDTH);
-		// edit CanvasWidht later
+	public boolean isBorderCollision() {
+		return (getPositionX() < 0) || (getPositionX() > GameStartScene.GAMELAYER_WIDTH - this.getWidth());
 	}
 
 	// Interface Method

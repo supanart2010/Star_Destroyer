@@ -6,6 +6,7 @@ import logic.ResourceManager;
 import logic.SceneManager;
 
 public class Minion extends Entity {
+	private static final String MINION_NAME = "Invader";
 	private static final int MINION_MAXHP = 20;
 	private static final double MINION_SPEEDX_RANGE = 3;
 	private static final double MINION_SPEEDY_RANGE = 3;
@@ -14,8 +15,10 @@ public class Minion extends Entity {
 
 	// Constructor
 	public Minion() {
-		super(MINION_MAXHP, 0, 0);
+		super(0);
 		randomType();
+		setMaxHp(MINION_MAXHP);
+		setHp(MINION_MAXHP);
 		setSpeedX(randomMinionSpeedX());
 		setSpeedY(randomMinionSpeedY());
 		if (this.getType() == 1) {
