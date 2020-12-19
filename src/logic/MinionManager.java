@@ -17,7 +17,6 @@ import sprite.Rocket;
 
 public class MinionManager {
 	private ArrayList<Entity> minions = new ArrayList<>();
-	//private ArrayList<BombAnimation> animations = new ArrayList<BombAnimation>();
 	private List<BombAnimation> animations = Collections.synchronizedList(new ArrayList<BombAnimation>());
 	
 	public MinionManager() {
@@ -50,7 +49,6 @@ public class MinionManager {
 				if (minion.intersects(bullet)) {
 					if (bullet instanceof LaserBullet) {
 						minion.hit(bullet);
-//						bullet.hit();
 					} else if (bullet instanceof BombBullet) {
 						minion.hit(bullet);
 						bullet.hit();
@@ -71,10 +69,6 @@ public class MinionManager {
 						bullet.hit();
 					}
 
-					// explosion effect
-//					BombAnimation b = new BombAnimation(minion.getPositionX(),minion.getPositionY());
-//					b.update();
-//					b.render(gc, b.getWidth()+10, b.getHeight()+10);
 				}
 				if (bullet.isConsumed()) {
 					toRemoveBullets.add(bulletManager.getBullets().indexOf(bullet));
