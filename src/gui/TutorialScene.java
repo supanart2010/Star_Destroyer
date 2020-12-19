@@ -23,6 +23,7 @@ import logic.SceneManager.State;
 
 public class TutorialScene extends GameScene {
 	private Button titleButton;
+	private HBox titlePane;
 
 	public TutorialScene() {
 		super();
@@ -35,15 +36,15 @@ public class TutorialScene extends GameScene {
 		titleButton.setTextFill(Color.WHITE);
 		titleButton.setPadding(new Insets(5));
 
-		HBox hB = new HBox();
-		hB.getChildren().add(titleButton);
-		hB.setAlignment(Pos.BOTTOM_LEFT);
-		hB.setSpacing(10);
-		hB.setPadding(new Insets(30));
-
-		root.getChildren().addAll(hB);
-
+		titlePane = new HBox();
+		titlePane.getChildren().add(titleButton);
+		titlePane.setAlignment(Pos.BOTTOM_LEFT);
+		titlePane.setSpacing(10);
+		titlePane.setPadding(new Insets(30));
+		
 		addListener();
+
+		root.getChildren().addAll(titlePane);
 
 		AudioManager.playBGM(ResourceManager.bgm.TITLE, 0.5, true);
 	}

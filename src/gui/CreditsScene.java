@@ -26,9 +26,11 @@ import logic.SceneManager.State;
 
 public class CreditsScene extends GameScene {
 	private Button titleButton;
+	private HBox creditsPane;
 
 	public CreditsScene() {
 		super();
+		this.sceneState = State.CREDITS;
 		setGameBackground(ResourceManager.credits.CREDITS_BACKGROUND);
 		titleButton = new Button("Go back");
 		titleButton.setFont(new Font("Times New Roman",30));
@@ -36,15 +38,15 @@ public class CreditsScene extends GameScene {
 		titleButton.setTextFill(Color.WHITE);
 		titleButton.setPadding(new Insets(5));
 
+		creditsPane = new HBox();
+		creditsPane.getChildren().add(titleButton);
+		creditsPane.setAlignment(Pos.BOTTOM_LEFT);
+		creditsPane.setSpacing(10);
+		creditsPane.setPadding(new Insets(30));
+		
 		addListener();
 
-		HBox hB = new HBox();
-		hB.getChildren().add(titleButton);
-		hB.setAlignment(Pos.BOTTOM_LEFT);
-		hB.setSpacing(10);
-		hB.setPadding(new Insets(30));
-
-		root.getChildren().addAll(hB);
+		root.getChildren().addAll(creditsPane);
 
 		AudioManager.playBGM(ResourceManager.bgm.TITLE, 0.5, true);
 	}

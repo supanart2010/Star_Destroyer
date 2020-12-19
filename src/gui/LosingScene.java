@@ -24,21 +24,9 @@ public class LosingScene extends GameScene {
 		this.sceneState = State.LOSING;
 		setGameBackground(ResourceManager.losing.LOSING_BACKGROUND);
 
-		titleButton = new Button("Main Menu");
-		titleButton.setFont(new Font("Times New Roman", 30));
-		titleButton.setPadding(new Insets(5));
-		titleButton.setTextFill(Color.WHITE);
-		titleButton.setBackground(null);
-
 		gameOver = new Label("Game Over!!");
 		gameOver.setTextFill(Color.WHITE);
 		gameOver.setFont(new Font("Times New Roman", 60));
-
-		newGameButton = new Button("Play Again?");
-		newGameButton.setFont(new Font("Times New Roman", 50));
-		newGameButton.setBackground(null);
-		newGameButton.setTextFill(Color.WHITE);
-		newGameButton.setPadding(new Insets(5));
 
 		score = new Label("Your score : " + GameStartScene.getCurrentScore());
 		score.setFont(new Font("Times New Roman", 30));
@@ -47,14 +35,27 @@ public class LosingScene extends GameScene {
 		highScore = new Label("High score : " + GameStartScene.getHighScore());
 		highScore.setFont(new Font("Times New Roman", 30));
 		highScore.setTextFill(Color.WHITE);
+		
+		titleButton = new Button("Main Menu");
+		titleButton.setFont(new Font("Times New Roman", 30));
+		titleButton.setPadding(new Insets(5));
+		titleButton.setTextFill(Color.WHITE);
+		titleButton.setBackground(null);
+
+		newGameButton = new Button("Play Again?");
+		newGameButton.setFont(new Font("Times New Roman", 50));
+		newGameButton.setBackground(null);
+		newGameButton.setTextFill(Color.WHITE);
+		newGameButton.setPadding(new Insets(5));
 
 		losingPane = new VBox();
 		losingPane.getChildren().addAll(gameOver, score, highScore, newGameButton, titleButton);
 		losingPane.setAlignment(Pos.CENTER);
 		losingPane.setSpacing(20);
 
-		root.getChildren().add(losingPane);
 		addListener();
+		
+		root.getChildren().add(losingPane);
 
 		AudioManager.playBGM(ResourceManager.bgm.LOSING, 0.5, false);
 	}
