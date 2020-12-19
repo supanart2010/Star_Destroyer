@@ -24,51 +24,48 @@ import logic.SceneManager.State;
 public class TitleScene extends GameScene {
 	private Label nameText;
 	private Button startGameButton;
-	private Button HowtoButton;
-	private Button CreditButton;
-
+	private Button tutorialButton;
+	private Button creditsButton;
+	private VBox titlePane;
+	
 	public TitleScene() {
 		super();
 		this.sceneState = State.TITLE;
 		setGameBackground(ResourceManager.title.TITLE_BACKGROUND);
-		
-		Circle btnShape = new Circle(50,Color.valueOf("#cc0a0a"));
-		btnShape.setStrokeWidth(3);
-		btnShape.setStroke(Color.WHITE);
+
+		nameText = new Label("STAR DESTROYER");
+		nameText.setTextFill(Color.WHITE);
+		nameText.setFont(new Font("Times New Roman", 60));
 
 		startGameButton = new Button("Start");
 		startGameButton.setFont(new Font("Times New Roman", 50));
 		startGameButton.setBackground(null);
 		startGameButton.setTextFill(Color.WHITE);
 		startGameButton.setPadding(new Insets(5));
+		
+		tutorialButton = new Button("Tutorial");
+		tutorialButton.setFont(new Font("Times New Roman", 50));
+		tutorialButton.setBackground(null);
+		tutorialButton.setTextFill(Color.WHITE);
+		tutorialButton.setPadding(new Insets(5));
 
-		nameText = new Label("STAR DESTROYER");
-		nameText.setTextFill(Color.WHITE);
-		nameText.setFont(new Font("Times New Roman", 60));
-
-		HowtoButton = new Button("Tutorial");
-		HowtoButton.setFont(new Font("Times New Roman", 50));
-		HowtoButton.setBackground(null);
-		HowtoButton.setTextFill(Color.WHITE);
-		HowtoButton.setPadding(new Insets(5));
-
-		CreditButton = new Button("Credits");
-		CreditButton.setFont(new Font("Times New Roman", 50));
-		CreditButton.setBackground(null);
-		CreditButton.setTextFill(Color.WHITE);
-		CreditButton.setPadding(new Insets(5));
+		creditsButton = new Button("Credits");
+		creditsButton.setFont(new Font("Times New Roman", 50));
+		creditsButton.setBackground(null);
+		creditsButton.setTextFill(Color.WHITE);
+		creditsButton.setPadding(new Insets(5));
 
 		addListener();
 
-		VBox vb = new VBox();
-		vb.getChildren().addAll(nameText, startGameButton, HowtoButton, CreditButton);
-		vb.setPadding(new Insets(50));
-		vb.setSpacing(20);
-		vb.setPrefSize(800, 600);
-		vb.setAlignment(Pos.TOP_CENTER);
+		titlePane = new VBox();
+		titlePane.getChildren().addAll(nameText, startGameButton, tutorialButton, creditsButton);
+		titlePane.setPadding(new Insets(50));
+		titlePane.setSpacing(20);
+		titlePane.setPrefSize(800, 600);
+		titlePane.setAlignment(Pos.TOP_CENTER);
 
 		// add canvas and VBox to root
-		root.getChildren().addAll(vb);
+		root.getChildren().addAll(titlePane);
 
 		AudioManager.playBGM(ResourceManager.bgm.TITLE, 0.5, true);
 	}
@@ -79,7 +76,6 @@ public class TitleScene extends GameScene {
 		// handler
 		startGameButton.setOnMouseClicked(e -> {
 			changeScene(State.SELECTROCKET);
-			;
 		});
 		startGameButton.setOnMouseEntered(e -> {
 			startGameButton.setTextFill(Color.YELLOW);
@@ -89,27 +85,25 @@ public class TitleScene extends GameScene {
 		});
 
 		// handler
-		HowtoButton.setOnMouseClicked(e -> {
+		tutorialButton.setOnMouseClicked(e -> {
 			changeScene(State.TUTORIAL);
-			;
 		});
-		HowtoButton.setOnMouseEntered(e -> {
-			HowtoButton.setTextFill(Color.YELLOW);
+		tutorialButton.setOnMouseEntered(e -> {
+			tutorialButton.setTextFill(Color.YELLOW);
 		});
-		HowtoButton.setOnMouseExited(e -> {
-			HowtoButton.setTextFill(Color.WHITE);
+		tutorialButton.setOnMouseExited(e -> {
+			tutorialButton.setTextFill(Color.WHITE);
 		});
 
 		// handler
-		CreditButton.setOnMouseClicked(e -> {
+		creditsButton.setOnMouseClicked(e -> {
 			changeScene(State.CREDITS);
-			;
 		});
-		CreditButton.setOnMouseEntered(e -> {
-			CreditButton.setTextFill(Color.YELLOW);
+		creditsButton.setOnMouseEntered(e -> {
+			creditsButton.setTextFill(Color.YELLOW);
 		});
-		CreditButton.setOnMouseExited(e -> {
-			CreditButton.setTextFill(Color.WHITE);
+		creditsButton.setOnMouseExited(e -> {
+			creditsButton.setTextFill(Color.WHITE);
 		});
 
 	}

@@ -29,7 +29,6 @@ public class GameStartScene extends GameScene {
 	public static final int DATALAYER_HEIGHT = 600;
 
 	private Rocket myRocket;
-
 	private GraphicsContext gc;
 	private MinionManager minionManager;
 	private Text rocketName, hp, laser, bomb, score;

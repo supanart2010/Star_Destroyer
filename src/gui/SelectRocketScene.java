@@ -28,11 +28,12 @@ import logic.SceneManager.State;
 
 public class SelectRocketScene extends GameScene {
 
-	private Button titleButton;
-	private Button rocketABtn;
-	private Button rocketBBtn;
 	private Label chooseRocket;
+	private Button rocketAButton;
+	private Button rocketBButton;
 	private HBox selectRocket;
+	private Button titleButton;
+	private BorderPane selectPane;
 
 	public SelectRocketScene() {
 		super();
@@ -43,44 +44,39 @@ public class SelectRocketScene extends GameScene {
 		chooseRocket.setTextFill(Color.WHITE);
 		chooseRocket.setFont(new Font("Times New Roman",40));
 
-		titleButton = new Button("Go back");
-		titleButton.setFont(new Font("Times New Roman",30));
-		titleButton.setBackground(null);
-		titleButton.setTextFill(Color.WHITE);
-		titleButton.setPadding(new Insets(5));
+		rocketAButton = new Button();
+		rocketAButton.setPrefSize(200, 200);
+		rocketAButton.setGraphic(new ImageView(ResourceManager.selectRocket.ROCKETA));
+		rocketAButton.setBackground(null);
 
-		rocketABtn = new Button();
-		rocketABtn.setPrefSize(200, 200);
-		rocketABtn.setGraphic(new ImageView(ResourceManager.selectRocket.ROCKETA));
-		rocketABtn.setBackground(null);
-
-		rocketBBtn = new Button();
-		rocketABtn.setPrefSize(200, 200);
-		rocketBBtn.setGraphic(new ImageView(ResourceManager.selectRocket.ROCKETB));
-		rocketBBtn.setBackground(null);
+		rocketBButton = new Button();
+		rocketAButton.setPrefSize(200, 200);
+		rocketBButton.setGraphic(new ImageView(ResourceManager.selectRocket.ROCKETB));
+		rocketBButton.setBackground(null);
 
 		selectRocket = new HBox();
-		selectRocket.getChildren().add(rocketABtn);
-		selectRocket.getChildren().add(rocketBBtn);
+		selectRocket.getChildren().add(rocketAButton);
+		selectRocket.getChildren().add(rocketBButton);
 		selectRocket.setAlignment(Pos.CENTER);
 		selectRocket.setSpacing(20);
 
 		addListener();
 		
-		BorderPane bP = new BorderPane();
-		bP.setPadding(new Insets(30));
-		bP.setTop(chooseRocket);
+		titleButton = new Button("Go back");
+		titleButton.setFont(new Font("Times New Roman",30));
+		titleButton.setBackground(null);
+		titleButton.setTextFill(Color.WHITE);
+		titleButton.setPadding(new Insets(5));
+		
+		selectPane = new BorderPane();
+		selectPane.setPadding(new Insets(30));
+		selectPane.setTop(chooseRocket);
 		BorderPane.setMargin(chooseRocket, new Insets(50));
 		BorderPane.setAlignment(chooseRocket, Pos.CENTER);
-		bP.setCenter(selectRocket);
-		bP.setBottom(titleButton);
+		selectPane.setCenter(selectRocket);
+		selectPane.setBottom(titleButton);
 
-//		VBox vB = new VBox();
-//		vB.getChildren().addAll(chooseRocket, selectRocket, titleButton);
-//		vB.setAlignment(Pos.TOP_CENTER);
-//		vB.setPadding(new Insets(30));
-
-		root.getChildren().addAll(bP);
+		root.getChildren().addAll(selectPane);
 
 		AudioManager.playBGM(ResourceManager.bgm.SELECT, 0.5, true);
 	}
@@ -89,9 +85,7 @@ public class SelectRocketScene extends GameScene {
 	protected void addListener() {
 		// TODO Auto-generated method stub
 		titleButton.setOnMouseClicked(e -> {
-			changeScene(State.TITLE);
-			;
-		});
+			changeScene(State.TITLE);		});
 		titleButton.setOnMouseEntered(e -> {
 			titleButton.setTextFill(Color.RED);
 		});
@@ -99,28 +93,28 @@ public class SelectRocketScene extends GameScene {
 			titleButton.setTextFill(Color.WHITE);
 		});
 
-		rocketABtn.setOnMouseClicked(e -> {
+		rocketAButton.setOnMouseClicked(e -> {
 			GameStartScene.setRocketA(true);
 			changeScene(State.PLAYING);
 		});
-		rocketABtn.setOnMouseEntered(e -> {
-			rocketABtn.setBackground(
+		rocketAButton.setOnMouseEntered(e -> {
+			rocketAButton.setBackground(
 					new Background(new BackgroundFill(new Color(0.8, 1, 1, 0.5), CornerRadii.EMPTY, Insets.EMPTY)));
 		});
-		rocketABtn.setOnMouseExited(e -> {
-			rocketABtn.setBackground(null);
+		rocketAButton.setOnMouseExited(e -> {
+			rocketAButton.setBackground(null);
 		});
 
-		rocketBBtn.setOnMouseClicked(e -> {
+		rocketBButton.setOnMouseClicked(e -> {
 			GameStartScene.setRocketA(false);
 			changeScene(State.PLAYING);
 		});
-		rocketBBtn.setOnMouseEntered(e -> {
-			rocketBBtn.setBackground(
+		rocketBButton.setOnMouseEntered(e -> {
+			rocketBButton.setBackground(
 					new Background(new BackgroundFill(new Color(0.8, 1, 1, 0.5), CornerRadii.EMPTY, Insets.EMPTY)));
 		});
-		rocketBBtn.setOnMouseExited(e -> {
-			rocketBBtn.setBackground(null);
+		rocketBButton.setOnMouseExited(e -> {
+			rocketBButton.setBackground(null);
 		});
 	}
 
