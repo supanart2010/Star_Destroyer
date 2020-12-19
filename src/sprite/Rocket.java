@@ -51,7 +51,7 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 			moveRight();
 		}
 	}
-	
+
 	public void shoot() {
 		bulletManager.addBullet();
 	}
@@ -79,65 +79,108 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 	public boolean isDead() {
 		return hp == 0;
 	}
-	
+
 	public void updatePointShoot() {
 		if (Controller.isShooting() && !Controller.isPointDelay()) {
 			Thread t = new Thread() {
 				public void run() {
-					shoot();
-					AudioManager.playSFX(ResourceManager.readAudioClip("gunsound.wav"), 0.3);
-					Controller.setPointDelay(true);
+
+					Platform.runLater(new Runnable() {
+						public void run() {
+							shoot();
+							AudioManager.playSFX(ResourceManager.readAudioClip("gunsound.wav"), 0.3);
+							Controller.setPointDelay(true);
+						}
+					});
+
 					try {
 						Thread.sleep(PointBullet.POINT_DELAYTIME);
 					} catch (InterruptedException ex) {
 						ex.printStackTrace();
 					}
-					Controller.setPointDelay(false);
+
+					Platform.runLater(new Runnable() {
+						public void run() {
+							Controller.setPointDelay(false);
+						}
+					});
+
 				}
 			};
+			
 			t.start();
+			
 		}
 	}
-	
+
 	public void updateLaserShoot() {
 		if (Controller.isShootingLaser() && getStorage().hasLaserBullet() && !Controller.isLaserDelay()) {
 			Thread t = new Thread() {
 				public void run() {
-					laser();
-					AudioManager.playSFX(ResourceManager.readAudioClip("lasersound.wav"), 0.3);
-					getStorage().consumeLaserBullet();
-					Controller.setLaserDelay(true);
+
+					Platform.runLater(new Runnable() {
+						public void run() {
+							laser();
+							AudioManager.playSFX(ResourceManager.readAudioClip("lasersound.wav"), 0.3);
+							getStorage().consumeLaserBullet();
+							Controller.setLaserDelay(true);
+						}
+					});
+
 					try {
 						Thread.sleep(LaserBullet.LASER_DELAYTIME);
 					} catch (InterruptedException ex) {
 						ex.printStackTrace();
 					}
-					Controller.setLaserDelay(false);
+
+					Platform.runLater(new Runnable() {
+						public void run() {
+							Controller.setLaserDelay(false);
+						}
+					});
+
 				}
 			};
+			
 			t.start();
+			
 		}
 	}
-	
+
 	public void updateBombShoot() {
 		if (Controller.isShootingBomb() && getStorage().hasBombBullet() && !Controller.isBombDelay()) {
 			Thread t = new Thread() {
 				public void run() {
-					bomb();
-					AudioManager.playSFX(ResourceManager.readAudioClip("bombsound.wav"), 0.3);
-					getStorage().consumeBombBullet();
-					Controller.setBombDelay(true);
+
+					Platform.runLater(new Runnable() {
+						public void run() {
+							bomb();
+							AudioManager.playSFX(ResourceManager.readAudioClip("bombsound.wav"), 0.3);
+							getStorage().consumeBombBullet();
+							Controller.setBombDelay(true);
+						}
+					});
+
 					try {
 						Thread.sleep(BombBullet.BOMB_DELAYTIME);
 					} catch (InterruptedException ex) {
 						ex.printStackTrace();
 					}
-					Controller.setBombDelay(false);
+
+					Platform.runLater(new Runnable() {
+						public void run() {
+							Controller.setBombDelay(false);
+						}
+					});
+
 				}
 			};
+			
 			t.start();
+			
 		}
 	}
+
 	// Interface Method
 	@Override
 	public void moveUp() {
@@ -162,13 +205,13 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 		// TODO Auto-generated method stub
 		positionX += speedX;
 	}
-	
+
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	public void update(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		move();
@@ -188,8 +231,6 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 		// TODO Auto-generated method stub
 		decreaseHp(entity.getDamage());
 	}
-
-	
 
 	// Getter & Setter
 	public String getName() {
@@ -240,7 +281,6 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 		this.speedY = typeASpeedy;
 	}
 
-
 	public int getBodyDamage() {
 		return bodyDamage;
 	}
@@ -260,5 +300,5 @@ public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 	public BulletManager getBulletManager() {
 		return bulletManager;
 	}
-	
+
 }

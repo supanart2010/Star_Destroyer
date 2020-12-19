@@ -60,13 +60,13 @@ public class SelectRocketScene extends GameScene {
 		selectRocket.setAlignment(Pos.CENTER);
 		selectRocket.setSpacing(20);
 
-		addListener();
-		
 		titleButton = new Button("Go back");
 		titleButton.setFont(new Font("Times New Roman",30));
 		titleButton.setBackground(null);
 		titleButton.setTextFill(Color.WHITE);
 		titleButton.setPadding(new Insets(5));
+
+		addListener();
 		
 		selectPane = new BorderPane();
 		selectPane.setPadding(new Insets(30));

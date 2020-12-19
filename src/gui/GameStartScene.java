@@ -28,14 +28,20 @@ public class GameStartScene extends GameScene {
 	public static final int DATALAYER_WIDTH = 300;
 	public static final int DATALAYER_HEIGHT = 600;
 
-	private Rocket myRocket;
-	private GraphicsContext gc;
-	private MinionManager minionManager;
-	private Text rocketName, hp, laser, bomb, score;
-
 	private static int currentScore;
 	private static int highScore = 0;
 	private static boolean isRocketA = false;
+
+	private Rocket myRocket;
+	private GraphicsContext gc;
+	private MinionManager minionManager;
+	private Text rocketNameText;
+	private Text hpText;
+	private Text laserText;
+	private Text bombText;
+	private Text scoreText;
+	private VBox dataLayer;
+	private HBox gamePane;
 
 	public GameStartScene() {
 		super();
@@ -45,9 +51,6 @@ public class GameStartScene extends GameScene {
 		gameLayer = new Canvas(GAMELAYER_WIDTH, GAMELAYER_HEIGHT);
 		gc = gameLayer.getGraphicsContext2D();
 
-		HBox newroot = new HBox();
-		newroot.setPrefSize(SceneManager.WINDOW_WIDTH, SceneManager.WINDOW_HEIGHT);
-
 		if (isRocketA) {
 			myRocket = new RocketTypeA();
 			myRocket.render(gc, Rocket.ROCKET_WIDTH, Rocket.ROCKET_HEIGHT);
@@ -56,37 +59,41 @@ public class GameStartScene extends GameScene {
 			myRocket.render(gc, Rocket.ROCKET_WIDTH, Rocket.ROCKET_HEIGHT);
 		}
 		// Right Field
-		VBox dataLayer = new VBox();
+		rocketNameText = new Text("Rocket : " + myRocket.getName());
+		rocketNameText.setFill(Color.WHITE);
+		rocketNameText.setFont(new Font(20));
+
+		hpText = new Text("Health : " + myRocket.getHp());
+		hpText.setFill(Color.WHITE);
+		hpText.setFont(new Font(20));
+
+		laserText = new Text("Laser ammo : " + myRocket.getStorage().getLaserCapacity());
+		laserText.setFill(Color.WHITE);
+		laserText.setFont(new Font(20));
+
+		bombText = new Text("Bomb ammo : " + myRocket.getStorage().getBombCapacity());
+		bombText.setFill(Color.WHITE);
+		bombText.setFont(new Font(20));
+
+		scoreText = new Text("Score : " + myRocket.getScore());
+		scoreText.setFill(Color.WHITE);
+		scoreText.setFont(new Font(20));
+
+		dataLayer = new VBox();
 		dataLayer.setPrefSize(DATALAYER_WIDTH, DATALAYER_HEIGHT);
 		dataLayer.setAlignment(Pos.CENTER);
 		dataLayer.setBackground(new Background(new BackgroundFill(null, CornerRadii.EMPTY, new Insets(0))));
-
-		rocketName = new Text("Rocket : " + myRocket.getName());
-		rocketName.setFill(Color.WHITE);
-		rocketName.setFont(new Font(20));
-
-		hp = new Text("Health : " + myRocket.getHp());
-		hp.setFill(Color.WHITE);
-		hp.setFont(new Font(20));
-
-		laser = new Text("Laser ammo : " + myRocket.getStorage().getLaserCapacity());
-		laser.setFill(Color.WHITE);
-		laser.setFont(new Font(20));
-
-		bomb = new Text("Bomb ammo : " + myRocket.getStorage().getBombCapacity());
-		bomb.setFill(Color.WHITE);
-		bomb.setFont(new Font(20));
-
-		score = new Text("Score : " + myRocket.getScore());
-		score.setFill(Color.WHITE);
-		score.setFont(new Font(20));
-
-		dataLayer.getChildren().addAll(rocketName, hp, laser, bomb, score);
-		newroot.getChildren().add(gameLayer);
-		newroot.getChildren().add(dataLayer);
-		root.getChildren().add(newroot);
+		dataLayer.getChildren().addAll(rocketNameText, hpText, laserText, bombText, scoreText);
+		
+		gamePane = new HBox();
+		gamePane.setPrefSize(SceneManager.WINDOW_WIDTH, SceneManager.WINDOW_HEIGHT);
+		gamePane.getChildren().add(gameLayer);
+		gamePane.getChildren().add(dataLayer);
+		
+		root.getChildren().add(gamePane);
 
 		minionManager = new MinionManager();
+		
 		addListener();
 
 		setDefaultController();
@@ -168,10 +175,10 @@ public class GameStartScene extends GameScene {
 		gc.clearRect(0, 0, SceneManager.WINDOW_WIDTH, SceneManager.WINDOW_HEIGHT);
 		myRocket.update(gc);
 		minionManager.update(myRocket.getBulletManager(), gc, myRocket);
-		hp.setText("Health : " + myRocket.getHp());
-		laser.setText("Laser ammo : " + myRocket.getStorage().getLaserRemain());
-		bomb.setText("Bomb ammo : " + myRocket.getStorage().getBombRemain());
-		score.setText("Score : " + myRocket.getScore());
+		hpText.setText("Health : " + myRocket.getHp());
+		laserText.setText("Laser ammo : " + myRocket.getStorage().getLaserRemain());
+		bombText.setText("Bomb ammo : " + myRocket.getStorage().getBombRemain());
+		scoreText.setText("Score : " + myRocket.getScore());
 		setCurrentScore(myRocket.getScore());
 		if (getHighScore() < getCurrentScore()) {
 			setHighScore(currentScore);

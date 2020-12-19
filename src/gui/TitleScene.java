@@ -24,41 +24,41 @@ import logic.SceneManager.State;
 public class TitleScene extends GameScene {
 	private Label nameText;
 	private Button startGameButton;
-	private Button tutorialButton;
-	private Button creditsButton;
+	private Button HowtoButton;
+	private Button CreditButton;
 	private VBox titlePane;
-	
+
 	public TitleScene() {
 		super();
 		this.sceneState = State.TITLE;
 		setGameBackground(ResourceManager.title.TITLE_BACKGROUND);
-
-		nameText = new Label("STAR DESTROYER");
-		nameText.setTextFill(Color.WHITE);
-		nameText.setFont(new Font("Times New Roman", 60));
-
+		
 		startGameButton = new Button("Start");
 		startGameButton.setFont(new Font("Times New Roman", 50));
 		startGameButton.setBackground(null);
 		startGameButton.setTextFill(Color.WHITE);
 		startGameButton.setPadding(new Insets(5));
-		
-		tutorialButton = new Button("Tutorial");
-		tutorialButton.setFont(new Font("Times New Roman", 50));
-		tutorialButton.setBackground(null);
-		tutorialButton.setTextFill(Color.WHITE);
-		tutorialButton.setPadding(new Insets(5));
 
-		creditsButton = new Button("Credits");
-		creditsButton.setFont(new Font("Times New Roman", 50));
-		creditsButton.setBackground(null);
-		creditsButton.setTextFill(Color.WHITE);
-		creditsButton.setPadding(new Insets(5));
+		nameText = new Label("STAR DESTROYER");
+		nameText.setTextFill(Color.WHITE);
+		nameText.setFont(new Font("Times New Roman", 60));
+
+		HowtoButton = new Button("Tutorial");
+		HowtoButton.setFont(new Font("Times New Roman", 50));
+		HowtoButton.setBackground(null);
+		HowtoButton.setTextFill(Color.WHITE);
+		HowtoButton.setPadding(new Insets(5));
+
+		CreditButton = new Button("Credits");
+		CreditButton.setFont(new Font("Times New Roman", 50));
+		CreditButton.setBackground(null);
+		CreditButton.setTextFill(Color.WHITE);
+		CreditButton.setPadding(new Insets(5));
 
 		addListener();
 
 		titlePane = new VBox();
-		titlePane.getChildren().addAll(nameText, startGameButton, tutorialButton, creditsButton);
+		titlePane.getChildren().addAll(nameText, startGameButton, HowtoButton, CreditButton);
 		titlePane.setPadding(new Insets(50));
 		titlePane.setSpacing(20);
 		titlePane.setPrefSize(800, 600);
@@ -76,6 +76,7 @@ public class TitleScene extends GameScene {
 		// handler
 		startGameButton.setOnMouseClicked(e -> {
 			changeScene(State.SELECTROCKET);
+			;
 		});
 		startGameButton.setOnMouseEntered(e -> {
 			startGameButton.setTextFill(Color.YELLOW);
@@ -85,25 +86,27 @@ public class TitleScene extends GameScene {
 		});
 
 		// handler
-		tutorialButton.setOnMouseClicked(e -> {
+		HowtoButton.setOnMouseClicked(e -> {
 			changeScene(State.TUTORIAL);
+			;
 		});
-		tutorialButton.setOnMouseEntered(e -> {
-			tutorialButton.setTextFill(Color.YELLOW);
+		HowtoButton.setOnMouseEntered(e -> {
+			HowtoButton.setTextFill(Color.YELLOW);
 		});
-		tutorialButton.setOnMouseExited(e -> {
-			tutorialButton.setTextFill(Color.WHITE);
+		HowtoButton.setOnMouseExited(e -> {
+			HowtoButton.setTextFill(Color.WHITE);
 		});
 
 		// handler
-		creditsButton.setOnMouseClicked(e -> {
+		CreditButton.setOnMouseClicked(e -> {
 			changeScene(State.CREDITS);
+			;
 		});
-		creditsButton.setOnMouseEntered(e -> {
-			creditsButton.setTextFill(Color.YELLOW);
+		CreditButton.setOnMouseEntered(e -> {
+			CreditButton.setTextFill(Color.YELLOW);
 		});
-		creditsButton.setOnMouseExited(e -> {
-			creditsButton.setTextFill(Color.WHITE);
+		CreditButton.setOnMouseExited(e -> {
+			CreditButton.setTextFill(Color.WHITE);
 		});
 
 	}
