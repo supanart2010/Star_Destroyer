@@ -16,8 +16,9 @@ public class BombAnimation extends Sprite {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void update() {
+	public void update(GraphicsContext gc) {
 		// TODO Auto-generated method stub
+		this.render(gc,50,50);
 		AudioManager.playSFX(ResourceManager.readAudioClip("bomb.mp3"), 0.4);
 	}
 }
