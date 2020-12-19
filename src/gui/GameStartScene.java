@@ -90,11 +90,12 @@ public class GameStartScene extends GameScene {
 		gamePane.getChildren().add(gameLayer);
 		gamePane.getChildren().add(dataLayer);
 		
+		addListener();
+		
 		root.getChildren().add(gamePane);
 
 		minionManager = new MinionManager();
 		
-		addListener();
 
 		setDefaultController();
 		setCurrentScore(0);
@@ -161,6 +162,7 @@ public class GameStartScene extends GameScene {
 		});
 	}
 
+	
 	@Override
 	protected void releaseSceneComponents() {
 		// TODO Auto-generated method stub

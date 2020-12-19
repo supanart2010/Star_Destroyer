@@ -6,7 +6,7 @@ import exception.SceneChangingException;
 import gui.CreditsScene;
 import gui.GameScene;
 import gui.GameStartScene;
-import gui.HowToScene;
+import gui.TutorialScene;
 import gui.LosingScene;
 import gui.SelectRocketScene;
 import gui.TitleScene;
@@ -73,7 +73,7 @@ public final class SceneManager {
 			break;
 		case TUTORIAL:
 			ResourceManager.loadResources(State.TUTORIAL);
-			scene = new HowToScene();
+			scene = new TutorialScene();
 			break;
 		case CREDITS:
 			ResourceManager.loadResources(State.CREDITS);

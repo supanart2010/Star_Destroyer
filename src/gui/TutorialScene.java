@@ -21,10 +21,10 @@ import logic.AudioManager;
 import logic.ResourceManager;
 import logic.SceneManager.State;
 
-public class HowToScene extends GameScene {
+public class TutorialScene extends GameScene {
 	private Button titleButton;
 
-	public HowToScene() {
+	public TutorialScene() {
 		super();
 		this.sceneState = State.TUTORIAL;
 		setGameBackground(ResourceManager.tutorial.TUTORIAL_BACKGROUND);
