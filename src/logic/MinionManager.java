@@ -18,7 +18,7 @@ import sprite.Rocket;
 public class MinionManager {
 	private ArrayList<Entity> minions = new ArrayList<>();
 	//private ArrayList<BombAnimation> animations = new ArrayList<BombAnimation>();
-	//private List<BombAnimation> animations = Collections.synchronizedList(new ArrayList<BombAnimation>());
+	private List<BombAnimation> animations = Collections.synchronizedList(new ArrayList<BombAnimation>());
 	
 	public MinionManager() {
 		for (int i = 0; i < 3; ++i) {
@@ -48,24 +48,24 @@ public class MinionManager {
 			}
 			for (Bullet bullet : bulletManager.getBullets()) {
 				if (minion.intersects(bullet)) {
-//					BombAnimation b = new BombAnimation(bullet.getPositionX(), bullet.getPositionY());
-//					animations.add(b);
-//					Thread t = new Thread(()->{
-//						try {
-//							Thread.sleep(50);
-//						} catch (InterruptedException e) {
-//							// TODO Auto-generated catch block
-//							e.printStackTrace();
-//						}
-//						animations.remove(animations.indexOf(b));
-//					});
-//					t.start();
 					if (bullet instanceof LaserBullet) {
 						minion.hit(bullet);
 //						bullet.hit();
 					} else if (bullet instanceof BombBullet) {
 						minion.hit(bullet);
 						bullet.hit();
+						BombAnimation b = new BombAnimation(bullet.getPositionX(), bullet.getPositionY());
+						animations.add(b);
+						Thread t = new Thread(()->{
+							try {
+								Thread.sleep(50);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							animations.remove(animations.indexOf(b));
+						});
+						t.start();
 					} else {
 						minion.hit(bullet);
 						bullet.hit();
@@ -85,9 +85,9 @@ public class MinionManager {
 				toRemoveMinions.add(minions.indexOf(minion));
 			}
 		}
-//		for (BombAnimation b : animations) {
-//			b.update(gc);
-//		}
+		for (BombAnimation b : animations) {
+			b.update(gc);
+		}
 		HashSet<Integer> b = new HashSet<>(toRemoveBullets);
 		HashSet<Integer> m = new HashSet<>(toRemoveMinions);
 		toRemoveBullets.clear();
