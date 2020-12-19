@@ -24,8 +24,8 @@ import logic.SceneManager.State;
 public class TitleScene extends GameScene {
 	private Label nameText;
 	private Button startGameButton;
-	private Button HowtoButton;
-	private Button CreditButton;
+	private Button tutorialButton;
+	private Button creditsButton;
 	private VBox titlePane;
 
 	public TitleScene() {
@@ -43,22 +43,22 @@ public class TitleScene extends GameScene {
 		nameText.setTextFill(Color.WHITE);
 		nameText.setFont(new Font("Times New Roman", 60));
 
-		HowtoButton = new Button("Tutorial");
-		HowtoButton.setFont(new Font("Times New Roman", 50));
-		HowtoButton.setBackground(null);
-		HowtoButton.setTextFill(Color.WHITE);
-		HowtoButton.setPadding(new Insets(5));
+		tutorialButton = new Button("Tutorial");
+		tutorialButton.setFont(new Font("Times New Roman", 50));
+		tutorialButton.setBackground(null);
+		tutorialButton.setTextFill(Color.WHITE);
+		tutorialButton.setPadding(new Insets(5));
 
-		CreditButton = new Button("Credits");
-		CreditButton.setFont(new Font("Times New Roman", 50));
-		CreditButton.setBackground(null);
-		CreditButton.setTextFill(Color.WHITE);
-		CreditButton.setPadding(new Insets(5));
+		creditsButton = new Button("Credits");
+		creditsButton.setFont(new Font("Times New Roman", 50));
+		creditsButton.setBackground(null);
+		creditsButton.setTextFill(Color.WHITE);
+		creditsButton.setPadding(new Insets(5));
 
 		addListener();
 
 		titlePane = new VBox();
-		titlePane.getChildren().addAll(nameText, startGameButton, HowtoButton, CreditButton);
+		titlePane.getChildren().addAll(nameText, startGameButton, tutorialButton, creditsButton);
 		titlePane.setPadding(new Insets(50));
 		titlePane.setSpacing(20);
 		titlePane.setPrefSize(800, 600);
@@ -86,27 +86,27 @@ public class TitleScene extends GameScene {
 		});
 
 		// handler
-		HowtoButton.setOnMouseClicked(e -> {
+		tutorialButton.setOnMouseClicked(e -> {
 			changeScene(State.TUTORIAL);
 			;
 		});
-		HowtoButton.setOnMouseEntered(e -> {
-			HowtoButton.setTextFill(Color.YELLOW);
+		tutorialButton.setOnMouseEntered(e -> {
+			tutorialButton.setTextFill(Color.YELLOW);
 		});
-		HowtoButton.setOnMouseExited(e -> {
-			HowtoButton.setTextFill(Color.WHITE);
+		tutorialButton.setOnMouseExited(e -> {
+			tutorialButton.setTextFill(Color.WHITE);
 		});
 
 		// handler
-		CreditButton.setOnMouseClicked(e -> {
+		creditsButton.setOnMouseClicked(e -> {
 			changeScene(State.CREDITS);
 			;
 		});
-		CreditButton.setOnMouseEntered(e -> {
-			CreditButton.setTextFill(Color.YELLOW);
+		creditsButton.setOnMouseEntered(e -> {
+			creditsButton.setTextFill(Color.YELLOW);
 		});
-		CreditButton.setOnMouseExited(e -> {
-			CreditButton.setTextFill(Color.WHITE);
+		creditsButton.setOnMouseExited(e -> {
+			creditsButton.setTextFill(Color.WHITE);
 		});
 
 	}

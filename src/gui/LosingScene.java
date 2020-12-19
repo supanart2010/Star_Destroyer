@@ -12,34 +12,33 @@ import logic.ResourceManager;
 import logic.SceneManager.State;
 
 public class LosingScene extends GameScene {
-	private Button title;
-	private Button newGame;
 	private Label gameOver;
 	private Label score;
 	private Label highScore;
+	private Button newGameButton;
+	private Button titleButton;
+	private VBox losingPane;
 
 	public LosingScene() {
 		super();
 		this.sceneState = State.LOSING;
 		setGameBackground(ResourceManager.losing.LOSING_BACKGROUND);
 
-		VBox vB = new VBox();
-
-		title = new Button("Main Menu");
-		title.setFont(new Font("Times New Roman", 30));
-		title.setPadding(new Insets(5));
-		title.setTextFill(Color.WHITE);
-		title.setBackground(null);
+		titleButton = new Button("Main Menu");
+		titleButton.setFont(new Font("Times New Roman", 30));
+		titleButton.setPadding(new Insets(5));
+		titleButton.setTextFill(Color.WHITE);
+		titleButton.setBackground(null);
 
 		gameOver = new Label("Game Over!!");
 		gameOver.setTextFill(Color.WHITE);
 		gameOver.setFont(new Font("Times New Roman", 60));
 
-		newGame = new Button("Play Again?");
-		newGame.setFont(new Font("Times New Roman", 50));
-		newGame.setBackground(null);
-		newGame.setTextFill(Color.WHITE);
-		newGame.setPadding(new Insets(5));
+		newGameButton = new Button("Play Again?");
+		newGameButton.setFont(new Font("Times New Roman", 50));
+		newGameButton.setBackground(null);
+		newGameButton.setTextFill(Color.WHITE);
+		newGameButton.setPadding(new Insets(5));
 
 		score = new Label("Your score : " + GameStartScene.getCurrentScore());
 		score.setFont(new Font("Times New Roman", 30));
@@ -49,11 +48,12 @@ public class LosingScene extends GameScene {
 		highScore.setFont(new Font("Times New Roman", 30));
 		highScore.setTextFill(Color.WHITE);
 
-		vB.getChildren().addAll(gameOver, score, highScore, newGame, title);
-		vB.setAlignment(Pos.CENTER);
-		vB.setSpacing(20);
+		losingPane = new VBox();
+		losingPane.getChildren().addAll(gameOver, score, highScore, newGameButton, titleButton);
+		losingPane.setAlignment(Pos.CENTER);
+		losingPane.setSpacing(20);
 
-		root.getChildren().add(vB);
+		root.getChildren().add(losingPane);
 		addListener();
 
 		AudioManager.playBGM(ResourceManager.bgm.LOSING, 0.5, false);
@@ -62,23 +62,23 @@ public class LosingScene extends GameScene {
 	@Override
 	protected void addListener() {
 		// TODO Auto-generated method stub
-		title.setOnMouseClicked(e -> {
+		titleButton.setOnMouseClicked(e -> {
 			changeScene(State.TITLE);
 		});
-		title.setOnMouseEntered(e -> {
-			title.setTextFill(Color.YELLOW);
+		titleButton.setOnMouseEntered(e -> {
+			titleButton.setTextFill(Color.YELLOW);
 		});
-		title.setOnMouseExited(e -> {
-			title.setTextFill(Color.WHITE);
+		titleButton.setOnMouseExited(e -> {
+			titleButton.setTextFill(Color.WHITE);
 		});
-		newGame.setOnAction(e -> {
+		newGameButton.setOnAction(e -> {
 			changeScene(State.SELECTROCKET);
 		});
-		newGame.setOnMouseEntered(e -> {
-			newGame.setTextFill(Color.YELLOW);
+		newGameButton.setOnMouseEntered(e -> {
+			newGameButton.setTextFill(Color.YELLOW);
 		});
-		newGame.setOnMouseExited(e -> {
-			newGame.setTextFill(Color.WHITE);
+		newGameButton.setOnMouseExited(e -> {
+			newGameButton.setTextFill(Color.WHITE);
 		});
 
 	}
