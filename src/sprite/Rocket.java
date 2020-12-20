@@ -7,7 +7,6 @@ import logic.AudioManager;
 import logic.BulletManager;
 import logic.Controller;
 import logic.ResourceManager;
-import logic.SceneManager;
 
 public class Rocket extends Sprite implements Hittable, Moveable, Updatable {
 	public static final int ROCKET_WIDTH = 100;

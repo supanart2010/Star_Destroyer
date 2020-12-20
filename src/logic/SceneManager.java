@@ -1,7 +1,6 @@
 package logic;
 
 import exception.GameException;
-import exception.ResourceNotFoundException;
 import exception.SceneChangingException;
 import gui.CreditsScene;
 import gui.GameScene;

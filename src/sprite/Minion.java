@@ -4,7 +4,6 @@ import java.util.Random;
 
 import gui.GameStartScene;
 import logic.ResourceManager;
-import logic.SceneManager;
 
 public class Minion extends Entity {
 	private static final int MINION_MAXHP = 20;

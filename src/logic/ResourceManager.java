@@ -5,8 +5,6 @@ import exception.ResourceNotFoundException;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import logic.ResourceManager.SoundtrackResource;
 
 public class ResourceManager {
 	public static TitleResource title;
