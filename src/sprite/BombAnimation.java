@@ -4,7 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import logic.AudioManager;
 import logic.ResourceManager;
 
-public class BombAnimation extends Sprite {
+public class BombAnimation extends Sprite implements Updatable {
 
 	private static double width = 50;
 	private static double height = 50;
@@ -20,5 +20,11 @@ public class BombAnimation extends Sprite {
 		// TODO Auto-generated method stub
 		this.render(gc,50,50);
 		AudioManager.playSFX(ResourceManager.readAudioClip("bomb.mp3"), 0.4);
+	}
+	
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
 	}
 }

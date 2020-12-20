@@ -24,7 +24,7 @@ public class ResourceManager {
 		public final Media LOSING;
 		public final Media START;
 
-		SoundtrackResource() {
+		public SoundtrackResource() {
 			TITLE = readMedia("startMenuBGM.mp3");
 			SELECT = readMedia("selectRocketBGM.mp3");
 			START = readMedia("gameStartBGM.mp3");
@@ -35,7 +35,7 @@ public class ResourceManager {
 	public static class TitleResource {
 		public final Image TITLE_BACKGROUND;
 
-		TitleResource() {
+		public TitleResource() {
 			TITLE_BACKGROUND = readImg("title_bg.png");
 		}
 	}
@@ -45,7 +45,7 @@ public class ResourceManager {
 		public final Image ROCKETA;
 		public final Image ROCKETB;
 
-		SelectRocketResource() {
+		public SelectRocketResource() {
 			SELECTROCKET_BACKGROUND = readImg("title_bg.png");
 			ROCKETA = readImg("rocketA200px.png");
 			ROCKETB = readImg("rocketB200px.png");
@@ -64,7 +64,7 @@ public class ResourceManager {
 		public final Image YELLOWMINION;
 		public final Image BOMB;
 
-		GameStartResource() {
+		public GameStartResource() {
 			GAMESTART_BACKGROUND = readImg("default_bg.png");
 			ROCKETA = readImg("rocketA.png");
 			ROCKETB = readImg("rocketB.png");
@@ -82,7 +82,7 @@ public class ResourceManager {
 	public static class TutorialResource {
 		public final Image TUTORIAL_BACKGROUND;
 
-		TutorialResource() {
+		public TutorialResource() {
 			TUTORIAL_BACKGROUND = readImg("tutorialbg.png");
 		}
 	}
@@ -90,7 +90,7 @@ public class ResourceManager {
 	public static class CreditsResource {
 		public final Image CREDITS_BACKGROUND;
 
-		CreditsResource() {
+		public CreditsResource() {
 			CREDITS_BACKGROUND = readImg("creditbg.png");
 		}
 	}
